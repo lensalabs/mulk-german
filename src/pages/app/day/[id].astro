@@ -1,0 +1,1107 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import BottomNav from '../../../components/BottomNav.astro';
+import { MULK_VERSES, SURAH_INFO, getVerseByDay } from '../../../data/mulk-verses';
+import wordByWordData from '../../../data/word-by-word.json';
+
+export function getStaticPaths() {
+  return MULK_VERSES.map((v) => ({ params: { id: String(v.dayIndex) } }));
+}
+
+const { id } = Astro.params;
+const dayIndex = parseInt(id);
+const verse = getVerseByDay(dayIndex)!;
+const prevDay = dayIndex > 1 ? dayIndex - 1 : null;
+const nextDay = dayIndex < 30 ? dayIndex + 1 : null;
+
+const arabicWords = verse.arabic.split(/\s+/);
+// Get word-by-word translations for this verse (ayah number = dayIndex for Sureja El-Mulk)
+const verseWordByWord = (wordByWordData as Record<string, {word: number, albanian: string, arabic: string}[]>)[String(dayIndex)] || [];
+---
+
+<Layout title={`Dita ${dayIndex}`}>
+  <div id="page-root" class="min-h-screen flex flex-col bg-[var(--color-background)]">
+    
+    <!-- Header with gradient - extends down -->
+    <header class="bg-gradient-to-b from-[#005086] via-[#318fb5] to-[#b0cac7] text-white px-4 pt-3 pb-24 safe-top">
+      <div class="max-w-lg mx-auto flex items-center justify-between">
+        <a href="/app" class="w-11 h-11 rounded-xl bg-white/10 flex items-center justify-center active:scale-95 transition-transform" aria-label="Kthehu">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path></svg>
+        </a>
+        
+        <!-- Day Navigation -->
+        <div class="flex items-center gap-3">
+          {prevDay ? (
+            <a href={`/app/day/${prevDay}`} class="w-9 h-9 rounded-lg bg-white/10 flex items-center justify-center active:scale-95 transition-transform" aria-label="Dita e mëparshme">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path></svg>
+            </a>
+          ) : (
+            <div class="w-9 h-9"></div>
+          )}
+          
+          <div class="text-center min-w-[80px]">
+            <h1 class="text-lg font-semibold">Dita {dayIndex}</h1>
+            <p class="text-xs text-white/70">Ajeti {verse.ayahNumber}</p>
+          </div>
+          
+          {nextDay ? (
+            <a href={`/app/day/${nextDay}`} class="w-9 h-9 rounded-lg bg-white/10 flex items-center justify-center active:scale-95 transition-transform" aria-label="Dita e ardhshme">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
+            </a>
+          ) : (
+            <div class="w-9 h-9"></div>
+          )}
+        </div>
+        
+        <button id="settings-btn" class="w-11 h-11 rounded-xl bg-white/10 flex items-center justify-center active:scale-95 transition-transform" title="Cilësimet">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z"></path></svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- Step Progress Indicator - pulls up into gradient -->
+    <div class="bg-white/95 backdrop-blur-sm rounded-2xl mx-4 -mt-16 px-4 py-4 shadow-lg border border-[var(--color-border)]/50">
+      <div class="max-w-lg mx-auto">
+        <div class="flex items-center justify-between">
+          <!-- Step 1: Dëgjo (Listen) - Clickable -->
+          <button id="step-listen" class="step-indicator flex-1 cursor-pointer active:scale-95 transition-transform" data-step="listen">
+            <div class="flex flex-col items-center">
+              <div class="step-circle w-10 h-10 rounded-xl bg-[var(--color-step-listen)] flex items-center justify-center text-white text-sm font-bold">
+                <span class="step-number">1</span>
+                <svg class="step-check w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+              </div>
+              <span class="text-xs font-medium text-[var(--color-step-listen)] mt-1.5">Dëgjo</span>
+              <span id="listen-progress" class="text-[10px] text-[var(--color-text-secondary)]">0/10</span>
+            </div>
+          </button>
+          
+          <!-- Connector 1 -->
+          <div class="step-connector flex-1 h-0.5 bg-[var(--color-border)] mx-1 max-w-[40px]"></div>
+          
+          <!-- Step 2: Lexo (Read) - Clickable -->
+          <button id="step-read" class="step-indicator flex-1 cursor-pointer active:scale-95 transition-transform" data-step="read">
+            <div class="flex flex-col items-center">
+              <div class="step-circle w-10 h-10 rounded-xl bg-[var(--color-step-read)] flex items-center justify-center text-white text-sm font-bold">
+                <span class="step-number">2</span>
+                <svg class="step-check w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+              </div>
+              <span class="text-xs font-medium text-[var(--color-step-read)] mt-1.5">Lexo</span>
+              <span id="read-progress" class="text-[10px] text-[var(--color-text-secondary)]">0/10</span>
+            </div>
+          </button>
+          
+          <!-- Connector 2 -->
+          <div class="step-connector flex-1 h-0.5 bg-[var(--color-border)] mx-1 max-w-[40px]"></div>
+          
+          <!-- Step 3: Recito (Recite) - Clickable -->
+          <button id="step-recite" class="step-indicator flex-1 cursor-pointer active:scale-95 transition-transform" data-step="recite">
+            <div class="flex flex-col items-center">
+              <div class="step-circle w-10 h-10 rounded-xl bg-[var(--color-step-recite)] flex items-center justify-center text-white text-sm font-bold">
+                <span class="step-number">3</span>
+                <svg class="step-check w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+              </div>
+              <span class="text-xs font-medium text-[var(--color-step-recite)] mt-1.5">Recito</span>
+              <span id="recite-progress" class="text-[10px] text-[var(--color-text-secondary)]">0/10</span>
+            </div>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Content Area - Hero Arabic Text -->
+    <main class="flex-1 flex flex-col px-4 pt-4 pb-44 overflow-y-auto">
+      <div class="max-w-lg mx-auto w-full flex-1 flex flex-col mb-5">
+        
+        <!-- Arabic Text Card - fills space between step indicator and player -->
+        <div id="arabic-card" class="flex-1 flex flex-col bg-white rounded-2xl shadow-lg shadow-[#005086]/10 border border-[var(--color-border)]/50 overflow-hidden">
+          
+          <!-- Card Content Area -->
+          <div class="flex-1 flex flex-col relative">
+            
+            <!-- FRONT: Arabic Text -->
+            <div id="card-front" class="flex-1 flex flex-col">
+              <!-- Arabic Text -->
+              <div id="arabic-content" class="flex-1 flex items-center justify-center p-5">
+                <p class="arabic text-center text-[var(--color-text)] leading-[2.4]" id="arabic-text" dir="rtl" lang="ar" style="word-spacing: 0.35em; font-size: 2.1rem;">
+                  {verseWordByWord.map((wordData, i) => (
+                    <span 
+                      class="arabic-word cursor-pointer relative inline-block border-b-2 border-transparent hover:border-[#318fb5]/40" 
+                      data-word-index={i}
+                      data-albanian={wordData.albanian}
+                      data-arabic={wordData.arabic}
+                    >{wordData.arabic}</span>
+                  ))}
+                </p>
+              </div>
+              
+              <!-- Word-by-word hint -->
+              <div class="px-4 py-1.5 text-center">
+                <p class="text-xs text-[var(--color-text-secondary)]/70">Kliko një fjalë për përkthim</p>
+              </div>
+              
+              <!-- Transliteration / Translation toggle section -->
+              <div id="translit-section" class="px-4 py-2.5 border-t border-[var(--color-border)]/50 bg-[var(--color-background)]/50">
+                <div class="flex items-center gap-2">
+                  <p id="translit-text" class="flex-1 text-center text-sm text-[var(--color-text-secondary)] italic leading-relaxed">{verse.transliteration}</p>
+                  <button id="toggle-translit-btn" class="w-8 h-8 shrink-0 rounded-lg flex items-center justify-center text-[var(--color-primary)] hover:bg-[var(--color-primary)]/10 transition-colors" title="Shfaq përkthimin">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"></path></svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Hidden data for translation toggle -->
+            <div id="translation-data" class="hidden" data-transliteration={verse.transliteration} data-albanian={verse.albanian}></div>
+            
+            <!-- Hidden State for Recite Mode -->
+            <div id="hidden-content" class="hidden absolute inset-0 flex flex-col items-center justify-center p-6 text-center bg-white cursor-pointer">
+              <div class="w-20 h-20 rounded-xl bg-[var(--color-text)]/10 flex items-center justify-center mb-4">
+                <svg class="w-10 h-10 text-[var(--color-text)]/50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21"></path></svg>
+              </div>
+              <p class="text-[var(--color-text)] font-medium text-lg">Thuaje nga memoria!</p>
+            </div>
+            
+          </div>
+          
+          <!-- Tooltip container -->
+          <div id="word-tooltip" class="fixed z-50 px-2 py-1 bg-[#318fb5] text-white text-xs rounded-md opacity-0 pointer-events-none transition-opacity duration-150 max-w-[160px] text-center shadow-sm" style="transform: translateX(-50%);">
+            <span id="tooltip-text"></span>
+          </div>
+          
+        </div>
+        
+        <!-- Done Panel - nur Kompliment, keine Buttons (Buttons sind im Player) -->
+        <div id="panel-done" class="hidden flex-1 flex flex-col items-center justify-center text-center bg-[var(--color-surface)] rounded-2xl border border-[var(--color-border)]/50 shadow-lg shadow-[#005086]/10">
+          <div id="confetti-container" class="relative">
+            <div class="w-16 h-16 mx-auto rounded-xl bg-[var(--color-primary)] flex items-center justify-center animate-bounce-in">
+              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+            </div>
+          </div>
+          <div class="mt-4">
+            <h2 class="text-xl font-bold text-[var(--color-text)]">Masha'Allah!</h2>
+            <p class="text-sm text-[var(--color-text-secondary)] mt-1">E ke përfunduar Ditën {dayIndex}!</p>
+          </div>
+        </div>
+
+        <!-- Quiz Panel -->
+        <div id="quiz-panel" class="hidden mt-6 bg-[var(--color-surface)] rounded-3xl border border-[var(--color-border)] overflow-hidden">
+          <div class="p-5">
+            <div class="flex items-center justify-between mb-4">
+              <h3 class="text-base font-semibold text-[var(--color-text)]">Testi i memorizimit</h3>
+              <span class="text-xs text-[var(--color-text-secondary)]">Pyetja <span id="quiz-current">1</span>/3</span>
+            </div>
+            <p class="text-sm text-[var(--color-text-secondary)] mb-3">Plotëso fjalën që mungon:</p>
+            <div id="quiz-question" class="arabic text-xl text-center leading-[2] mb-4 p-4 bg-[var(--color-background)] rounded-2xl" dir="rtl" lang="ar"></div>
+            <div id="quiz-options" class="grid grid-cols-2 gap-2"></div>
+            <div id="quiz-feedback" class="hidden mt-3 p-2 rounded-xl text-center text-sm font-medium"></div>
+          </div>
+          <div class="px-5 py-3 border-t border-[var(--color-border)] bg-[var(--color-background)]/50 flex items-center justify-between">
+            <span class="text-sm text-[var(--color-text-secondary)]">Saktë: <span id="quiz-score" class="text-[var(--color-primary)] font-bold">0</span></span>
+            <button id="close-quiz-btn" class="text-sm text-[var(--color-text-secondary)] py-1 px-3 rounded-lg hover:bg-[var(--color-surface)]">Mbyll</button>
+          </div>
+        </div>
+
+      </div>
+    </main>
+
+    <!-- FIXED ACTION BAR - Above bottom nav (76px nav + 16px gap = 92px) -->
+    <div id="action-bar" class="fixed bottom-[80px] left-0 right-0 z-40 px-4">
+      
+      <!-- Glass card effect with consistent spacing (16px margin like step indicator) -->
+      <div class="bg-white/95 backdrop-blur-xl rounded-2xl shadow-lg shadow-[#005086]/15 border border-[var(--color-border)]/50 overflow-hidden">
+        
+        <!-- Audio Progress Bar -->
+        <div class="h-1 bg-[var(--color-border)]/50">
+          <div id="audio-progress" class="h-full bg-gradient-to-r from-[#005086] to-[#318fb5] transition-all duration-100" style="width:0%"></div>
+        </div>
+        
+        <div class="max-w-lg mx-auto px-4 py-3">
+        
+        <!-- LISTEN MODE (Step 1) -->
+        <div id="mode-listen" class="action-mode">
+          <div class="flex items-center gap-4 h-14">
+            <!-- Speed Control -->
+            <button id="speed-btn" class="w-11 h-11 shrink-0 rounded-xl bg-[var(--color-background)] border border-[var(--color-border)] flex items-center justify-center text-sm font-medium text-[var(--color-text)]">
+              <span id="speed-label">1x</span>
+            </button>
+            
+            <!-- Progress & Info -->
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center justify-between mb-1.5">
+                <span class="text-sm font-medium text-[var(--color-text)]">Dëgjo 10 herë</span>
+                <span id="listen-count" class="text-sm font-bold text-[var(--color-step-listen)]">0/10</span>
+              </div>
+              <div class="h-2 bg-[var(--color-border)] rounded-full overflow-hidden">
+                <div id="listen-bar" class="h-full bg-[var(--color-step-listen)] rounded-full transition-all duration-300" style="width:0%"></div>
+              </div>
+            </div>
+            
+            <!-- Big Play Button -->
+            <button id="play-btn" class="w-14 h-14 shrink-0 rounded-xl bg-[var(--color-step-listen)] hover:opacity-90 flex items-center justify-center text-white active:scale-95 transition-all">
+              <svg id="play-icon" class="w-6 h-6 ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+              <svg id="pause-icon" class="w-6 h-6 hidden" fill="currentColor" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+            </button>
+          </div>
+        </div>
+        
+        <!-- READ MODE (Step 2) -->
+        <div id="mode-read" class="action-mode hidden">
+          <div class="flex items-center gap-4 h-14">
+            <!-- Book Icon - indicates reading mode -->
+            <div class="w-11 h-11 shrink-0 rounded-xl bg-[var(--color-step-read)]/10 flex items-center justify-center text-[var(--color-step-read)]">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+            </div>
+            
+            <!-- Progress & Info -->
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center justify-between mb-1.5">
+                <span class="text-sm font-medium text-[var(--color-text)]">Lexo 10 herë</span>
+                <span id="read-count" class="text-sm font-bold text-[var(--color-step-read)]">0/10</span>
+              </div>
+              <div class="h-2 bg-[var(--color-border)] rounded-full overflow-hidden">
+                <div id="read-bar" class="h-full bg-[var(--color-step-read)] rounded-full transition-all duration-300" style="width:0%"></div>
+              </div>
+            </div>
+            
+            <!-- Check Button - "I have read it" -->
+            <button id="read-tap-btn" class="w-14 h-14 shrink-0 rounded-xl bg-[var(--color-step-read)] hover:opacity-90 flex items-center justify-center text-white active:scale-95 transition-all">
+              <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg>
+            </button>
+          </div>
+        </div>
+        
+        <!-- RECITE MODE (Step 3) -->
+        <div id="mode-recite" class="action-mode hidden">
+          <div class="flex items-center gap-4 h-14">
+            <!-- Microphone Icon - indicates recite mode -->
+            <div class="w-11 h-11 shrink-0 rounded-xl bg-[var(--color-step-recite)]/10 flex items-center justify-center text-[var(--color-step-recite)]">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"/></svg>
+            </div>
+            
+            <!-- Progress & Info -->
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center justify-between mb-1.5">
+                <span class="text-sm font-medium text-[var(--color-text)]">Recito 10 herë</span>
+                <span id="recite-count" class="text-sm font-bold text-[var(--color-step-recite)]">0/10</span>
+              </div>
+              <div class="h-2 bg-[var(--color-border)] rounded-full overflow-hidden">
+                <div id="recite-bar" class="h-full bg-[var(--color-step-recite)] rounded-full transition-all duration-300" style="width:0%"></div>
+              </div>
+            </div>
+            
+            <!-- Check Button - "I have recited it" -->
+            <button id="recite-tap-btn" class="w-14 h-14 shrink-0 rounded-xl bg-[var(--color-step-recite)] hover:opacity-90 flex items-center justify-center text-white active:scale-95 transition-all">
+              <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg>
+            </button>
+          </div>
+        </div>
+        
+        <!-- DONE MODE -->
+        <div id="mode-done" class="action-mode hidden">
+          <div class="flex items-center justify-center gap-4">
+            {prevDay && (
+              <a href={`/app/day/${prevDay}`} class="btn btn-secondary py-3 px-6">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                Dita {prevDay}
+              </a>
+            )}
+            {nextDay && (
+              <a href={`/app/day/${nextDay}`} class="btn btn-primary py-3 px-6">
+                Dita {nextDay}
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+              </a>
+            )}
+          </div>
+        </div>
+        
+      </div>
+      </div>
+    </div>
+
+    <!-- BottomNav - "none" because day pages are not in main nav -->
+    <BottomNav active="none" />
+  </div>
+</Layout>
+
+<style>
+  /* Step Indicator Styles - All steps always visible and clickable */
+  .step-indicator {
+    transition: transform 0.2s ease;
+  }
+  
+  /* Active step gets a subtle ring indicator */
+  .step-indicator.active .step-circle {
+    box-shadow: 0 0 0 3px white, 0 0 0 5px var(--color-primary);
+  }
+  
+  .step-indicator.active .text-xs:first-of-type {
+    font-weight: 600;
+    color: var(--color-primary);
+  }
+  
+  /* Completed steps show checkmark */
+  .step-indicator.completed .step-number {
+    display: none;
+  }
+  
+  .step-indicator.completed .step-check {
+    display: block;
+  }
+  
+  .step-connector.active {
+    background-color: var(--color-step-listen);
+  }
+
+  /* Bounce animation for success */
+  @keyframes bounce-in {
+    0% { transform: scale(0); opacity: 0; }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); opacity: 1; }
+  }
+  .animate-bounce-in { animation: bounce-in 0.5s ease-out; }
+
+  /* Confetti */
+  @keyframes confetti-fall {
+    0% { transform: translateY(-20px) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(100px) rotate(720deg); opacity: 0; }
+  }
+  .confetti-piece {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-radius: 2px;
+    animation: confetti-fall 1.5s ease-out forwards;
+  }
+
+  /* Count bump animation */
+  @keyframes count-bump {
+    0% { transform: scale(1); }
+    40% { transform: scale(1.4); }
+    100% { transform: scale(1); }
+  }
+  .count-bump { animation: count-bump 0.25s ease-out; }
+
+  /* Action modes smooth transition */
+  .action-mode {
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+  
+  .action-mode.hidden {
+    display: none;
+  }
+
+  /* Inline translation transition */
+  #translation-content {
+    animation: slideDown 0.2s ease-out;
+  }
+  
+  @keyframes slideDown {
+    from { opacity: 0; transform: translateY(-8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Card Flip Animation */
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+  
+  .transform-style-3d {
+    transform-style: preserve-3d;
+  }
+  
+  .backface-hidden {
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+  
+  .rotate-y-180 {
+    transform: rotateY(180deg);
+  }
+  
+  #flip-card.flipped {
+    transform: rotateY(180deg);
+  }
+
+  /* Peek animation for recite mode */
+  #arabic-content.peeking {
+    opacity: 0.3;
+  }
+  
+  #hidden-content.peeking {
+    display: none !important;
+  }
+
+  /* Word tooltip animation */
+  #word-tooltip.visible {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  
+  /* Subtle underline on active word */
+  .arabic-word.active {
+    border-bottom-color: rgba(49, 143, 181, 0.5);
+  }
+</style>
+
+<script define:vars={{ dayIndex }}>
+  window.__dayIndex = dayIndex;
+</script>
+
+<script>
+  // Transliteration ↔ Translation toggle (inline in the same spot)
+  const translitText = document.getElementById('translit-text');
+  const toggleTranslitBtn = document.getElementById('toggle-translit-btn');
+  const translationData = document.getElementById('translation-data');
+  let showingTranslationInline = false;
+  
+  const originalTranslit = translationData?.dataset.transliteration || '';
+  const translationText = translationData?.dataset.albanian || '';
+  
+  toggleTranslitBtn?.addEventListener('click', () => {
+    showingTranslationInline = !showingTranslationInline;
+    
+    if (translitText) {
+      if (showingTranslationInline) {
+        translitText.textContent = translationText;
+        translitText.classList.remove('italic');
+        translitText.classList.add('text-[var(--color-text)]');
+      } else {
+        translitText.textContent = originalTranslit;
+        translitText.classList.add('italic');
+        translitText.classList.remove('text-[var(--color-text)]');
+      }
+    }
+  });
+</script>
+
+<script>
+  // Word-by-Word Tooltip functionality
+  const tooltip = document.getElementById('word-tooltip');
+  const tooltipText = document.getElementById('tooltip-text');
+  const arabicWordsElements = document.querySelectorAll('.arabic-word[data-albanian]');
+  let activeWord: Element | null = null;
+  let tooltipTimeout: ReturnType<typeof setTimeout> | null = null;
+
+  function showTooltip(word: Element) {
+    if (!tooltip || !tooltipText) return;
+    
+    const albanian = word.getAttribute('data-albanian');
+    if (!albanian) return;
+    
+    // Clear any pending hide
+    if (tooltipTimeout) {
+      clearTimeout(tooltipTimeout);
+      tooltipTimeout = null;
+    }
+    
+    // Remove active from previous
+    if (activeWord) activeWord.classList.remove('active');
+    activeWord = word;
+    word.classList.add('active');
+    
+    // Set tooltip text
+    tooltipText.textContent = albanian;
+    
+    // Position tooltip above the word
+    const rect = word.getBoundingClientRect();
+    
+    // Calculate position
+    let left = rect.left + rect.width / 2;
+    let top = rect.top - 6;
+    
+    // Ensure tooltip stays within viewport
+    const minLeft = 60;
+    const maxLeft = window.innerWidth - 60;
+    left = Math.max(minLeft, Math.min(maxLeft, left));
+    
+    tooltip.style.left = `${left}px`;
+    tooltip.style.top = `${top}px`;
+    tooltip.style.transform = 'translateX(-50%) translateY(-100%)';
+    
+    // Show tooltip
+    tooltip.classList.add('visible');
+  }
+
+  function hideTooltip() {
+    tooltipTimeout = setTimeout(() => {
+      if (tooltip) tooltip.classList.remove('visible');
+      if (activeWord) {
+        activeWord.classList.remove('active');
+        activeWord = null;
+      }
+    }, 100);
+  }
+
+  // Add event listeners
+  arabicWordsElements.forEach(word => {
+    // Touch/click for mobile
+    word.addEventListener('click', (e) => {
+      e.stopPropagation();
+      showTooltip(word);
+    });
+    
+    // Hover for desktop
+    word.addEventListener('mouseenter', () => showTooltip(word));
+    word.addEventListener('mouseleave', hideTooltip);
+  });
+
+  // Hide tooltip when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!tooltip?.contains(e.target as Node) && !(e.target as Element)?.classList.contains('arabic-word')) {
+      if (tooltip) tooltip.classList.remove('visible');
+      if (activeWord) {
+        activeWord.classList.remove('active');
+        activeWord = null;
+      }
+    }
+  });
+
+</script>
+
+<script>
+  import { getDayProgress, incrementStep, initializeState, REQUIRED_COUNT } from '../../../lib/challenge';
+  import { getSession, trackGuestDay } from '../../../lib/supabase';
+
+  const dayIndex = (window as any).__dayIndex;
+  let progress = getDayProgress(dayIndex); // Initial sync load
+  let audioPlaying = false;
+  let isInitialized = false;
+
+  // Auth check + initialize state from cloud
+  (async () => {
+    try {
+      const { session } = await getSession();
+      const isGuestMode = localStorage.getItem('mulk30_guest_mode') === 'true';
+      
+      if (!session && !isGuestMode) {
+        window.location.href = '/';
+        return;
+      }
+      
+      // If logged in, merge cloud state with local
+      if (session) {
+        await initializeState();
+        // Reload progress after cloud sync
+        progress = getDayProgress(dayIndex);
+        // Re-determine step and update UI
+        currentStep = determineCurrentStep();
+        switchMode(currentStep);
+        console.log('[Day] Reloaded progress after cloud sync:', progress);
+      }
+      
+      // Track guest day view
+      if (isGuestMode) {
+        trackGuestDay(dayIndex);
+      }
+      
+      isInitialized = true;
+    } catch (e) {
+      console.error('[Day] Init error:', e);
+      isInitialized = true;
+    }
+  })();
+  let audioElement: HTMLAudioElement | null = null;
+  let currentStep: 'listen' | 'read' | 'recite' | 'done' = 'listen';
+  let currentSpeed = 1;
+  const speeds = [0.75, 1, 1.25, 1.5, 2];
+  let speedIndex = 1;
+  let isPeeking = false;
+  let readAudioPlaying = false;
+  let reciteAudioPlaying = false;
+  let isProcessingEnded = false; // Guard against double-firing of ended event
+  let lastEndedTime = 0; // Debounce: track last ended event timestamp
+  let audioEndedListenerAttached = false; // Ensure listener is only attached once
+
+  // Determine initial step based on progress
+  function determineCurrentStep(): 'listen' | 'read' | 'recite' | 'done' {
+    if (progress.listenCount < REQUIRED_COUNT) return 'listen';
+    if (progress.readCount < REQUIRED_COUNT) return 'read';
+    if (progress.reciteCount < REQUIRED_COUNT) return 'recite';
+    return 'done';
+  }
+
+  // Update step progress UI
+  function updateStepIndicators() {
+    const listenStep = document.getElementById('step-listen')!;
+    const readStep = document.getElementById('step-read')!;
+    const reciteStep = document.getElementById('step-recite')!;
+    const connector1 = document.querySelectorAll('.step-connector')[0] as HTMLElement;
+    const connector2 = document.querySelectorAll('.step-connector')[1] as HTMLElement;
+    
+    // Reset all - no more opacity-40, all steps always visible
+    [listenStep, readStep, reciteStep].forEach(s => {
+      s.classList.remove('active', 'completed');
+    });
+    connector1.classList.remove('active');
+    connector2.classList.remove('active');
+    
+    // Mark completed steps
+    if (progress.listenCount >= REQUIRED_COUNT) {
+      listenStep.classList.add('completed');
+      connector1.classList.add('active');
+    }
+    if (progress.readCount >= REQUIRED_COUNT) {
+      readStep.classList.add('completed');
+      connector2.classList.add('active');
+    }
+    if (progress.reciteCount >= REQUIRED_COUNT) {
+      reciteStep.classList.add('completed');
+    }
+    
+    // Mark active (current) step
+    if (currentStep === 'listen') listenStep.classList.add('active');
+    else if (currentStep === 'read') readStep.classList.add('active');
+    else if (currentStep === 'recite') reciteStep.classList.add('active');
+    
+    // Update progress text
+    document.getElementById('listen-progress')!.textContent = `${Math.min(progress.listenCount, REQUIRED_COUNT)}/${REQUIRED_COUNT}`;
+    document.getElementById('read-progress')!.textContent = `${Math.min(progress.readCount, REQUIRED_COUNT)}/${REQUIRED_COUNT}`;
+    document.getElementById('recite-progress')!.textContent = `${Math.min(progress.reciteCount, REQUIRED_COUNT)}/${REQUIRED_COUNT}`;
+  }
+
+  // Switch action mode based on current step
+  function switchMode(step: 'listen' | 'read' | 'recite' | 'done') {
+    currentStep = step;
+    
+    // Hide all modes
+    document.querySelectorAll('.action-mode').forEach(m => m.classList.add('hidden'));
+    
+    // Show current mode
+    document.getElementById(`mode-${step}`)?.classList.remove('hidden');
+    
+    // Update Arabic card visibility for recite mode
+    const arabicContent = document.getElementById('arabic-content')!;
+    const hiddenContent = document.getElementById('hidden-content')!;
+    const translitSection = document.getElementById('translit-section')!;
+    
+    if (step === 'recite' && !isPeeking) {
+      arabicContent.classList.add('hidden');
+      hiddenContent.classList.remove('hidden');
+      translitSection.classList.add('hidden');
+    } else {
+      arabicContent.classList.remove('hidden');
+      hiddenContent.classList.add('hidden');
+      translitSection.classList.remove('hidden');
+    }
+    
+    // Show done panel if all done
+    if (step === 'done') {
+      const panel = document.getElementById('panel-done')!;
+      const card = document.getElementById('arabic-card')!;
+      if (panel.classList.contains('hidden')) {
+        card.classList.add('hidden');
+        panel.classList.remove('hidden');
+        showConfetti();
+      }
+    }
+    
+    updateStepIndicators();
+    updateProgressBars();
+  }
+
+  // Update progress bars
+  function updateProgressBars() {
+    const listenPercent = Math.min((progress.listenCount / REQUIRED_COUNT) * 100, 100);
+    const readPercent = Math.min((progress.readCount / REQUIRED_COUNT) * 100, 100);
+    const recitePercent = Math.min((progress.reciteCount / REQUIRED_COUNT) * 100, 100);
+    
+    document.getElementById('listen-bar')!.style.width = `${listenPercent}%`;
+    document.getElementById('read-bar')!.style.width = `${readPercent}%`;
+    document.getElementById('recite-bar')!.style.width = `${recitePercent}%`;
+    
+    document.getElementById('listen-count')!.textContent = `${Math.min(progress.listenCount, REQUIRED_COUNT)}/${REQUIRED_COUNT}`;
+    document.getElementById('read-count')!.textContent = `${Math.min(progress.readCount, REQUIRED_COUNT)}/${REQUIRED_COUNT}`;
+    document.getElementById('recite-count')!.textContent = `${Math.min(progress.reciteCount, REQUIRED_COUNT)}/${REQUIRED_COUNT}`;
+  }
+
+  function bumpCount(el: HTMLElement | null) {
+    if (!el) return;
+    el.classList.remove('count-bump');
+    void el.offsetWidth;
+    el.classList.add('count-bump');
+  }
+
+  function showConfetti() {
+    const container = document.getElementById('confetti-container');
+    if (!container) return;
+    const colors = ['#10b981', '#8b5cf6', '#3b82f6', '#f59e0b', '#ef4444', '#ec4899'];
+    for (let i = 0; i < 30; i++) {
+      const piece = document.createElement('div');
+      piece.className = 'confetti-piece';
+      piece.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+      piece.style.left = `${Math.random() * 100}%`;
+      piece.style.top = '0';
+      piece.style.animationDelay = `${Math.random() * 0.5}s`;
+      container.appendChild(piece);
+      setTimeout(() => piece.remove(), 2500);
+    }
+  }
+
+  // Word-by-word highlight for audio (using precise timestamps)
+  const arabicWords = document.querySelectorAll('.arabic-word');
+  const wordCount = arabicWords.length;
+  let wordTimestamps: {word: string, start: number, end: number}[] = [];
+  let timestampsReady = false;
+  
+  fetch('/timestamps.json')
+    .then(r => r.json())
+    .then(data => { 
+      wordTimestamps = data[String(dayIndex)] || [];
+      timestampsReady = wordTimestamps.length > 0;
+      console.log(`[Day ${dayIndex}] Loaded ${wordTimestamps.length} timestamps for ${wordCount} words`);
+    })
+    .catch((e) => {
+      console.error('Failed to load timestamps:', e);
+    });
+  
+  // Word highlighting removed - not needed
+  function updateHighlight(_currentTime: number, _duration: number) {
+    // Disabled
+  }
+  
+  function clearHighlights() {
+    // Disabled
+  }
+
+  // Audio controls - single instance, single listener
+  function initAudio() {
+    if (!audioElement) {
+      audioElement = new Audio(`/audio/ayah-${dayIndex}.mp3`);
+      audioElement.addEventListener('timeupdate', () => {
+        const bar = document.getElementById('audio-progress');
+        if (bar && audioElement && audioElement.duration) {
+          bar.style.width = `${(audioElement.currentTime / audioElement.duration) * 100}%`;
+          updateHighlight(audioElement.currentTime, audioElement.duration);
+        }
+      });
+      audioElement.addEventListener('error', (e) => {
+        console.error('Audio load failed:', e);
+        audioPlaying = false;
+        updatePlayPauseIcon();
+      });
+    }
+    // Register ended listener ONCE
+    if (!audioEndedListenerAttached) {
+      audioElement.addEventListener('ended', handleAudioEnded);
+      audioEndedListenerAttached = true;
+      console.log('[Audio] Ended listener attached');
+    }
+    return audioElement;
+  }
+  
+  function handleAudioEnded() {
+    // Guard against double-firing of ended event
+    if (isProcessingEnded) {
+      console.log('[Audio] BLOCKED - Already processing ended event');
+      return;
+    }
+    
+    // Debounce: ignore ended events within 1500ms of each other (longer than audio restart delay)
+    const now = Date.now();
+    if (now - lastEndedTime < 1500) {
+      console.log(`[Audio] BLOCKED - Debounce (${now - lastEndedTime}ms since last)`);
+      return;
+    }
+    
+    // Set guards BEFORE doing anything
+    isProcessingEnded = true;
+    lastEndedTime = now;
+    
+    console.log(`[Audio] Processing ended - step: ${currentStep}, audioPlaying: ${audioPlaying}, listenCount: ${progress.listenCount}`);
+    
+    if (currentStep === 'listen' && audioPlaying) {
+      progress = incrementStep(dayIndex, 'listen');
+      console.log(`[Audio] Incremented listen count to: ${progress.listenCount}`);
+      bumpCount(document.getElementById('listen-count'));
+      updateProgressBars();
+      updateStepIndicators();
+      
+      if (progress.listenCount >= REQUIRED_COUNT) {
+        // Done with listen step - stop and move to read
+        console.log('[Audio] Listen step complete, moving to read');
+        stopAudio();
+        switchMode('read');
+        isProcessingEnded = false;
+      } else {
+        // Auto-continue: restart audio after delay
+        clearHighlights();
+        // Use 2000ms delay to ensure it's after the 1500ms debounce window
+        setTimeout(() => {
+          isProcessingEnded = false; // Reset guard before next play
+          if (audioPlaying && audioElement) {
+            console.log(`[Audio] Auto-restarting for next listen at ${currentSpeed}x (count: ${progress.listenCount})`);
+            audioElement.currentTime = 0;
+            audioElement.playbackRate = currentSpeed;
+            audioElement.play().catch(() => stopAudio());
+          }
+        }, 2000);
+      }
+    } else if (currentStep === 'read' && readAudioPlaying) {
+      isProcessingEnded = false;
+      // Read mode audio ended
+      readAudioPlaying = false;
+      document.getElementById('read-play-icon')?.classList.remove('hidden');
+      document.getElementById('read-pause-icon')?.classList.add('hidden');
+      clearHighlights();
+      resetAudioProgressBar();
+    } else if (currentStep === 'recite' && reciteAudioPlaying) {
+      isProcessingEnded = false;
+      // Recite mode audio ended
+      reciteAudioPlaying = false;
+      document.getElementById('recite-play-icon')?.classList.remove('hidden');
+      document.getElementById('recite-pause-icon')?.classList.add('hidden');
+      clearHighlights();
+      resetAudioProgressBar();
+    } else {
+      isProcessingEnded = false;
+      stopAudio();
+    }
+  }
+  
+  function resetAudioProgressBar() {
+    const bar = document.getElementById('audio-progress');
+    if (bar) bar.style.width = '0%';
+  }
+
+  function startAudio() {
+    if (audioPlaying) return stopAudio();
+    
+    const audio = initAudio();
+    audio.playbackRate = currentSpeed;
+    audioPlaying = true;
+    clearHighlights();
+    
+    document.getElementById('play-icon')!.classList.add('hidden');
+    document.getElementById('pause-icon')!.classList.remove('hidden');
+
+    audio.play().catch(() => stopAudio());
+  }
+
+  function stopAudio() {
+    audioPlaying = false;
+    if (audioElement) {
+      audioElement.pause();
+      audioElement.currentTime = 0;
+    }
+    clearHighlights();
+    document.getElementById('play-icon')?.classList.remove('hidden');
+    document.getElementById('pause-icon')?.classList.add('hidden');
+    const bar = document.getElementById('audio-progress');
+    if (bar) bar.style.width = '0%';
+  }
+
+  function playAudioOnce() {
+    const audio = initAudio();
+    audio.playbackRate = currentSpeed;
+    audio.currentTime = 0;
+    audio.play().catch(() => {});
+  }
+
+  // Event Listeners
+  
+  // Play button (Listen mode)
+  document.getElementById('play-btn')?.addEventListener('click', startAudio);
+  
+  // Speed button - applies IMMEDIATELY while playing
+  document.getElementById('speed-btn')?.addEventListener('click', () => {
+    speedIndex = (speedIndex + 1) % speeds.length;
+    currentSpeed = speeds[speedIndex];
+    document.getElementById('speed-label')!.textContent = `${currentSpeed}x`;
+    
+    // Apply speed immediately to audio element (even while playing)
+    if (audioElement) {
+      const wasPlaying = !audioElement.paused;
+      audioElement.playbackRate = currentSpeed;
+      // Force apply by briefly pausing and resuming if needed
+      if (wasPlaying && audioElement.playbackRate !== currentSpeed) {
+        const currentTime = audioElement.currentTime;
+        audioElement.pause();
+        audioElement.playbackRate = currentSpeed;
+        audioElement.currentTime = currentTime;
+        audioElement.play();
+      }
+      console.log(`[Audio] Speed changed to ${currentSpeed}x (playing: ${wasPlaying})`);
+    }
+  });
+  
+  // Read tap button
+  document.getElementById('read-tap-btn')?.addEventListener('click', () => {
+    progress = incrementStep(dayIndex, 'read');
+    bumpCount(document.getElementById('read-count'));
+    updateProgressBars();
+    updateStepIndicators();
+    
+    if (progress.readCount >= REQUIRED_COUNT) {
+      switchMode('recite');
+    }
+  });
+  
+  // Recite tap button
+  document.getElementById('recite-tap-btn')?.addEventListener('click', () => {
+    progress = incrementStep(dayIndex, 'recite');
+    bumpCount(document.getElementById('recite-count'));
+    updateProgressBars();
+    updateStepIndicators();
+    
+    if (progress.reciteCount >= REQUIRED_COUNT) {
+      switchMode('done');
+    }
+  });
+  
+  // Peek toggle function - reveal Arabic text + translation temporarily in recite mode
+  function togglePeek() {
+    isPeeking = !isPeeking;
+    const arabicContent = document.getElementById('arabic-content')!;
+    const hiddenContent = document.getElementById('hidden-content')!;
+    const translitSection = document.getElementById('translit-section')!;
+    const cardFront = document.getElementById('card-front')!;
+    const translitTextEl = document.getElementById('translit-text');
+    const translationDataEl = document.getElementById('translation-data');
+    
+    if (isPeeking) {
+      // Show Arabic text + switch to translation
+      hiddenContent.classList.add('hidden');
+      cardFront.classList.remove('hidden');
+      arabicContent.classList.remove('hidden');
+      translitSection.classList.remove('hidden');
+      // Show translation instead of transliteration when peeking
+      if (translitTextEl && translationDataEl) {
+        translitTextEl.textContent = translationDataEl.dataset.albanian || '';
+        translitTextEl.classList.remove('italic');
+        translitTextEl.classList.add('text-[var(--color-text)]');
+      }
+    } else {
+      // Hide everything - back to memory mode
+      cardFront.classList.add('hidden');
+      hiddenContent.classList.remove('hidden');
+      // Reset to transliteration
+      if (translitTextEl && translationDataEl) {
+        translitTextEl.textContent = translationDataEl.dataset.transliteration || '';
+        translitTextEl.classList.add('italic');
+        translitTextEl.classList.remove('text-[var(--color-text)]');
+      }
+    }
+  }
+  
+  // Hidden content tap to toggle peek
+  document.getElementById('hidden-content')?.addEventListener('click', togglePeek);
+  
+  // Also tap on card-front to hide again (toggle back)
+  document.getElementById('card-front')?.addEventListener('click', (e) => {
+    // Only toggle if we're in recite mode and clicking on the card (not on buttons)
+    if (currentStep === 'recite' && !(e.target as Element).closest('button')) {
+      togglePeek();
+    }
+  });
+  
+  // Quiz functionality
+  const verseArabic = document.getElementById('arabic-text')?.textContent?.trim() || '';
+  const verseWords = verseArabic.split(/\s+/).filter(w => w.length > 0);
+  let quizQuestions: {hiddenIndex: number, options: string[]}[] = [];
+  let currentQuestion = 0;
+  let quizScore = 0;
+  
+  function generateQuiz() {
+    quizQuestions = [];
+    quizScore = 0;
+    currentQuestion = 0;
+    const usedIndices = new Set<number>();
+    for (let i = 0; i < 3 && i < verseWords.length; i++) {
+      let idx: number;
+      do { idx = Math.floor(Math.random() * verseWords.length); } while (usedIndices.has(idx) && usedIndices.size < verseWords.length);
+      usedIndices.add(idx);
+      const correct = verseWords[idx];
+      const options = [correct];
+      let attempts = 0;
+      while (options.length < 4 && options.length < verseWords.length && attempts < 50) {
+        const w = verseWords[Math.floor(Math.random() * verseWords.length)];
+        if (!options.includes(w)) options.push(w);
+        attempts++;
+      }
+      options.sort(() => Math.random() - 0.5);
+      quizQuestions.push({ hiddenIndex: idx, options });
+    }
+  }
+  
+  function showQuestion() {
+    const q = quizQuestions[currentQuestion];
+    if (!q) return;
+    document.getElementById('quiz-question')!.innerHTML = verseWords.map((w, i) => i === q.hiddenIndex ? '<span class="text-[var(--color-accent)] font-bold">______</span>' : w).join(' ');
+    const optionsEl = document.getElementById('quiz-options')!;
+    optionsEl.innerHTML = q.options.map((opt, i) => `<button class="quiz-option arabic text-base p-3 rounded-xl border border-[var(--color-border)] bg-[var(--color-background)] active:scale-95 transition-transform" data-option="${i}">${opt}</button>`).join('');
+    optionsEl.querySelectorAll('.quiz-option').forEach(btn => {
+      btn.addEventListener('click', (e) => checkAnswer(q.options[parseInt((e.currentTarget as HTMLElement).dataset.option || '0')], verseWords[q.hiddenIndex]));
+    });
+    document.getElementById('quiz-current')!.textContent = String(currentQuestion + 1);
+    document.getElementById('quiz-score')!.textContent = String(quizScore);
+    document.getElementById('quiz-feedback')!.classList.add('hidden');
+  }
+  
+  function checkAnswer(selected: string, correct: string) {
+    const feedbackEl = document.getElementById('quiz-feedback')!;
+    document.querySelectorAll('.quiz-option').forEach(btn => {
+      (btn as HTMLButtonElement).disabled = true;
+      const t = btn.textContent?.trim();
+      if (t === correct) btn.classList.add('!bg-[var(--color-accent)]/20', '!border-[var(--color-accent)]');
+      else if (t === selected && selected !== correct) btn.classList.add('!bg-[var(--color-primary)]/10', '!border-[var(--color-primary)]');
+    });
+    if (selected === correct) {
+      quizScore++;
+      feedbackEl.textContent = 'Saktë!';
+      feedbackEl.className = 'mt-3 p-2 rounded-xl text-center text-sm font-medium bg-[var(--color-accent)]/20 text-[var(--color-text)]';
+    } else {
+      feedbackEl.textContent = `Gabim. Përgjigja: ${correct}`;
+      feedbackEl.className = 'mt-3 p-2 rounded-xl text-center text-sm font-medium bg-[var(--color-primary)]/10 text-[var(--color-primary-dark)]';
+    }
+    feedbackEl.classList.remove('hidden');
+    document.getElementById('quiz-score')!.textContent = String(quizScore);
+    setTimeout(() => {
+      currentQuestion++;
+      if (currentQuestion < quizQuestions.length) showQuestion();
+      else {
+        feedbackEl.textContent = `Rezultati: ${quizScore}/${quizQuestions.length}`;
+        feedbackEl.className = 'mt-3 p-2 rounded-xl text-center text-sm font-medium bg-[var(--color-primary)]/10 text-[var(--color-primary-dark)]';
+        document.getElementById('quiz-options')!.innerHTML = `<button id="retry-quiz" class="col-span-2 btn btn-primary py-2 text-sm">Provo përsëri</button>`;
+        document.getElementById('retry-quiz')?.addEventListener('click', () => { generateQuiz(); showQuestion(); });
+      }
+    }, 1500);
+  }
+  
+  document.getElementById('start-quiz-btn')?.addEventListener('click', () => {
+    document.getElementById('panel-done')!.classList.add('hidden');
+    document.getElementById('quiz-panel')!.classList.remove('hidden');
+    generateQuiz();
+    showQuestion();
+  });
+  
+  document.getElementById('close-quiz-btn')?.addEventListener('click', () => {
+    document.getElementById('quiz-panel')!.classList.add('hidden');
+    document.getElementById('panel-done')!.classList.remove('hidden');
+  });
+
+  // Step indicator click handlers - free navigation between steps
+  document.getElementById('step-listen')?.addEventListener('click', () => {
+    if (currentStep !== 'done') {
+      stopAudio();
+      switchMode('listen');
+    }
+  });
+  
+  document.getElementById('step-read')?.addEventListener('click', () => {
+    if (currentStep !== 'done') {
+      stopAudio();
+      switchMode('read');
+    }
+  });
+  
+  document.getElementById('step-recite')?.addEventListener('click', () => {
+    if (currentStep !== 'done') {
+      stopAudio();
+      switchMode('recite');
+    }
+  });
+
+  // Initialize
+  currentStep = determineCurrentStep();
+  switchMode(currentStep);
+</script>

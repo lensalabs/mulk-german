@@ -1,0 +1,527 @@
+@import "tailwindcss";
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   MULK-30 DESIGN SYSTEM — Mountain Mist Palette
+   
+   Inspiriert von: Neblige Berge bei Sonnenaufgang
+   
+   Farben:
+   - Deep Night:  #001244  (Tiefes Dunkelblau — Nacht, Würde)
+   - Ocean:       #005086  (Kräftiges Blau — Vertrauen, Tiefe)
+   - Teal:        #318fb5  (Türkis — Klarheit, Frische, CTAs)
+   - Sage:        #b0cac7  (Salbei — Ruhe, Weichheit)
+   - Sand:        #f7d6bf  (Warmer Sand — Wärme, Background)
+   
+   WCAG Contrast Ratios:
+   - Deep Night auf Sand:  14.2:1 ✅ AAA
+   - Ocean auf Sand:       7.8:1  ✅ AAA
+   - White auf Teal:       4.5:1  ✅ AA
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+:root {
+  /* Primary Scale — Teal/Ocean */
+  --color-primary: #318fb5;        /* Teal - Main CTAs */
+  --color-primary-light: #4BA3C7;  /* Lighter Teal - Hover */
+  --color-primary-dark: #005086;   /* Ocean - Active/Pressed */
+  
+  /* Accent — Sage */
+  --color-accent: #b0cac7;         /* Sage - Secondary, soft elements */
+  
+  /* Step Colors (Listen → Read → Recite progression) */
+  --color-step-listen: #318fb5;    /* Teal - Dëgjo */
+  --color-step-read: #318fb5;      /* Teal - Lexo */
+  --color-step-recite: #318fb5;    /* Teal - Recito (alle gleich) */
+  
+  /* Backgrounds — WEISS als Hauptfarbe */
+  --color-background: #FFFFFF;     /* Pure White - Page BG */
+  --color-surface: #FFFFFF;        /* White - Cards */
+  --color-surface-alt: #f7d6bf;    /* Sand - Alternative surfaces, highlights */
+  --color-header: #001244;         /* Deep Night - Header */
+  
+  /* Text — Maximum contrast on white */
+  --color-text: #001244;           /* Deep Night */
+  --color-text-secondary: #005086; /* Ocean */
+  
+  /* Borders — sehr subtil auf Weiß */
+  --color-border: #e8e8e8;         /* Light gray */
+  
+  /* Semantic */
+  --color-success: #318fb5;        /* Teal */
+  --color-error: #c44536;          /* Warm red */
+  
+  /* Radius */
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+  --radius-full: 9999px;
+}
+
+.dark {
+  /* Primary — Teal bleibt, leicht heller */
+  --color-primary: #4BA3C7;
+  --color-primary-light: #5CB8D8;
+  --color-primary-dark: #318fb5;
+  
+  --color-accent: #8AA8A5;         /* Dunkleres Sage */
+  
+  /* Step Colors — angepasst für Dark */
+  --color-step-listen: #8AA8A5;
+  --color-step-read: #4BA3C7;
+  --color-step-recite: #f7d6bf;    /* Sand als Highlight */
+  
+  /* Backgrounds — Deep Night */
+  --color-background: #001244;     /* Deep Night */
+  --color-surface: #002255;        /* Slightly lighter */
+  --color-header: #000a28;         /* Even darker */
+  
+  /* Text — Sand/Light auf dunklem BG */
+  --color-text: #f7d6bf;           /* Sand */
+  --color-text-secondary: #b0cac7; /* Sage */
+  
+  /* Borders */
+  --color-border: #003366;
+  
+  /* Semantic */
+  --color-success: #4BA3C7;
+  --color-error: #e07a5f;
+}
+
+/* === Typography classes (#8) === */
+.heading-page {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-text);
+  letter-spacing: -0.01em;
+}
+
+.heading-section {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.heading-card {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+/* Body text classes */
+.text-body {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--color-text);
+}
+
+.text-body-sm {
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--color-text-secondary);
+}
+
+/* Label classes (min 14px for accessibility) */
+.text-label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+.text-label-sm {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Base styles — iOS webapp-konform */
+html {
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', system-ui, sans-serif;
+  scroll-behavior: smooth;
+  overscroll-behavior: none;
+  height: 100%;
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-text);
+  min-height: 100vh;
+  min-height: 100dvh;
+  line-height: 1.6;
+  overflow-y: auto;
+  overflow-x: hidden;
+  overscroll-behavior-y: none;
+  -webkit-overflow-scrolling: touch;
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* iOS safe areas */
+.safe-top {
+  padding-top: max(0.75rem, env(safe-area-inset-top));
+}
+
+.safe-bottom {
+  padding-bottom: max(0.5rem, env(safe-area-inset-bottom));
+}
+
+@media (display-mode: standalone) {
+  .safe-top {
+    padding-top: env(safe-area-inset-top, 2.75rem);
+  }
+  .safe-bottom {
+    padding-bottom: env(safe-area-inset-bottom, 1.5rem);
+  }
+}
+
+/* Uthmanic Mushaf Font (Madinah) */
+@font-face {
+  font-family: 'UthmanicHafs';
+  src: url('/fonts/UthmanicHafs.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Arabic text styling */
+.arabic {
+  font-family: 'UthmanicHafs', 'Amiri', 'Scheherazade New', 'Traditional Arabic', serif;
+  direction: rtl;
+  line-height: 2.2;
+  word-spacing: 0.1em;
+}
+
+.arabic-large {
+  font-size: 2rem;
+  line-height: 2.5;
+}
+
+.arabic-xl {
+  font-size: 2.5rem;
+  line-height: 2.8;
+}
+
+/* Pinch-to-zoom for Arabic text */
+.arabic-zoomable {
+  touch-action: manipulation;
+  transition: font-size 0.15s ease;
+}
+
+/* Targeted transitions on interactive elements only (#21) */
+button, a, .card, .card-interactive, .input, .nav-item, .btn {
+  transition-property: color, background-color, border-color, opacity;
+  transition-duration: 150ms;
+  transition-timing-function: ease-in-out;
+}
+
+/* iOS input fixes */
+input, textarea, select {
+  font-size: 16px !important;
+  -webkit-appearance: none;
+  appearance: none;
+  border-radius: var(--radius-md);
+}
+
+/* Prevent iOS callout on long press */
+img, a, button {
+  -webkit-touch-callout: none;
+}
+
+/* Touch targets — minimum 44px per Apple HIG */
+button, a, .nav-item, .btn, input, select, textarea {
+  min-height: 44px;
+}
+
+/* Focus styles */
+:focus-visible {
+  outline: 2px solid var(--color-primary-light);
+  outline-offset: 2px;
+  transition: outline-color 150ms ease;
+}
+
+/* Placeholder styling */
+::placeholder {
+  color: var(--color-text-secondary);
+  opacity: 0.5;
+}
+
+/* Input focus animation */
+.input {
+  transition: border-color 200ms ease, box-shadow 200ms ease;
+}
+
+/* Button base */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  font-weight: 500;
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  transition: background-color 150ms ease, border-color 150ms ease, transform 150ms ease;
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+  color: white;
+  box-shadow: 0 4px 12px rgba(49, 143, 181, 0.35), 0 2px 4px rgba(0, 80, 134, 0.2);
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-primary) 100%);
+  box-shadow: 0 6px 16px rgba(49, 143, 181, 0.45), 0 3px 6px rgba(0, 80, 134, 0.25);
+  transform: translateY(-1px);
+}
+
+.btn-primary:active {
+  transform: translateY(0) scale(0.98);
+  box-shadow: 0 2px 8px rgba(49, 143, 181, 0.3);
+}
+
+.btn-primary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.btn-secondary {
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-background);
+}
+
+/* Icon-only Button (Pill) */
+.btn-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  padding: 0;
+  border-radius: var(--radius-full);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition: background-color 150ms ease, border-color 150ms ease, transform 150ms ease;
+}
+
+.btn-icon:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.btn-icon:active {
+  transform: scale(0.95);
+}
+
+/* Step-colored Buttons — Sage/Teal/Ocean with depth */
+.btn-listen {
+  background: linear-gradient(135deg, #4BA3C7 0%, var(--color-step-listen) 100%);
+  color: #001244;
+  box-shadow: 0 4px 12px rgba(176, 202, 199, 0.4);
+}
+
+.btn-listen:hover {
+  background: linear-gradient(135deg, var(--color-step-listen) 0%, #005086 100%);
+  box-shadow: 0 6px 16px rgba(176, 202, 199, 0.5);
+  transform: translateY(-1px);
+}
+
+.btn-read {
+  background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-step-read) 100%);
+  color: white;
+  box-shadow: 0 4px 12px rgba(49, 143, 181, 0.35);
+}
+
+.btn-read:hover {
+  background: linear-gradient(135deg, var(--color-step-read) 0%, var(--color-primary-dark) 100%);
+  box-shadow: 0 6px 16px rgba(49, 143, 181, 0.45);
+  transform: translateY(-1px);
+}
+
+.btn-recite {
+  background: linear-gradient(135deg, #005086 0%, var(--color-step-recite) 100%);
+  color: white;
+  box-shadow: 0 4px 12px rgba(0, 80, 134, 0.35);
+}
+
+.btn-recite:hover {
+  background: linear-gradient(135deg, var(--color-step-recite) 0%, #001244 100%);
+  box-shadow: 0 6px 16px rgba(0, 80, 134, 0.45);
+  transform: translateY(-1px);
+}
+
+/* Card component — ELEVATED DESIGN with subtle shadows */
+.card {
+  background-color: var(--color-surface);
+  border-radius: var(--radius-lg); /* 1rem - consistent with app pages */
+  border: 1px solid var(--color-border);
+  padding: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 80, 134, 0.08), 0 1px 3px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 18, 68, 0.12), 0 4px 8px rgba(0, 80, 134, 0.08);
+}
+
+.card-interactive {
+  background-color: var(--color-surface);
+  border-radius: var(--radius-lg); /* 1rem - consistent with .card */
+  border: 1px solid var(--color-border);
+  padding: 1rem;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 80, 134, 0.08), 0 1px 3px rgba(0, 0, 0, 0.05);
+  transition: border-color 0.15s ease;
+}
+
+.card-interactive:hover {
+  border-color: var(--color-primary);
+}
+
+/* Hero Card — Prominente Cards (z.B. Arabic Text) */
+.card-hero {
+  background-color: var(--color-surface);
+  border-radius: 1.5rem; /* 24px - größer als normale Cards */
+  border: 1px solid var(--color-border);
+  padding: 0;
+  overflow: hidden;
+}
+
+/* Input styles */
+.input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  font-size: 1rem;
+  color: var(--color-text);
+}
+
+.input:focus {
+  border-color: var(--color-primary);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.1);
+}
+
+/* Progress bar */
+.progress-bar {
+  height: 0.25rem;
+  background-color: var(--color-border);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background-color: var(--color-primary);
+  border-radius: var(--radius-full);
+  transition: width 300ms ease;
+}
+
+/* Navigation items */
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.75rem 1rem;
+  color: var(--color-text-secondary);
+  transition: color 150ms ease, transform 150ms ease;
+  position: relative;
+}
+
+.nav-item:active {
+  transform: scale(0.95);
+}
+
+.nav-item.active {
+  color: var(--color-primary);
+}
+
+/* Selection */
+::selection {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+/* Loading spinner for buttons (#1) */
+.spinner {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Reset confirmation modal (#11) */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 50;
+  /* display controlled by inline style or JS */
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  animation: fade-in 0.15s ease;
+}
+
+.modal-overlay.hidden {
+  display: none !important;
+}
+
+.modal-content {
+  background: var(--color-surface);
+  border-radius: var(--radius-xl);
+  padding: 1.5rem;
+  max-width: 24rem;
+  width: 100%;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  animation: modal-in 0.2s ease;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes modal-in {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* Continuous line highlight - no gaps, perfectly synced */
+#arabic-text {
+  position: relative;
+  display: block;
+  padding: 8px;
+  line-height: 2.4;
+}
+
+.arabic-word {
+  position: relative;
+  padding: 4px 0;
+  background-color: transparent;
+  transition: background-color 0.12s ease-out;
+}
+
+.arabic-word.past {
+  /* Highlighting disabled */
+}

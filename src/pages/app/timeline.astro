@@ -1,0 +1,116 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import BottomNav from '../../components/BottomNav.astro';
+import { MULK_VERSES, SURAH_INFO } from '../../data/mulk-verses';
+---
+
+<Layout title="Kalendari">
+  <div class="min-h-screen flex flex-col bg-[var(--color-background)]">
+    
+    <!-- Header with gradient -->
+    <header class="bg-gradient-to-b from-[#005086] via-[#318fb5] to-[#b0cac7] text-white px-4 pt-3 pb-16 safe-top">
+      <div class="max-w-lg mx-auto flex items-center gap-3">
+        <a href="/app" class="w-11 h-11 rounded-xl bg-white/10 flex items-center justify-center active:scale-95 transition-transform" aria-label="Kthehu">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path></svg>
+        </a>
+        <div>
+          <h1 class="text-lg font-semibold">Kalendari</h1>
+          <p class="text-xs text-white/70">30 ditë • {SURAH_INFO.name}</p>
+        </div>
+      </div>
+    </header>
+
+    <main class="flex-1 px-4 pb-28 -mt-12">
+      <div class="max-w-lg mx-auto space-y-2" id="timeline-list">
+        {MULK_VERSES.map((verse) => (
+          <a href={`/app/day/${verse.dayIndex}`} class="timeline-item card flex items-center gap-4 py-3 px-4 active:scale-[0.98] transition-transform" data-day={verse.dayIndex}>
+            <div class="timeline-dot w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 border-2 border-[var(--color-border)] text-sm font-bold text-white/70">
+              {verse.dayIndex}
+            </div>
+            <div class="flex-1 min-w-0">
+              <p class="font-medium text-white text-sm">Dita {verse.dayIndex}</p>
+              <p class="text-xs text-white/70 truncate">Ajeti {verse.ayahNumber}</p>
+            </div>
+            <div class="timeline-status flex-shrink-0">
+              <svg class="w-5 h-5 text-white/70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+            </div>
+          </a>
+        ))}
+      </div>
+    </main>
+
+    <!-- Bottom Nav (shared component #6) - "none" because timeline is not in main nav -->
+    <BottomNav active="none" />
+  </div>
+</Layout>
+
+<style>
+  /* Timeline item states - prefer CSS classes over inline styles */
+  .timeline-item.completed {
+    border-left: 3px solid var(--color-primary);
+  }
+  
+  .timeline-dot.completed {
+    background-color: var(--color-primary);
+    color: white;
+    border-color: var(--color-primary);
+  }
+  
+  .timeline-dot.today {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+  }
+  
+  .timeline-dot.missed {
+    opacity: 0.5;
+  }
+  
+  .timeline-dot.future {
+    opacity: 0.4;
+  }
+</style>
+
+<script>
+  import { getState, getCurrentDay, getDayStatus } from '../../lib/challenge';
+  import { getSession } from '../../lib/supabase';
+
+  // Auth guard (#3)
+  (async () => {
+    try {
+      const { session } = await getSession();
+      if (!session) {
+        window.location.href = '/auth/login';
+        return;
+      }
+    } catch (e) {
+      // Allow offline usage
+    }
+  })();
+
+  const state = getState();
+  const currentDay = getCurrentDay(state);
+
+  document.querySelectorAll('.timeline-item').forEach((el) => {
+    const day = parseInt(el.getAttribute('data-day') || '0');
+    const status = getDayStatus(day, state);
+    const dot = el.querySelector('.timeline-dot') as HTMLElement;
+    const statusEl = el.querySelector('.timeline-status') as HTMLElement;
+
+    if (status === 'completed') {
+      el.classList.add('completed');
+      dot.classList.add('completed');
+      statusEl.innerHTML = '<svg class="w-5 h-5 text-[var(--color-primary)]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>';
+    } else if (status === 'today') {
+      dot.classList.add('today');
+      (el as HTMLElement).classList.add('ring-2', 'ring-[var(--color-primary)]/20');
+    } else if (status === 'missed') {
+      dot.classList.add('missed');
+    } else {
+      dot.classList.add('future');
+    }
+  });
+
+  // Scroll to today
+  const todayEl = document.querySelector(`[data-day="${currentDay}"]`);
+  todayEl?.scrollIntoView({ block: 'center', behavior: 'smooth' });
+</script>

@@ -1,0 +1,956 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import BottomNav from '../../components/BottomNav.astro';
+import { MULK_VERSES } from '../../data/mulk-verses';
+---
+
+<Layout title="Testi">
+  <div class="min-h-screen flex flex-col bg-[var(--color-background)]">
+    
+    <!-- Header with gradient + brain icon for quiz -->
+    <header class="bg-gradient-to-b from-[#005086] via-[#318fb5] to-[#b0cac7] text-white px-4 pt-3 pb-16 safe-top">
+      <div class="max-w-lg mx-auto">
+        <div class="text-center">
+          <div class="flex items-center justify-center gap-2">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg>
+            <h1 class="text-lg font-semibold tracking-tight">Testi</h1>
+          </div>
+          <p class="text-xs text-white/70">Kontrollo memorimin</p>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content - pulls up into header gradient (kein Player = Card füllt bis BottomNav) -->
+    <main class="flex-1 flex flex-col px-4 pb-20 -mt-12 overflow-hidden">
+      <div class="max-w-lg mx-auto w-full flex-1 flex flex-col space-y-4">
+        
+        <!-- ==================== SELECTION VIEW ==================== -->
+        <div id="view-select" class="space-y-4">
+          
+          <!-- Ayah Selection Card -->
+          <div class="card">
+            <p class="text-sm text-[var(--color-text-secondary)] mb-4">Zgjidh çfarë dëshiron të testosh</p>
+            
+            <div class="space-y-2">
+              <!-- Full Sureja -->
+              <button class="quiz-preset selected w-full py-3.5 px-4 bg-[var(--color-background)] border border-[var(--color-border)] rounded-xl flex items-center justify-between active:scale-[0.98] transition-all" data-start="1" data-end="30">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-xl bg-[var(--color-primary)]/10 flex items-center justify-center">
+                    <svg class="w-5 h-5 text-[var(--color-primary)]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+                  </div>
+                  <div class="text-left">
+                    <p class="font-semibold text-[var(--color-text)]">Të gjitha ajetet</p>
+                    <p class="text-xs text-[var(--color-text-secondary)]">Ajetet 1-30</p>
+                  </div>
+                </div>
+                <div class="radio-indicator w-5 h-5 rounded-full border-2 border-[var(--color-primary)] flex items-center justify-center">
+                  <div class="w-2.5 h-2.5 rounded-full bg-[var(--color-primary)]"></div>
+                </div>
+              </button>
+              
+              <!-- First Half -->
+              <button class="quiz-preset w-full py-3.5 px-4 bg-[var(--color-background)] border border-[var(--color-border)] rounded-xl flex items-center justify-between active:scale-[0.98] transition-all" data-start="1" data-end="15">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-xl bg-[#b0cac7]/20 flex items-center justify-center">
+                    <svg class="w-5 h-5 text-[#005086]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 19l-7-7 7-7m8 14l-7-7 7-7"/></svg>
+                  </div>
+                  <div class="text-left">
+                    <p class="font-semibold text-[var(--color-text)]">Gjysma e parë</p>
+                    <p class="text-xs text-[var(--color-text-secondary)]">Ajetet 1-15</p>
+                  </div>
+                </div>
+                <div class="radio-indicator w-5 h-5 rounded-full border-2 border-[var(--color-border)]"></div>
+              </button>
+              
+              <!-- Second Half -->
+              <button class="quiz-preset w-full py-3.5 px-4 bg-[var(--color-background)] border border-[var(--color-border)] rounded-xl flex items-center justify-between active:scale-[0.98] transition-all" data-start="16" data-end="30">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-xl bg-[#b0cac7]/20 flex items-center justify-center">
+                    <svg class="w-5 h-5 text-[#005086]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5l7 7-7 7M5 5l7 7-7 7"/></svg>
+                  </div>
+                  <div class="text-left">
+                    <p class="font-semibold text-[var(--color-text)]">Gjysma e dytë</p>
+                    <p class="text-xs text-[var(--color-text-secondary)]">Ajetet 16-30</p>
+                  </div>
+                </div>
+                <div class="radio-indicator w-5 h-5 rounded-full border-2 border-[var(--color-border)]"></div>
+              </button>
+              
+              <!-- First 10 -->
+              <button class="quiz-preset w-full py-3.5 px-4 bg-[var(--color-background)] border border-[var(--color-border)] rounded-xl flex items-center justify-between active:scale-[0.98] transition-all" data-start="1" data-end="10">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-xl bg-[#318fb5]/10 flex items-center justify-center">
+                    <svg class="w-5 h-5 text-[#318fb5]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>
+                  </div>
+                  <div class="text-left">
+                    <p class="font-semibold text-[var(--color-text)]">10 të parat</p>
+                    <p class="text-xs text-[var(--color-text-secondary)]">Ajetet 1-10</p>
+                  </div>
+                </div>
+                <div class="radio-indicator w-5 h-5 rounded-full border-2 border-[var(--color-border)]"></div>
+              </button>
+              
+              <!-- Last 10 -->
+              <button class="quiz-preset w-full py-3.5 px-4 bg-[var(--color-background)] border border-[var(--color-border)] rounded-xl flex items-center justify-between active:scale-[0.98] transition-all" data-start="21" data-end="30">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-xl bg-[#318fb5]/10 flex items-center justify-center">
+                    <svg class="w-5 h-5 text-[#318fb5]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
+                  </div>
+                  <div class="text-left">
+                    <p class="font-semibold text-[var(--color-text)]">10 të fundit</p>
+                    <p class="text-xs text-[var(--color-text-secondary)]">Ajetet 21-30</p>
+                  </div>
+                </div>
+                <div class="radio-indicator w-5 h-5 rounded-full border-2 border-[var(--color-border)]"></div>
+              </button>
+              
+              <!-- Weak Verses (only shows if there are weak verses) -->
+              <button id="weak-verses-btn" class="quiz-preset hidden w-full py-3.5 px-4 bg-orange-50 border border-orange-200 rounded-xl flex items-center justify-between active:scale-[0.98] transition-all" data-mode="weak">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-xl bg-orange-100 flex items-center justify-center">
+                    <svg class="w-5 h-5 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+                  </div>
+                  <div class="text-left">
+                    <p class="font-semibold text-orange-600">Ajete për përsëritje</p>
+                    <p id="weak-verses-count" class="text-xs text-orange-500">0 ajete me gabime</p>
+                  </div>
+                </div>
+                <div class="radio-indicator w-5 h-5 rounded-full border-2 border-orange-300"></div>
+              </button>
+            </div>
+          </div>
+          
+          <!-- Custom Range (Collapsible) -->
+          <div class="card">
+            <button id="custom-toggle" class="w-full flex items-center justify-between">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-[var(--color-border)]/50 flex items-center justify-center">
+                  <svg class="w-5 h-5 text-[var(--color-text-secondary)]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"/></svg>
+                </div>
+                <span class="text-sm font-medium text-[var(--color-text)]">Zgjedh vetë</span>
+              </div>
+              <svg id="custom-chevron" class="w-5 h-5 text-[var(--color-text-secondary)] transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+              </svg>
+            </button>
+            
+            <div id="custom-content" class="hidden mt-4">
+              <div class="flex items-center justify-center gap-4">
+                <div class="text-center">
+                  <label class="text-xs text-[var(--color-text-secondary)] mb-2 block">Nga</label>
+                  <select id="range-start" class="w-16 h-12 bg-[var(--color-background)] border border-[var(--color-border)] rounded-xl text-center text-lg font-bold text-[var(--color-text)] cursor-pointer focus:border-[var(--color-primary)] focus:outline-none">
+                    {MULK_VERSES.map((verse) => (
+                      <option value={verse.dayIndex}>{verse.dayIndex}</option>
+                    ))}
+                  </select>
+                </div>
+                <svg class="w-5 h-5 text-[var(--color-text-secondary)] mt-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                <div class="text-center">
+                  <label class="text-xs text-[var(--color-text-secondary)] mb-2 block">Deri</label>
+                  <select id="range-end" class="w-16 h-12 bg-[var(--color-background)] border border-[var(--color-border)] rounded-xl text-center text-lg font-bold text-[var(--color-text)] cursor-pointer focus:border-[var(--color-primary)] focus:outline-none">
+                    {MULK_VERSES.map((verse) => (
+                      <option value={verse.dayIndex} selected={verse.dayIndex === 30}>{verse.dayIndex}</option>
+                    ))}
+                  </select>
+                </div>
+              </div>
+              <p id="range-count" class="text-center text-xs text-[var(--color-text-secondary)] mt-3">30 ajete</p>
+            </div>
+          </div>
+          
+        </div>
+        
+        <!-- ==================== QUIZ VIEW ==================== -->
+        <div id="view-quiz" class="hidden flex-1 flex flex-col space-y-4">
+          
+          <!-- Progress Header -->
+          <div class="card shrink-0">
+            <div class="flex items-center justify-between mb-3">
+              <button id="quit-quiz" class="text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-text)] flex items-center gap-1">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+                Dil
+              </button>
+              <span class="text-sm font-medium text-[var(--color-text)]">Pyetja <span id="q-current" class="text-[var(--color-primary)]">1</span>/<span id="q-total">10</span></span>
+              <div class="flex items-center gap-4">
+                <!-- Falsch (X) -->
+                <div class="flex items-center gap-1.5">
+                  <svg class="w-5 h-5 text-red-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+                  <span id="wrong-count" class="text-sm font-bold text-red-500">0</span>
+                </div>
+                <!-- Richtig (Check) -->
+                <div class="flex items-center gap-1.5">
+                  <svg class="w-5 h-5 text-[var(--color-primary)]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                  <span id="score-count" class="text-sm font-bold text-[var(--color-primary)]">0</span>
+                </div>
+              </div>
+            </div>
+            <div class="h-2 bg-[var(--color-border)] rounded-full overflow-hidden">
+              <div id="progress-bar" class="h-full bg-[var(--color-primary)] rounded-full transition-all duration-500" style="width: 0%"></div>
+            </div>
+          </div>
+          
+          <!-- Question Card - füllt den restlichen Platz -->
+          <div class="card flex-1 flex flex-col">
+            <div class="bg-[var(--color-primary)]/10 -mx-4 -mt-4 px-4 py-2 mb-4 rounded-t-2xl shrink-0">
+              <span class="text-sm font-medium text-[var(--color-primary)]">Ajeti <span id="q-ayah">1</span></span>
+            </div>
+            
+            <p class="text-xs text-[var(--color-text-secondary)] mb-3 shrink-0">Cila fjalë mungon?</p>
+            <div id="q-text" class="arabic text-2xl leading-[2.4] text-right p-4 bg-[var(--color-background)] rounded-xl flex-1 mb-4 overflow-y-auto" dir="rtl" lang="ar"></div>
+            
+            <p class="text-xs text-[var(--color-text-secondary)] mb-2 shrink-0">Zgjidh fjalën e saktë:</p>
+            <div id="q-options" class="grid grid-cols-2 gap-2 shrink-0"></div>
+            
+            <div id="q-feedback" class="hidden mt-4 p-4 rounded-xl shrink-0">
+              <div class="flex items-center justify-center gap-2 mb-2">
+                <svg id="feedback-icon-correct" class="w-6 h-6 text-green-600 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+                <svg id="feedback-icon-wrong" class="w-6 h-6 text-red-600 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"/></svg>
+                <p id="feedback-text" class="font-bold text-lg"></p>
+              </div>
+              <p id="feedback-answer" class="text-sm text-center arabic" dir="rtl" lang="ar"></p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- ==================== RESULTS VIEW ==================== -->
+        <div id="view-results" class="hidden">
+          <div class="card text-center relative overflow-hidden">
+            <div id="confetti-container" class="absolute inset-0 pointer-events-none"></div>
+            
+            <div class="relative">
+              <div id="result-icon-bg" class="w-24 h-24 mx-auto mb-4 rounded-2xl flex items-center justify-center bg-[var(--color-primary)]/20">
+                <svg id="icon-trophy" class="w-14 h-14 text-yellow-500 hidden" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C9.24 2 7 4.24 7 7h-2c-1.1 0-2 .9-2 2v2c0 1.1.9 2 2 2h2c0 2.76 2.24 5 5 5s5-2.24 5-5h2c1.1 0 2-.9 2-2V9c0-1.1-.9-2-2-2h-2c0-2.76-2.24-5-5-5zM5 11V9h2v2H5zm14 0h-2V9h2v2zm-7 9c-1.1 0-2-.9-2-2h4c0 1.1-.9 2-2 2z"/></svg>
+                <svg id="icon-star" class="w-14 h-14 text-[var(--color-primary)] hidden" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg id="icon-check" class="w-14 h-14 text-[var(--color-primary)]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                <svg id="icon-book" class="w-14 h-14 text-[var(--color-text-secondary)] hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+              </div>
+            </div>
+            
+            <h2 class="text-xl font-bold text-[var(--color-text)] mb-2">Rezultati yt</h2>
+            <div class="flex items-center justify-center gap-1 mb-1">
+              <span id="result-score" class="text-4xl font-bold text-[var(--color-primary)]">0</span>
+              <span class="text-2xl text-[var(--color-text-secondary)]">/</span>
+              <span id="result-total" class="text-2xl text-[var(--color-text-secondary)]">10</span>
+            </div>
+            <p id="result-percent" class="text-lg text-[var(--color-primary)] font-semibold mb-4">0%</p>
+            <p id="result-message" class="text-[var(--color-text-secondary)] mb-6">Mirë!</p>
+            
+            <div class="flex justify-center gap-6 mb-6 py-4 border-y border-[var(--color-border)]">
+              <div class="text-center">
+                <p class="text-xl font-bold text-orange-500" id="result-streak">0</p>
+                <p class="text-xs text-[var(--color-text-secondary)]">Seria më e gjatë</p>
+              </div>
+              <div class="text-center">
+                <p class="text-xl font-bold text-[var(--color-text)]" id="result-time">0:00</p>
+                <p class="text-xs text-[var(--color-text-secondary)]">Koha</p>
+              </div>
+            </div>
+            
+            <!-- Weak verses from this quiz (shown only if there are mistakes) -->
+            <div id="result-weak-verses" class="hidden mb-6 p-4 bg-orange-50 rounded-xl border border-orange-200">
+              <div class="flex items-center gap-2 mb-2">
+                <svg class="w-5 h-5 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+                <p class="font-semibold text-orange-600">Përsërit këto ajete:</p>
+              </div>
+              <p id="result-weak-list" class="text-sm text-orange-700"></p>
+            </div>
+            
+            <div class="space-y-2">
+              <button id="retry-btn" class="w-full bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-primary-dark)] text-white font-semibold py-4 rounded-xl active:scale-[0.98] transition-all shadow-lg shadow-[#318fb5]/35">
+                <div class="flex items-center justify-center gap-2">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+                  <span>Provo përsëri</span>
+                </div>
+              </button>
+              <button id="practice-weak-btn" class="hidden w-full py-4 rounded-xl bg-orange-500 text-white font-medium active:scale-[0.98] transition-all">
+                <div class="flex items-center justify-center gap-2">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+                  <span>Ushtro ajetet e dobëta</span>
+                </div>
+              </button>
+              <button id="new-quiz-btn" class="w-full py-4 rounded-xl border border-[var(--color-border)] text-[var(--color-text)] font-medium hover:bg-[var(--color-background)] transition-colors">
+                Zgjidh ajete të tjera
+              </button>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </main>
+
+    <!-- Floating CTA (direkt über BottomNav: bottom-[80px] wie beim Day-Page Player) -->
+    <div id="cta-container" class="fixed bottom-[80px] left-0 right-0 px-4 z-20">
+      <div class="max-w-lg mx-auto">
+        <button id="start-quiz-btn" class="w-full bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-primary-dark)] text-white font-semibold py-5 rounded-2xl active:scale-[0.98] transition-all shadow-lg shadow-[#318fb5]/35">
+          <div class="flex items-center justify-center gap-3">
+            <span id="start-btn-text">Testo 30 ajete</span>
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+          </div>
+        </button>
+      </div>
+    </div>
+
+    <BottomNav active="quiz" />
+  </div>
+</Layout>
+
+<style>
+  /* Card base styles now in global.css */
+
+  .quiz-preset.selected {
+    border-color: var(--color-primary) !important;
+    background: rgba(49, 143, 181, 0.05) !important;
+  }
+  
+  .quiz-preset.selected .radio-indicator {
+    border-color: var(--color-primary) !important;
+  }
+
+  .rotate-180 { transform: rotate(180deg); }
+
+  .option-btn {
+    min-height: 56px;
+    transition: all 0.15s ease;
+  }
+  .option-btn:active:not(:disabled) { transform: scale(0.97); }
+  .option-btn.correct {
+    background-color: rgba(34, 197, 94, 0.2) !important;
+    border-color: rgb(34, 197, 94) !important;
+    color: rgb(22, 101, 52) !important;
+  }
+  .option-btn.wrong {
+    background-color: rgba(239, 68, 68, 0.2) !important;
+    border-color: rgb(239, 68, 68) !important;
+    color: rgb(153, 27, 27) !important;
+  }
+  .option-btn:disabled:not(.correct):not(.wrong) { 
+    opacity: 0.5; 
+    cursor: not-allowed; 
+  }
+
+  .feedback-correct { background-color: rgba(34, 197, 94, 0.15); color: rgb(22, 163, 74); }
+  .feedback-wrong { background-color: rgba(239, 68, 68, 0.15); color: rgb(220, 38, 38); }
+
+  /* Quiz blank styles - inline to preserve RTL text flow */
+  .quiz-blank {
+    display: inline;
+    padding: 0.125rem 0.5rem;
+    margin: 0 0.25rem;
+    background-color: rgba(49, 143, 181, 0.15);
+    border: 2px dashed var(--color-primary);
+    border-radius: 0.5rem;
+    color: var(--color-primary);
+    font-weight: bold;
+  }
+  .quiz-blank-correct {
+    background-color: rgba(34, 197, 94, 0.2);
+    border: 2px solid rgb(34, 197, 94);
+    border-style: solid;
+    color: rgb(22, 101, 52);
+  }
+  .quiz-blank-wrong {
+    background-color: rgba(239, 68, 68, 0.2);
+    border: 2px solid rgb(239, 68, 68);
+    border-style: solid;
+    color: rgb(153, 27, 27);
+  }
+
+  @keyframes confetti-fall {
+    0% { transform: translateY(-100%) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(400px) rotate(720deg); opacity: 0; }
+  }
+  .confetti { position: absolute; width: 10px; height: 10px; opacity: 0; }
+
+  @keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    20%, 60% { transform: translateX(-5px); }
+    40%, 80% { transform: translateX(5px); }
+  }
+  .shake { animation: shake 0.4s ease; }
+
+  @keyframes pulse-grow {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+  }
+  .pulse-grow { animation: pulse-grow 0.3s ease; }
+
+  #custom-content { animation: slideDown 0.2s ease-out; }
+  @keyframes slideDown {
+    from { opacity: 0; transform: translateY(-8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>
+
+<script>
+  import { MULK_VERSES } from '../../data/mulk-verses';
+  import wordByWordData from '../../data/word-by-word.json';
+  import { getSession } from '../../lib/supabase';
+
+  // Auth check (allow guest mode)
+  (async () => {
+    try {
+      const { session } = await getSession();
+      const isGuestMode = localStorage.getItem('mulk30_guest_mode') === 'true';
+      
+      if (!session && !isGuestMode) {
+        window.location.href = '/';
+        return;
+      }
+    } catch (e) {}
+  })();
+  
+  interface WordData {
+    word: number;
+    albanian: string;
+    arabic: string;
+  }
+  
+  interface Question {
+    ayah: number;
+    hiddenIndex: number;
+    options: string[];
+    correct: string;
+    words: string[]; // All words of the verse
+  }
+  
+  let questions: Question[] = [];
+  let currentIndex = 0;
+  let score = 0;
+  let wrongCount = 0;
+  let streak = 0;
+  let maxStreak = 0;
+  let startTime = 0;
+  let rangeStart = 1;
+  let rangeEnd = 30;
+  let answered = false;
+  let currentQuizWrongVerses: number[] = []; // Track wrong answers in current quiz
+  let useWeakVersesMode = false; // If true, only test weak verses
+  
+  // Weak verses tracking (persistent in localStorage)
+  const WEAK_VERSES_KEY = 'mulk30_weak_verses';
+  
+  interface WeakVerseData {
+    ayah: number;
+    wrongCount: number;
+    lastWrong: number; // timestamp
+  }
+  
+  function getWeakVerses(): WeakVerseData[] {
+    try {
+      return JSON.parse(localStorage.getItem(WEAK_VERSES_KEY) || '[]');
+    } catch {
+      return [];
+    }
+  }
+  
+  function saveWeakVerses(verses: WeakVerseData[]) {
+    localStorage.setItem(WEAK_VERSES_KEY, JSON.stringify(verses));
+  }
+  
+  function addWeakVerse(ayah: number) {
+    const verses = getWeakVerses();
+    const existing = verses.find(v => v.ayah === ayah);
+    if (existing) {
+      existing.wrongCount++;
+      existing.lastWrong = Date.now();
+    } else {
+      verses.push({ ayah, wrongCount: 1, lastWrong: Date.now() });
+    }
+    saveWeakVerses(verses);
+  }
+  
+  function removeWeakVerse(ayah: number) {
+    const verses = getWeakVerses().filter(v => v.ayah !== ayah);
+    saveWeakVerses(verses);
+  }
+  
+  function updateWeakVersesUI() {
+    const weakVerses = getWeakVerses();
+    const btn = document.getElementById('weak-verses-btn');
+    const countEl = document.getElementById('weak-verses-count');
+    
+    if (weakVerses.length > 0 && btn && countEl) {
+      btn.classList.remove('hidden');
+      countEl.textContent = `${weakVerses.length} ajete me gabime`;
+    } else if (btn) {
+      btn.classList.add('hidden');
+    }
+  }
+  
+  // Get words for a verse from word-by-word data
+  function getVerseWords(ayahNum: number): string[] {
+    const verseData = (wordByWordData as Record<string, WordData[]>)[String(ayahNum)];
+    if (verseData && verseData.length > 0) {
+      return verseData.map(w => w.arabic);
+    }
+    // Fallback to splitting arabic text (less reliable)
+    const verse = MULK_VERSES.find(v => v.dayIndex === ayahNum);
+    return verse ? verse.arabic.split(/\s+/).filter(w => w.length > 0) : [];
+  }
+  
+  // Get all unique words from all verses (for wrong options)
+  function getAllUniqueWords(): string[] {
+    const allWords: string[] = [];
+    for (let i = 1; i <= 30; i++) {
+      const words = getVerseWords(i);
+      allWords.push(...words);
+    }
+    return [...new Set(allWords)];
+  }
+  
+  const viewSelect = document.getElementById('view-select')!;
+  const viewQuiz = document.getElementById('view-quiz')!;
+  const viewResults = document.getElementById('view-results')!;
+  const ctaContainer = document.getElementById('cta-container')!;
+  const rangeStartSelect = document.getElementById('range-start') as HTMLSelectElement;
+  const rangeEndSelect = document.getElementById('range-end') as HTMLSelectElement;
+  const rangeCountEl = document.getElementById('range-count')!;
+  const startBtnText = document.getElementById('start-btn-text')!;
+  
+  function loadStats() {
+    try {
+      const stats = JSON.parse(localStorage.getItem('mulk30_quiz_stats') || '{"best":0,"total":0}');
+      const bestEl = document.getElementById('best-score-display');
+      const totalEl = document.getElementById('total-tests-display');
+      if (bestEl) bestEl.textContent = stats.best > 0 ? `${stats.best}%` : '-';
+      if (totalEl) totalEl.textContent = String(stats.total);
+    } catch (e) {
+      console.error('Failed to load quiz stats:', e);
+    }
+  }
+  
+  function saveStats(scoreVal: number, total: number) {
+    const pct = Math.round((scoreVal / total) * 100);
+    const stats = JSON.parse(localStorage.getItem('mulk30_quiz_stats') || '{"best":0,"total":0}');
+    stats.total++;
+    if (pct > stats.best) stats.best = pct;
+    localStorage.setItem('mulk30_quiz_stats', JSON.stringify(stats));
+  }
+  
+  function updateRangeCount() {
+    const count = Math.abs(rangeEnd - rangeStart) + 1;
+    rangeCountEl.textContent = count === 1 ? '1 ajet' : `${count} ajete`;
+  }
+  
+  function updateStartButton() {
+    const count = Math.abs(rangeEnd - rangeStart) + 1;
+    startBtnText.textContent = `Testo ${count} ajete`;
+  }
+  
+  function showView(view: 'select' | 'quiz' | 'results') {
+    viewSelect.classList.toggle('hidden', view !== 'select');
+    viewQuiz.classList.toggle('hidden', view !== 'quiz');
+    viewResults.classList.toggle('hidden', view !== 'results');
+    ctaContainer.classList.toggle('hidden', view !== 'select');
+  }
+  
+  function generateQuestions(): Question[] {
+    const generated: Question[] = [];
+    const allUniqueWords = getAllUniqueWords();
+    
+    for (let ayahNum = rangeStart; ayahNum <= rangeEnd; ayahNum++) {
+      const words = getVerseWords(ayahNum);
+      if (words.length === 0) continue;
+      
+      // Pick a random word to hide (prefer words with 3+ characters)
+      const goodIndices = words.map((w, i) => ({ w, i })).filter(x => x.w.length >= 3);
+      const candidates = goodIndices.length > 0 ? goodIndices : words.map((w, i) => ({ w, i }));
+      const chosen = candidates[Math.floor(Math.random() * candidates.length)];
+      const hiddenIdx = chosen.i;
+      const correct = words[hiddenIdx];
+      
+      // Generate wrong options from all words (excluding correct answer)
+      const wrongOptions = allUniqueWords.filter(w => w !== correct && w.length >= 2);
+      const shuffledWrong = wrongOptions.sort(() => Math.random() - 0.5);
+      
+      const options = [correct];
+      for (let i = 0; i < shuffledWrong.length && options.length < 4; i++) {
+        if (!options.includes(shuffledWrong[i])) {
+          options.push(shuffledWrong[i]);
+        }
+      }
+      
+      // Fill with placeholders if needed
+      while (options.length < 4) {
+        options.push('—');
+      }
+      
+      // Shuffle options
+      options.sort(() => Math.random() - 0.5);
+      
+      generated.push({ ayah: ayahNum, hiddenIndex: hiddenIdx, options, correct, words });
+    }
+    
+    // Shuffle questions order
+    return generated.sort(() => Math.random() - 0.5);
+  }
+  
+  function startQuiz() {
+    // Reset tracking for this quiz session
+    currentQuizWrongVerses = [];
+    
+    // Generate questions based on mode
+    if (useWeakVersesMode) {
+      questions = generateWeakVersesQuestions();
+      useWeakVersesMode = false; // Reset mode after use
+    } else {
+      questions = generateQuestions();
+    }
+    
+    if (questions.length === 0) {
+      // No questions to show (e.g., no weak verses)
+      alert('Nuk ka ajete për të testuar!');
+      return;
+    }
+    
+    currentIndex = 0;
+    score = 0;
+    wrongCount = 0;
+    streak = 0;
+    maxStreak = 0;
+    answered = false;
+    startTime = Date.now();
+    document.getElementById('q-total')!.textContent = String(questions.length);
+    document.getElementById('score-count')!.textContent = '0';
+    document.getElementById('wrong-count')!.textContent = '0';
+    document.getElementById('progress-bar')!.style.width = '0%';
+    showView('quiz');
+    renderQuestion();
+  }
+  
+  // Generate questions only for weak verses
+  function generateWeakVersesQuestions(): Question[] {
+    const weakVerses = getWeakVerses();
+    if (weakVerses.length === 0) return [];
+    
+    const generated: Question[] = [];
+    const allUniqueWords = getAllUniqueWords();
+    
+    for (const weak of weakVerses) {
+      const ayahNum = weak.ayah;
+      const words = getVerseWords(ayahNum);
+      if (words.length === 0) continue;
+      
+      const goodIndices = words.map((w, i) => ({ w, i })).filter(x => x.w.length >= 3);
+      const candidates = goodIndices.length > 0 ? goodIndices : words.map((w, i) => ({ w, i }));
+      const chosen = candidates[Math.floor(Math.random() * candidates.length)];
+      const hiddenIdx = chosen.i;
+      const correct = words[hiddenIdx];
+      
+      const wrongOptions = allUniqueWords.filter(w => w !== correct && w.length >= 2);
+      const shuffledWrong = wrongOptions.sort(() => Math.random() - 0.5);
+      
+      const options = [correct];
+      for (let i = 0; i < shuffledWrong.length && options.length < 4; i++) {
+        if (!options.includes(shuffledWrong[i])) {
+          options.push(shuffledWrong[i]);
+        }
+      }
+      
+      while (options.length < 4) {
+        options.push('—');
+      }
+      
+      options.sort(() => Math.random() - 0.5);
+      generated.push({ ayah: ayahNum, hiddenIndex: hiddenIdx, options, correct, words });
+    }
+    
+    return generated.sort(() => Math.random() - 0.5);
+  }
+  
+  function renderQuestion() {
+    const q = questions[currentIndex];
+    answered = false;
+    document.getElementById('q-current')!.textContent = String(currentIndex + 1);
+    document.getElementById('q-ayah')!.textContent = String(q.ayah);
+    
+    // Build verse HTML with blank for hidden word
+    // Words are joined without extra wrapper - RTL handled by dir="rtl" on container
+    const questionHtml = q.words.map((w, i) => 
+      i === q.hiddenIndex 
+        ? '<span class="quiz-blank">ـــــ</span>'
+        : w
+    ).join(' ');
+    document.getElementById('q-text')!.innerHTML = questionHtml;
+    
+    // 2x2 grid for options
+    const optionsHtml = q.options.map((opt, i) => `
+      <button class="option-btn p-4 rounded-xl border-2 border-[var(--color-border)] bg-white hover:border-[var(--color-primary)] hover:bg-[var(--color-primary)]/5 text-xl arabic text-center transition-all" data-idx="${i}" data-word="${opt}">${opt}</button>
+    `).join('');
+    document.getElementById('q-options')!.innerHTML = optionsHtml;
+    document.querySelectorAll('.option-btn').forEach(btn => {
+      btn.addEventListener('click', () => handleAnswer(btn as HTMLButtonElement));
+    });
+    document.getElementById('q-feedback')!.classList.add('hidden');
+    document.getElementById('feedback-icon-correct')!.classList.add('hidden');
+    document.getElementById('feedback-icon-wrong')!.classList.add('hidden');
+  }
+  
+  function handleAnswer(btn: HTMLButtonElement) {
+    if (answered) return;
+    answered = true;
+    const q = questions[currentIndex];
+    const selected = btn.dataset.word || '';
+    const isCorrect = selected === q.correct;
+    
+    // Disable all buttons and show correct answer
+    document.querySelectorAll('.option-btn').forEach(b => {
+      const button = b as HTMLButtonElement;
+      button.disabled = true;
+      const word = button.dataset.word || '';
+      if (word === q.correct) {
+        button.classList.add('correct');
+      }
+    });
+    
+    // Update the blank in the verse with the correct word
+    const qText = document.getElementById('q-text')!;
+    const filledHtml = q.words.map((w, i) => 
+      i === q.hiddenIndex 
+        ? `<span class="quiz-blank ${isCorrect ? 'quiz-blank-correct' : 'quiz-blank-wrong'}">${q.correct}</span>`
+        : w
+    ).join(' ');
+    qText.innerHTML = filledHtml;
+    
+    if (isCorrect) {
+      score++;
+      streak++;
+      if (streak > maxStreak) maxStreak = streak;
+      btn.classList.add('correct');
+      const scoreEl = document.getElementById('score-count')!;
+      scoreEl.textContent = String(score);
+      scoreEl.classList.add('pulse-grow');
+      setTimeout(() => scoreEl.classList.remove('pulse-grow'), 300);
+      showFeedback(true, 'Saktë!', q.correct);
+      // Remove from weak verses if answered correctly
+      removeWeakVerse(q.ayah);
+    } else {
+      wrongCount++;
+      streak = 0;
+      btn.classList.add('wrong');
+      const wrongEl = document.getElementById('wrong-count')!;
+      wrongEl.textContent = String(wrongCount);
+      wrongEl.classList.add('pulse-grow');
+      setTimeout(() => wrongEl.classList.remove('pulse-grow'), 300);
+      btn.classList.add('shake');
+      setTimeout(() => btn.classList.remove('shake'), 400);
+      showFeedback(false, 'Gabim!', `Fjala e saktë: ${q.correct}`);
+      // Add to weak verses tracking
+      addWeakVerse(q.ayah);
+      if (!currentQuizWrongVerses.includes(q.ayah)) {
+        currentQuizWrongVerses.push(q.ayah);
+      }
+    }
+    
+    const progress = ((currentIndex + 1) / questions.length) * 100;
+    document.getElementById('progress-bar')!.style.width = `${progress}%`;
+    
+    // Move to next question after delay
+    setTimeout(() => {
+      currentIndex++;
+      if (currentIndex < questions.length) renderQuestion();
+      else showResults();
+    }, 1800);
+  }
+  
+  function showFeedback(correct: boolean, text: string, answer?: string) {
+    const feedbackEl = document.getElementById('q-feedback')!;
+    feedbackEl.classList.remove('hidden', 'feedback-correct', 'feedback-wrong');
+    feedbackEl.classList.add(correct ? 'feedback-correct' : 'feedback-wrong');
+    
+    // Show appropriate icon
+    document.getElementById('feedback-icon-correct')!.classList.toggle('hidden', !correct);
+    document.getElementById('feedback-icon-wrong')!.classList.toggle('hidden', correct);
+    
+    document.getElementById('feedback-text')!.textContent = text;
+    const answerEl = document.getElementById('feedback-answer')!;
+    if (answer) {
+      answerEl.textContent = answer;
+      answerEl.classList.remove('hidden');
+    } else {
+      answerEl.classList.add('hidden');
+    }
+  }
+  
+  function showResults() {
+    const total = questions.length;
+    const pct = Math.round((score / total) * 100);
+    const elapsed = Math.floor((Date.now() - startTime) / 1000);
+    const minutes = Math.floor(elapsed / 60);
+    const seconds = elapsed % 60;
+    document.getElementById('result-score')!.textContent = String(score);
+    document.getElementById('result-total')!.textContent = String(total);
+    document.getElementById('result-percent')!.textContent = `${pct}%`;
+    document.getElementById('result-streak')!.textContent = String(maxStreak);
+    document.getElementById('result-time')!.textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+    const iconBgEl = document.getElementById('result-icon-bg')!;
+    const msgEl = document.getElementById('result-message')!;
+    document.getElementById('icon-trophy')!.classList.add('hidden');
+    document.getElementById('icon-star')!.classList.add('hidden');
+    document.getElementById('icon-check')!.classList.add('hidden');
+    document.getElementById('icon-book')!.classList.add('hidden');
+    if (pct === 100) {
+      document.getElementById('icon-trophy')!.classList.remove('hidden');
+      iconBgEl.className = 'w-24 h-24 mx-auto mb-4 rounded-2xl flex items-center justify-center bg-yellow-100';
+      msgEl.textContent = 'Perfekt! E ke mësuar plotësisht!';
+      createConfetti();
+    } else if (pct >= 80) {
+      document.getElementById('icon-star')!.classList.remove('hidden');
+      iconBgEl.className = 'w-24 h-24 mx-auto mb-4 rounded-2xl flex items-center justify-center bg-[var(--color-primary)]/15';
+      msgEl.textContent = 'Shkëlqyeshëm! Je shumë afër!';
+      createConfetti();
+    } else if (pct >= 60) {
+      document.getElementById('icon-check')!.classList.remove('hidden');
+      iconBgEl.className = 'w-24 h-24 mx-auto mb-4 rounded-2xl flex items-center justify-center bg-[var(--color-primary)]/15';
+      msgEl.textContent = 'Mirë! Vazhdo të ushtroesh!';
+    } else {
+      document.getElementById('icon-book')!.classList.remove('hidden');
+      iconBgEl.className = 'w-24 h-24 mx-auto mb-4 rounded-2xl flex items-center justify-center bg-gray-100';
+      msgEl.textContent = 'Dëgjo surenë dhe provo përsëri!';
+    }
+    saveStats(score, total);
+    loadStats();
+    
+    // Show weak verses from this quiz
+    const weakVersesSection = document.getElementById('result-weak-verses')!;
+    const weakListEl = document.getElementById('result-weak-list')!;
+    const practiceWeakBtn = document.getElementById('practice-weak-btn')!;
+    
+    if (currentQuizWrongVerses.length > 0) {
+      weakVersesSection.classList.remove('hidden');
+      const sortedWrong = [...currentQuizWrongVerses].sort((a, b) => a - b);
+      weakListEl.textContent = `Ajeti ${sortedWrong.join(', ')}`;
+      practiceWeakBtn.classList.remove('hidden');
+    } else {
+      weakVersesSection.classList.add('hidden');
+      practiceWeakBtn.classList.add('hidden');
+    }
+    
+    // Update weak verses button in selection view
+    updateWeakVersesUI();
+    
+    showView('results');
+  }
+  
+  function createConfetti() {
+    const container = document.getElementById('confetti-container')!;
+    container.innerHTML = '';
+    const colors = ['#FFD700', '#FF6B6B', '#4ECDC4', '#45B7D1', '#96CEB4', '#FFEAA7'];
+    for (let i = 0; i < 40; i++) {
+      const confetti = document.createElement('div');
+      confetti.className = 'confetti';
+      confetti.style.left = `${Math.random() * 100}%`;
+      confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+      confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
+      confetti.style.animation = `confetti-fall ${1.5 + Math.random()}s ease-out forwards`;
+      confetti.style.animationDelay = `${Math.random() * 0.5}s`;
+      container.appendChild(confetti);
+    }
+    setTimeout(() => container.innerHTML = '', 3000);
+  }
+  
+  // Custom toggle
+  document.getElementById('custom-toggle')?.addEventListener('click', () => {
+    const content = document.getElementById('custom-content')!;
+    const chevron = document.getElementById('custom-chevron')!;
+    content.classList.toggle('hidden');
+    chevron.classList.toggle('rotate-180');
+    // Deselect presets when custom is opened
+    if (!content.classList.contains('hidden')) {
+      document.querySelectorAll('.quiz-preset').forEach(b => {
+        b.classList.remove('selected');
+        const radio = b.querySelector('.radio-indicator');
+        if (radio) {
+          radio.className = 'radio-indicator w-5 h-5 rounded-full border-2 border-[var(--color-border)]';
+          radio.innerHTML = '';
+        }
+      });
+    }
+  });
+  
+  // Range selectors
+  rangeStartSelect.addEventListener('change', () => {
+    rangeStart = parseInt(rangeStartSelect.value);
+    if (rangeEnd < rangeStart) {
+      rangeEnd = rangeStart;
+      rangeEndSelect.value = String(rangeEnd);
+    }
+    updateRangeCount();
+    updateStartButton();
+  });
+  
+  rangeEndSelect.addEventListener('change', () => {
+    rangeEnd = parseInt(rangeEndSelect.value);
+    if (rangeStart > rangeEnd) {
+      rangeStart = rangeEnd;
+      rangeStartSelect.value = String(rangeStart);
+    }
+    updateRangeCount();
+    updateStartButton();
+  });
+  
+  // Preset buttons
+  document.querySelectorAll('.quiz-preset').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const el = btn as HTMLElement;
+      rangeStart = parseInt(el.dataset.start || '1');
+      rangeEnd = parseInt(el.dataset.end || '30');
+      rangeStartSelect.value = String(rangeStart);
+      rangeEndSelect.value = String(rangeEnd);
+      
+      // Update visual selection
+      document.querySelectorAll('.quiz-preset').forEach(b => {
+        b.classList.remove('selected');
+        const radio = b.querySelector('.radio-indicator');
+        if (radio) {
+          radio.className = 'radio-indicator w-5 h-5 rounded-full border-2 border-[var(--color-border)]';
+          radio.innerHTML = '';
+        }
+      });
+      
+      el.classList.add('selected');
+      const radio = el.querySelector('.radio-indicator');
+      if (radio) {
+        radio.className = 'radio-indicator w-5 h-5 rounded-full border-2 border-[var(--color-primary)] flex items-center justify-center';
+        radio.innerHTML = '<div class="w-2.5 h-2.5 rounded-full bg-[var(--color-primary)]"></div>';
+      }
+      
+      // Close custom panel if open
+      document.getElementById('custom-content')!.classList.add('hidden');
+      document.getElementById('custom-chevron')!.classList.remove('rotate-180');
+      
+      updateRangeCount();
+      updateStartButton();
+    });
+  });
+  
+  // Start quiz
+  document.getElementById('start-quiz-btn')?.addEventListener('click', startQuiz);
+  
+  // Quit quiz (back to selection)
+  document.getElementById('quit-quiz')?.addEventListener('click', () => showView('select'));
+  
+  // Retry
+  document.getElementById('retry-btn')?.addEventListener('click', startQuiz);
+  
+  // New quiz
+  document.getElementById('new-quiz-btn')?.addEventListener('click', () => showView('select'));
+  
+  // Practice weak verses from selection
+  document.getElementById('weak-verses-btn')?.addEventListener('click', () => {
+    useWeakVersesMode = true;
+    startQuiz();
+  });
+  
+  // Practice weak verses from results
+  document.getElementById('practice-weak-btn')?.addEventListener('click', () => {
+    useWeakVersesMode = true;
+    startQuiz();
+  });
+  
+  // Init
+  loadStats();
+  updateStartButton();
+  updateWeakVersesUI();
+</script>
+</Layout>
