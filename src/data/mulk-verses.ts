@@ -1,6 +1,6 @@
 // Surah Al-Mulk (67) - 30 verses for 30-day challenge
 // Each day = one verse
-// German translation by Abu Rida Muhammad ibn Ahmad ibn Rassoul
+// German translation: Bubenheim/Elyas
 
 export interface Verse {
   dayIndex: number;
@@ -17,7 +17,7 @@ export const MULK_VERSES: Verse[] = [
     surahNumber: 67,
     ayahNumber: 1,
     arabic: "تَبَارَكَ الَّذِي بِيَدِهِ الْمُلْكُ وَهُوَ عَلَىٰ كُلِّ شَيْءٍ قَدِيرٌ",
-    german: "Segensreich ist Derjenige, in Dessen Hand die Herrschaft ist, und Er hat Macht über alle Dinge.",
+    german: "Segensreich ist Derjenige, in Dessen Hand die Herrschaft ist, und Er hat zu allem die Macht.",
     transliteration: "Tabārakal-ladhī biyadihil-mulku wa huwa ʿalā kulli shayʾin qadīr"
   },
   {
@@ -25,7 +25,7 @@ export const MULK_VERSES: Verse[] = [
     surahNumber: 67,
     ayahNumber: 2,
     arabic: "الَّذِي خَلَقَ الْمَوْتَ وَالْحَيَاةَ لِيَبْلُوَكُمْ أَيُّكُمْ أَحْسَنُ عَمَلًا ۚ وَهُوَ الْعَزِيزُ الْغَفُورُ",
-    german: "Der den Tod und das Leben erschaffen hat, um euch zu prüfen, wer von euch die besten Taten vollbringt. Und Er ist der Erhabene, der Allvergebende.",
+    german: "(Er,) Der den Tod und das Leben erschaffen hat, um euch zu prüfen, wer von euch die besten Taten begeht. Und Er ist der Allmächtige und Allvergebende.",
     transliteration: "Alladhī khalaqal-mawta wal-ḥayāta liyabluwakum ayyukum aḥsanu ʿamalā, wa huwal-ʿazīzul-ghafūr"
   },
   {
@@ -33,7 +33,7 @@ export const MULK_VERSES: Verse[] = [
     surahNumber: 67,
     ayahNumber: 3,
     arabic: "الَّذِي خَلَقَ سَبْعَ سَمَاوَاتٍ طِبَاقًا ۖ مَّا تَرَىٰ فِي خَلْقِ الرَّحْمَٰنِ مِن تَفَاوُتٍ ۖ فَارْجِعِ الْبَصَرَ هَلْ تَرَىٰ مِن فُطُورٍ",
-    german: "Der sieben Himmel in Schichten erschaffen hat. Du siehst in der Schöpfung des Allerbarmers keine Unstimmigkeit. So wende den Blick zurück: Siehst du irgendeinen Mangel?",
+    german: "(Er,) Der sieben Himmel in Schichten erschaffen hat. Du kannst in der Schöpfung des Allerbarmers keine Unstimmigkeit sehen. Wende den Blick zurück: Siehst du irgendeinen Riss?",
     transliteration: "Alladhī khalaqa sabʿa samāwātin ṭibāqā, mā tarā fī khalqir-raḥmāni min tafāwut, farjiʿil-baṣara hal tarā min fuṭūr"
   },
   {
@@ -41,7 +41,7 @@ export const MULK_VERSES: Verse[] = [
     surahNumber: 67,
     ayahNumber: 4,
     arabic: "ثُمَّ ارْجِعِ الْبَصَرَ كَرَّتَيْنِ يَنقَلِبْ إِلَيْكَ الْبَصَرُ خَاسِئًا وَهُوَ حَسِيرٌ",
-    german: "Dann wende den Blick zweimal zurück; der Blick wird zu dir zurückkehren, ermüdet und erschöpft.",
+    german: "Hierauf wende den Blick wiederholt zurück. Der Blick wird zu dir erfolglos und ermüdet zurückkehren.",
     transliteration: "Thummarjiʿil-baṣara karratayni yanqalib ilayka al-baṣaru khāsiʾan wa huwa ḥasīr"
   },
   {
@@ -49,7 +49,7 @@ export const MULK_VERSES: Verse[] = [
     surahNumber: 67,
     ayahNumber: 5,
     arabic: "وَلَقَدْ زَيَّنَّا السَّمَاءَ الدُّنْيَا بِمَصَابِيحَ وَجَعَلْنَاهَا رُجُومًا لِّلشَّيَاطِينِ ۖ وَأَعْتَدْنَا لَهُمْ عَذَابَ السَّعِيرِ",
-    german: "Und wahrlich, Wir haben den untersten Himmel mit Leuchten geschmückt und haben sie zu Wurfgeschossen gegen die Satane gemacht. Und für sie haben Wir die Strafe der Flamme bereitet.",
+    german: "Wir haben ja den untersten Himmel mit Lampen geschmückt und haben sie zu Wurfgeschossen gegen die Satane gemacht. Und bereitet haben Wir für sie die Strafe der Feuerglut.",
     transliteration: "Wa laqad zayyannās-samāʾad-dunyā bimaṣābīḥa wa jaʿalnāhā rujūman lish-shayāṭīn, wa aʿtadnā lahum ʿadhābas-saʿīr"
   },
   {
@@ -57,7 +57,7 @@ export const MULK_VERSES: Verse[] = [
     surahNumber: 67,
     ayahNumber: 6,
     arabic: "وَلِلَّذِينَ كَفَرُوا بِرَبِّهِمْ عَذَابُ جَهَنَّمَ ۖ وَبِئْسَ الْمَصِيرُ",
-    german: "Und für diejenigen, die ihren Herrn verleugnen, ist die Strafe der Hölle bestimmt. Und welch schlimmer Ausgang!",
+    german: "Und für diejenigen, die ihren Herrn verleugnen, wird es die Strafe der Hölle geben – Loss, welch schlimmer Ausgang!",
     transliteration: "Wa lilladhīna kafarū birabbihim ʿadhābu jahannama wa biʾsal-maṣīr"
   },
   {
@@ -65,7 +65,7 @@ export const MULK_VERSES: Verse[] = [
     surahNumber: 67,
     ayahNumber: 7,
     arabic: "إِذَا أُلْقُوا فِيهَا سَمِعُوا لَهَا شَهِيقًا وَهِيَ تَفُورُ",
-    german: "Wenn sie hineingeworfen werden, hören sie von ihr ein Aufheulen, während sie brodelt.",
+    german: "Wenn sie hineingeworfen werden, hören sie von ihr stoßweises Aufheulen, während sie brodelt.",
     transliteration: "Idhā ulqū fīhā samiʿū lahā shahīqan wa hiya tafūr"
   },
   {
@@ -73,7 +73,7 @@ export const MULK_VERSES: Verse[] = [
     surahNumber: 67,
     ayahNumber: 8,
     arabic: "تَكَادُ تَمَيَّزُ مِنَ الْغَيْظِ ۖ كُلَّمَا أُلْقِيَ فِيهَا فَوْجٌ سَأَلَهُمْ خَزَنَتُهَا أَلَمْ يَأْتِكُمْ نَذِيرٌ",
-    german: "Es fehlt wenig, dass sie vor Wut birst. Sooft eine Schar hineingeworfen wird, fragen sie ihre Wärter: \"Ist kein Warner zu euch gekommen?\"",
+    german: "Beinahe würde sie vor Grimm bersten. Jedesmal, wenn eine Schar hineingeworfen wird, fragen sie ihre Wärter: \"Ist zu euch denn kein Warner gekommen?\"",
     transliteration: "Takādu tamayyazu minal-ghayẓ, kullamā ulqiya fīhā fawjun saʾalahum khazanatuhā alam yaʾtikum nadhīr"
   },
   {
@@ -81,7 +81,7 @@ export const MULK_VERSES: Verse[] = [
     surahNumber: 67,
     ayahNumber: 9,
     arabic: "قَالُوا بَلَىٰ قَدْ جَاءَنَا نَذِيرٌ فَكَذَّبْنَا وَقُلْنَا مَا نَزَّلَ اللَّهُ مِن شَيْءٍ إِنْ أَنتُمْ إِلَّا فِي ضَلَالٍ كَبِيرٍ",
-    german: "Sie werden sagen: \"Ja doch, es kam ein Warner zu uns, aber wir haben ihn der Lüge bezichtigt und gesagt: 'Allah hat nichts herabgesandt. Ihr befindet euch nur in einem großen Irrtum.'\"",
+    german: "Sie sagen: \"Ja doch, zu uns ist bereits ein Warner gekommen; aber wir haben (ihn) der Lüge bezichtigt und gesagt: 'Allah hat nichts offenbart; ihr befindet euch nur in großem Irrtum.'\"",
     transliteration: "Qālū balā qad jāʾanā nadhīrun fakadhdhabnā wa qulnā mā nazzala Allāhu min shayʾin in antum illā fī ḍalālin kabīr"
   },
   {
@@ -89,7 +89,7 @@ export const MULK_VERSES: Verse[] = [
     surahNumber: 67,
     ayahNumber: 10,
     arabic: "وَقَالُوا لَوْ كُنَّا نَسْمَعُ أَوْ نَعْقِلُ مَا كُنَّا فِي أَصْحَابِ السَّعِيرِ",
-    german: "Und sie werden sagen: \"Hätten wir nur zugehört oder unseren Verstand gebraucht, wären wir nicht unter den Bewohnern der Flamme.\"",
+    german: "Und sie sagen: \"Wenn wir nur gehört oder begriffen hätten, wären wir nicht unter den Insassen der Feuerglut.\"",
     transliteration: "Wa qālū law kunnā nasmaʿu aw naʿqilu mā kunnā fī aṣḥābis-saʿīr"
   },
   {
@@ -97,7 +97,7 @@ export const MULK_VERSES: Verse[] = [
     surahNumber: 67,
     ayahNumber: 11,
     arabic: "فَاعْتَرَفُوا بِذَنبِهِمْ فَسُحْقًا لِّأَصْحَابِ السَّعِيرِ",
-    german: "So bekennen sie ihre Sünden. Darum: Hinweg mit den Bewohnern der Flamme!",
+    german: "So bekennen sie ihre Sünde. Weit weg darum mit den Insassen der Feuerglut!",
     transliteration: "Faʿtarafū bidhanbihim fasuḥqan li-aṣḥābis-saʿīr"
   },
   {
@@ -105,7 +105,7 @@ export const MULK_VERSES: Verse[] = [
     surahNumber: 67,
     ayahNumber: 12,
     arabic: "إِنَّ الَّذِينَ يَخْشَوْنَ رَبَّهُم بِالْغَيْبِ لَهُم مَّغْفِرَةٌ وَأَجْرٌ كَبِيرٌ",
-    german: "Wahrlich, diejenigen, die ihren Herrn im Verborgenen fürchten, für sie ist Vergebung und großer Lohn bestimmt.",
+    german: "Gewiss, diejenigen, die ihren Herrn im Verborgenen fürchten, für sie wird es Vergebung und großen Lohn geben.",
     transliteration: "Innal-ladhīna yakhshawna rabbahum bil-ghaybi lahum maghfiratun wa ajrun kabīr"
   },
   {
@@ -113,7 +113,7 @@ export const MULK_VERSES: Verse[] = [
     surahNumber: 67,
     ayahNumber: 13,
     arabic: "وَأَسِرُّوا قَوْلَكُمْ أَوِ اجْهَرُوا بِهِ ۖ إِنَّهُ عَلِيمٌ بِذَاتِ الصُّدُورِ",
-    german: "Und ob ihr eure Worte verbergt oder sie kundtut: Er weiß über das Innerste der Herzen Bescheid.",
+    german: "Und haltet eure Worte geheim oder verkündet sie, Er weiß über das Innerste der Brüste Bescheid.",
     transliteration: "Wa asirrū qawlakum awijharū bih, innahu ʿalīmun bidhātis-ṣudūr"
   },
   {
@@ -121,7 +121,7 @@ export const MULK_VERSES: Verse[] = [
     surahNumber: 67,
     ayahNumber: 14,
     arabic: "أَلَا يَعْلَمُ مَنْ خَلَقَ وَهُوَ اللَّطِيفُ الْخَبِيرُ",
-    german: "Sollte Der, Der erschaffen hat, es nicht wissen? Und Er ist der Feinfühlige, der Allkundige.",
+    german: "Sollte denn Derjenige, Der erschaffen hat, nicht Bescheid wissen? Er ist der Feinfühlige und Allkundige.",
     transliteration: "Alā yaʿlamu man khalaqa wa huwal-laṭīful-khabīr"
   },
   {
@@ -129,7 +129,7 @@ export const MULK_VERSES: Verse[] = [
     surahNumber: 67,
     ayahNumber: 15,
     arabic: "هُوَ الَّذِي جَعَلَ لَكُمُ الْأَرْضَ ذَلُولًا فَامْشُوا فِي مَنَاكِبِهَا وَكُلُوا مِن رِّزْقِهِ ۖ وَإِلَيْهِ النُّشُورُ",
-    german: "Er ist es, Der euch die Erde gefügig gemacht hat; so wandert auf ihren Wegen und esst von Seiner Versorgung. Und zu Ihm führt die Auferstehung.",
+    german: "Er ist es, Der euch die Erde fügsam gemacht hat. So geht auf ihren Schultern umher und esst von dem, womit Er euch versorgt. Und zu Ihm wird die Auferstehung sein.",
     transliteration: "Huwal-ladhī jaʿala lakumul-arḍa dhalūlan famshū fī manākibihā wa kulū min rizqih, wa ilayhin-nushūr"
   },
   {
@@ -137,7 +137,7 @@ export const MULK_VERSES: Verse[] = [
     surahNumber: 67,
     ayahNumber: 16,
     arabic: "أَأَمِنتُم مَّن فِي السَّمَاءِ أَن يَخْسِفَ بِكُمُ الْأَرْضَ فَإِذَا هِيَ تَمُورُ",
-    german: "Seid ihr sicher, dass Der, Der im Himmel ist, die Erde nicht mit euch versinken lässt, wenn sie plötzlich schwankt?",
+    german: "Seid ihr denn sicher, dass Der, Der im Himmel ist, nicht die Erde mit euch versinken lässt, während sie hin und her schwankt?",
     transliteration: "A-amintum man fis-samāʾi an yakhsifa bikumul-arḍa fa-idhā hiya tamūr"
   },
   {
@@ -145,7 +145,7 @@ export const MULK_VERSES: Verse[] = [
     surahNumber: 67,
     ayahNumber: 17,
     arabic: "أَمْ أَمِنتُم مَّن فِي السَّمَاءِ أَن يُرْسِلَ عَلَيْكُمْ حَاصِبًا ۖ فَسَتَعْلَمُونَ كَيْفَ نَذِيرِ",
-    german: "Oder seid ihr sicher, dass Der, Der im Himmel ist, keinen Sandsturm über euch schickt? Dann werdet ihr wissen, wie Meine Warnung ist!",
+    german: "Oder seid ihr sicher, dass Der, Der im Himmel ist, nicht einen Steinregen gegen euch sendet? Dann werdet ihr wissen, wie Meine Warnung ist.",
     transliteration: "Am amintum man fis-samāʾi an yursila ʿalaykum ḥāṣiban fasataʿlamūna kayfa nadhīr"
   },
   {
@@ -153,7 +153,7 @@ export const MULK_VERSES: Verse[] = [
     surahNumber: 67,
     ayahNumber: 18,
     arabic: "وَلَقَدْ كَذَّبَ الَّذِينَ مِن قَبْلِهِمْ فَكَيْفَ كَانَ نَكِيرِ",
-    german: "Und diejenigen vor ihnen haben auch geleugnet. Und wie war dann Meine Vergeltung!",
+    german: "Bereits diejenigen vor ihnen haben (ihre Gesandten) der Lüge bezichtigt. Wie war da Meine Missbilligung!",
     transliteration: "Wa laqad kadhdhaba alladhīna min qablihim fakayfa kāna nakīr"
   },
   {
@@ -161,7 +161,7 @@ export const MULK_VERSES: Verse[] = [
     surahNumber: 67,
     ayahNumber: 19,
     arabic: "أَوَلَمْ يَرَوْا إِلَى الطَّيْرِ فَوْقَهُمْ صَافَّاتٍ وَيَقْبِضْنَ ۚ مَا يُمْسِكُهُنَّ إِلَّا الرَّحْمَٰنُ ۚ إِنَّهُ بِكُلِّ شَيْءٍ بَصِيرٌ",
-    german: "Haben sie nicht die Vögel über sich gesehen, wie sie ihre Flügel ausbreiten und sie einziehen? Nur der Allerbarmer hält sie. Wahrlich, Er sieht alle Dinge.",
+    german: "Haben sie nicht zu den Vögeln über ihnen gesehen, wie sie (ihre Flügel) ausbreiten und einziehen? Nur der Allerbarmer hält sie. Gewiss, Er sieht alles.",
     transliteration: "Awalam yaraw ilat-ṭayri fawqahum ṣāffātin wa yaqbiḍna mā yumsikuhunna illar-raḥmān, innahu bikulli shayʾin baṣīr"
   },
   {
@@ -169,7 +169,7 @@ export const MULK_VERSES: Verse[] = [
     surahNumber: 67,
     ayahNumber: 20,
     arabic: "أَمَّنْ هَٰذَا الَّذِي هُوَ جُندٌ لَّكُمْ يَنصُرُكُم مِّن دُونِ الرَّحْمَٰنِ ۚ إِنِ الْكَافِرُونَ إِلَّا فِي غُرُورٍ",
-    german: "Oder wer ist es, der als Heer euch helfen soll außer dem Allerbarmer? Die Ungläubigen sind nur in Selbsttäuschung befangen.",
+    german: "Wer ist es denn, der für euch eine Heerschar wäre, die euch helfen könnte, außer dem Allerbarmer? Die Ungläubigen befinden sich nur in Täuschung.",
     transliteration: "Amman hādhal-ladhī huwa jundun lakum yanṣurukum min dūnir-raḥmān, inil-kāfirūna illā fī ghurūr"
   },
   {
@@ -177,7 +177,7 @@ export const MULK_VERSES: Verse[] = [
     surahNumber: 67,
     ayahNumber: 21,
     arabic: "أَمَّنْ هَٰذَا الَّذِي يَرْزُقُكُمْ إِنْ أَمْسَكَ رِزْقَهُ ۚ بَل لَّجُّوا فِي عُتُوٍّ وَنُفُورٍ",
-    german: "Oder wer ist es, der euch versorgen wird, wenn Er Seine Versorgung zurückhält? Aber nein, sie verharren in Trotz und Abneigung.",
+    german: "Wer ist es denn, der euch versorgen könnte, wenn Er Seine Versorgung zurückhält? Aber nein! Sie verharren in Widersetzlichkeit und Abneigung.",
     transliteration: "Amman hādhal-ladhī yarzuqukum in amsaka rizqah, bal lajjū fī ʿutuwwin wa nufūr"
   },
   {
@@ -185,7 +185,7 @@ export const MULK_VERSES: Verse[] = [
     surahNumber: 67,
     ayahNumber: 22,
     arabic: "أَفَمَن يَمْشِي مُكِبًّا عَلَىٰ وَجْهِهِ أَهْدَىٰ أَمَّن يَمْشِي سَوِيًّا عَلَىٰ صِرَاطٍ مُّسْتَقِيمٍ",
-    german: "Ist nun der, der mit gesenktem Gesicht dahingeht, besser geleitet oder der, der aufrecht auf einem geraden Weg wandelt?",
+    german: "Ist denn einer, der mit dem Gesicht zu Boden geneigt geht, besser rechtgeleitet, oder einer, der aufrecht auf einem geraden Weg geht?",
     transliteration: "Afaman yamshī mukibban ʿalā wajhihī ahdā amman yamshī sawiyyan ʿalā ṣirāṭin mustaqīm"
   },
   {
@@ -193,7 +193,7 @@ export const MULK_VERSES: Verse[] = [
     surahNumber: 67,
     ayahNumber: 23,
     arabic: "قُلْ هُوَ الَّذِي أَنشَأَكُمْ وَجَعَلَ لَكُمُ السَّمْعَ وَالْأَبْصَارَ وَالْأَفْئِدَةَ ۖ قَلِيلًا مَّا تَشْكُرُونَ",
-    german: "Sprich: \"Er ist es, Der euch erschaffen und euch Gehör, Augenlicht und Herzen gegeben hat. Wie wenig dankt ihr!\"",
+    german: "Sag: Er ist es, Der euch hat entstehen lassen und euch Gehör, Augenlicht und Herzen gemacht hat. Wie wenig ihr dankbar seid!",
     transliteration: "Qul huwal-ladhī anshaʾakum wa jaʿala lakumus-samʿa wal-abṣāra wal-afʾidah, qalīlan mā tashkurūn"
   },
   {
@@ -201,7 +201,7 @@ export const MULK_VERSES: Verse[] = [
     surahNumber: 67,
     ayahNumber: 24,
     arabic: "قُلْ هُوَ الَّذِي ذَرَأَكُمْ فِي الْأَرْضِ وَإِلَيْهِ تُحْشَرُونَ",
-    german: "Sprich: \"Er ist es, Der euch auf der Erde vermehrt hat, und zu Ihm werdet ihr versammelt werden.\"",
+    german: "Sag: Er ist es, Der euch auf der Erde vermehrt hat, und zu Ihm werdet ihr versammelt werden.",
     transliteration: "Qul huwal-ladhī dharaʾakum fil-arḍi wa ilayhi tuḥsharūn"
   },
   {
@@ -209,7 +209,7 @@ export const MULK_VERSES: Verse[] = [
     surahNumber: 67,
     ayahNumber: 25,
     arabic: "وَيَقُولُونَ مَتَىٰ هَٰذَا الْوَعْدُ إِن كُنتُمْ صَادِقِينَ",
-    german: "Und sie sagen: \"Wann wird diese Verheißung erfüllt, wenn ihr wahrhaftig seid?\"",
+    german: "Und sie sagen: \"Wann wird dieses Versprechen (eingelöst werden), wenn ihr wahrhaftig seid?\"",
     transliteration: "Wa yaqūlūna matā hādhal-waʿdu in kuntum ṣādiqīn"
   },
   {
@@ -217,7 +217,7 @@ export const MULK_VERSES: Verse[] = [
     surahNumber: 67,
     ayahNumber: 26,
     arabic: "قُلْ إِنَّمَا الْعِلْمُ عِندَ اللَّهِ وَإِنَّمَا أَنَا نَذِيرٌ مُّبِينٌ",
-    german: "Sprich: \"Das Wissen ist allein bei Allah, und ich bin nur ein deutlicher Warner.\"",
+    german: "Sag: Das Wissen ist nur bei Allah, und ich bin nur ein deutlicher Warner.",
     transliteration: "Qul innamal-ʿilmu ʿinda Allāhi wa innamā anā nadhīrun mubīn"
   },
   {
@@ -225,7 +225,7 @@ export const MULK_VERSES: Verse[] = [
     surahNumber: 67,
     ayahNumber: 27,
     arabic: "فَلَمَّا رَأَوْهُ زُلْفَةً سِيئَتْ وُجُوهُ الَّذِينَ كَفَرُوا وَقِيلَ هَٰذَا الَّذِي كُنتُم بِهِ تَدَّعُونَ",
-    german: "Doch wenn sie es nahe sehen, werden die Gesichter derer, die ungläubig waren, betrübt sein. Und es wird gesagt werden: \"Dies ist es, was ihr herbeizurufen pflegtet.\"",
+    german: "Wenn sie es dann nahe sehen, werden die Gesichter derjenigen, die ungläubig sind, entstellt, und es wird gesagt werden: \"Das ist es, was ihr stets herbeigerufen habt.\"",
     transliteration: "Falammā raʾawhu zulfatan sīʾat wujūhul-ladhīna kafarū wa qīla hādhal-ladhī kuntum bihī taddaʿūn"
   },
   {
@@ -233,7 +233,7 @@ export const MULK_VERSES: Verse[] = [
     surahNumber: 67,
     ayahNumber: 28,
     arabic: "قُلْ أَرَأَيْتُمْ إِنْ أَهْلَكَنِيَ اللَّهُ وَمَن مَّعِيَ أَوْ رَحِمَنَا فَمَن يُجِيرُ الْكَافِرِينَ مِنْ عَذَابٍ أَلِيمٍ",
-    german: "Sprich: \"Sagt mir, ob Allah mich und diejenigen, die mit mir sind, vernichtet oder Sich unser erbarmt – wer wird die Ungläubigen vor einer schmerzhaften Strafe schützen?\"",
+    german: "Sag: Was meint ihr, ob Allah mich und diejenigen, die mit mir sind, verderben lässt oder ob Er Sich unser erbarmt, wer könnte die Ungläubigen vor schmerzhafter Strafe schützen?",
     transliteration: "Qul araʾaytum in ahlakaniya Allāhu wa man maʿiya aw raḥimanā faman yujīrul-kāfirīna min ʿadhābin alīm"
   },
   {
@@ -241,7 +241,7 @@ export const MULK_VERSES: Verse[] = [
     surahNumber: 67,
     ayahNumber: 29,
     arabic: "قُلْ هُوَ الرَّحْمَٰنُ آمَنَّا بِهِ وَعَلَيْهِ تَوَكَّلْنَا ۖ فَسَتَعْلَمُونَ مَنْ هُوَ فِي ضَلَالٍ مُّبِينٍ",
-    german: "Sprich: \"Er ist der Allerbarmer. An Ihn glauben wir, und auf Ihn vertrauen wir. Ihr werdet bald erfahren, wer sich in einem offenkundigen Irrtum befindet.\"",
+    german: "Sag: Er ist der Allerbarmer. An Ihn glauben wir, und auf Ihn verlassen wir uns. Ihr werdet noch erfahren, wer es ist, der sich in deutlichem Irrtum befindet.",
     transliteration: "Qul huwar-raḥmānu āmannā bihī wa ʿalayhi tawakkalnā fasataʿlamūna man huwa fī ḍalālin mubīn"
   },
   {
@@ -249,7 +249,7 @@ export const MULK_VERSES: Verse[] = [
     surahNumber: 67,
     ayahNumber: 30,
     arabic: "قُلْ أَرَأَيْتُمْ إِنْ أَصْبَحَ مَاؤُكُمْ غَوْرًا فَمَن يَأْتِيكُم بِمَاءٍ مَّعِينٍ",
-    german: "Sprich: \"Sagt mir, wenn euer Wasser versickert, wer bringt euch dann fließendes Wasser?\"",
+    german: "Sag: Was meint ihr, wenn euer Wasser versickert wäre, wer könnte euch da fließendes Wasser bringen?",
     transliteration: "Qul araʾaytum in aṣbaḥa māʾukum ghawran faman yaʾtīkum bimāʾin maʿīn"
   }
 ];
