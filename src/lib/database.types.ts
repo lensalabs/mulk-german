@@ -37,7 +37,7 @@ export interface Database {
           surah_number: number;
           ayah_number: number;
           arabic_text: string;
-          albanian_translation: string;
+          german_translation: string;
           transliteration: string | null;
           published: boolean;
           created_at: string;
@@ -49,7 +49,7 @@ export interface Database {
           surah_number: number;
           ayah_number: number;
           arabic_text: string;
-          albanian_translation: string;
+          german_translation: string;
           transliteration?: string | null;
           published?: boolean;
           created_at?: string;
@@ -61,7 +61,7 @@ export interface Database {
           surah_number?: number;
           ayah_number?: number;
           arabic_text?: string;
-          albanian_translation?: string;
+          german_translation?: string;
           transliteration?: string | null;
           published?: boolean;
           created_at?: string;
@@ -74,7 +74,7 @@ export interface Database {
           day_id: number;
           word_index: number;
           arabic_word: string;
-          albanian_meaning: string;
+          german_meaning: string;
           created_at: string;
         };
         Insert: {
@@ -82,7 +82,7 @@ export interface Database {
           day_id: number;
           word_index: number;
           arabic_word: string;
-          albanian_meaning: string;
+          german_meaning: string;
           created_at?: string;
         };
         Update: {
@@ -90,7 +90,7 @@ export interface Database {
           day_id?: number;
           word_index?: number;
           arabic_word?: string;
-          albanian_meaning?: string;
+          german_meaning?: string;
           created_at?: string;
         };
       };

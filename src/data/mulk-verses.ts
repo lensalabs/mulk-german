@@ -1,12 +1,13 @@
 // Surah Al-Mulk (67) - 30 verses for 30-day challenge
 // Each day = one verse
+// German translation by Abu Rida Muhammad ibn Ahmad ibn Rassoul
 
 export interface Verse {
   dayIndex: number;
   surahNumber: number;
   ayahNumber: number;
   arabic: string;
-  albanian: string;
+  german: string;
   transliteration: string;
 }
 
@@ -16,258 +17,257 @@ export const MULK_VERSES: Verse[] = [
     surahNumber: 67,
     ayahNumber: 1,
     arabic: "تَبَارَكَ الَّذِي بِيَدِهِ الْمُلْكُ وَهُوَ عَلَىٰ كُلِّ شَيْءٍ قَدِيرٌ",
-    albanian: "I Lartësuar është Ai, në dorën e të Cilit është sundimi dhe Ai ka fuqi për çdo gjë.",
-    transliteration: "Tebeerakel-ledhii bijedihil-mulku we huwe 'alee kul-li shej-in kadiir"
+    german: "Segensreich ist Derjenige, in Dessen Hand die Herrschaft ist, und Er hat Macht über alle Dinge.",
+    transliteration: "Tabārakal-ladhī biyadihil-mulku wa huwa ʿalā kulli shayʾin qadīr"
   },
   {
     dayIndex: 2,
     surahNumber: 67,
     ayahNumber: 2,
     arabic: "الَّذِي خَلَقَ الْمَوْتَ وَالْحَيَاةَ لِيَبْلُوَكُمْ أَيُّكُمْ أَحْسَنُ عَمَلًا ۚ وَهُوَ الْعَزِيزُ الْغَفُورُ",
-    albanian: "Ai i cili krijoi vdekjen dhe jetën, për t'ju provuar se cili prej jush do të bëjë vepra më të mira. Ai është i Plotfuqishmi, Falësi.",
-    transliteration: "El-ledhii halakal-meute wel-hajeete lijeb-luwekum ejjukum ahsenu 'amelee. We huwel-aziizul-gafuur."
+    german: "Der den Tod und das Leben erschaffen hat, um euch zu prüfen, wer von euch die besten Taten vollbringt. Und Er ist der Erhabene, der Allvergebende.",
+    transliteration: "Alladhī khalaqal-mawta wal-ḥayāta liyabluwakum ayyukum aḥsanu ʿamalā, wa huwal-ʿazīzul-ghafūr"
   },
   {
     dayIndex: 3,
     surahNumber: 67,
     ayahNumber: 3,
     arabic: "الَّذِي خَلَقَ سَبْعَ سَمَاوَاتٍ طِبَاقًا ۖ مَّا تَرَىٰ فِي خَلْقِ الرَّحْمَٰنِ مِن تَفَاوُتٍ ۖ فَارْجِعِ الْبَصَرَ هَلْ تَرَىٰ مِن فُطُورٍ",
-    albanian: "Ai i cili krijoi shtatë qiej njërin mbi tjetrin. Nuk sheh asnjë mospërputhje në krijimin e të Gjithëmëshirshmit. Ktheje shikimin, a sheh ndonjë të çarë?",
-    transliteration: "El-ledhii halaka seb'a semeeweetin tibeekaa. Mee teraa fii halkirr-rrahmeeni min tefeewut. Ferxhi'il-besara hel-teraa min futuur"
+    german: "Der sieben Himmel in Schichten erschaffen hat. Du siehst in der Schöpfung des Allerbarmers keine Unstimmigkeit. So wende den Blick zurück: Siehst du irgendeinen Mangel?",
+    transliteration: "Alladhī khalaqa sabʿa samāwātin ṭibāqā, mā tarā fī khalqir-raḥmāni min tafāwut, farjiʿil-baṣara hal tarā min fuṭūr"
   },
   {
     dayIndex: 4,
     surahNumber: 67,
     ayahNumber: 4,
     arabic: "ثُمَّ ارْجِعِ الْبَصَرَ كَرَّتَيْنِ يَنقَلِبْ إِلَيْكَ الْبَصَرُ خَاسِئًا وَهُوَ حَسِيرٌ",
-    albanian: "Pastaj ktheje shikimin edhe dy herë, shikimi do të të kthehet i poshtëruar dhe i lodhur.",
-    transliteration: "Thummerxhi'il basara kerratejni jennkalib' ilejkel basaru haasi-an ue huve hasiir."
+    german: "Dann wende den Blick zweimal zurück; der Blick wird zu dir zurückkehren, ermüdet und erschöpft.",
+    transliteration: "Thummarjiʿil-baṣara karratayni yanqalib ilayka al-baṣaru khāsiʾan wa huwa ḥasīr"
   },
   {
     dayIndex: 5,
     surahNumber: 67,
     ayahNumber: 5,
     arabic: "وَلَقَدْ زَيَّنَّا السَّمَاءَ الدُّنْيَا بِمَصَابِيحَ وَجَعَلْنَاهَا رُجُومًا لِّلشَّيَاطِينِ ۖ وَأَعْتَدْنَا لَهُمْ عَذَابَ السَّعِيرِ",
-    albanian: "Ne e kemi stolisur qiellin më të afërt me yje dhe i kemi bërë ata gjuajtje kundër djajve, të cilëve u kemi përgatitur dënimin e zjarrit flakërues.",
-    transliteration: "We lekad zejjennes-semee e-ddunjee bimesaabiihe wexhe'al-neehee ruxhuu mel-lish-shejeetiin. We e'ated nee lehum 'adheebes-se'iir."
+    german: "Und wahrlich, Wir haben den untersten Himmel mit Leuchten geschmückt und haben sie zu Wurfgeschossen gegen die Satane gemacht. Und für sie haben Wir die Strafe der Flamme bereitet.",
+    transliteration: "Wa laqad zayyannās-samāʾad-dunyā bimaṣābīḥa wa jaʿalnāhā rujūman lish-shayāṭīn, wa aʿtadnā lahum ʿadhābas-saʿīr"
   },
   {
     dayIndex: 6,
     surahNumber: 67,
     ayahNumber: 6,
     arabic: "وَلِلَّذِينَ كَفَرُوا بِرَبِّهِمْ عَذَابُ جَهَنَّمَ ۖ وَبِئْسَ الْمَصِيرُ",
-    albanian: "Për ata që mohojnë Zotin e tyre ka dënim të Xhehenemit. Eh, sa vendbanim i keq që është ai!",
-    transliteration: "We lil-ledhiine keferuu birabbihim adheebu xhehenneme we bi'selmesiir"
+    german: "Und für diejenigen, die ihren Herrn verleugnen, ist die Strafe der Hölle bestimmt. Und welch schlimmer Ausgang!",
+    transliteration: "Wa lilladhīna kafarū birabbihim ʿadhābu jahannama wa biʾsal-maṣīr"
   },
   {
     dayIndex: 7,
     surahNumber: 67,
     ayahNumber: 7,
     arabic: "إِذَا أُلْقُوا فِيهَا سَمِعُوا لَهَا شَهِيقًا وَهِيَ تَفُورُ",
-    albanian: "Kur hidhen në të, dëgjojnë zhurmën e tij teksa vlon.",
-    transliteration: "Idhee ulkuu fiihee semiuulehe shehiikaw-wehije tefuur"
+    german: "Wenn sie hineingeworfen werden, hören sie von ihr ein Aufheulen, während sie brodelt.",
+    transliteration: "Idhā ulqū fīhā samiʿū lahā shahīqan wa hiya tafūr"
   },
   {
     dayIndex: 8,
     surahNumber: 67,
     ayahNumber: 8,
     arabic: "تَكَادُ تَمَيَّزُ مِنَ الْغَيْظِ ۖ كُلَّمَا أُلْقِيَ فِيهَا فَوْجٌ سَأَلَهُمْ خَزَنَتُهَا أَلَمْ يَأْتِكُمْ نَذِيرٌ",
-    albanian: "Gati copëtohet nga tërbimi. Sa herë që hidhet në të një grup, rojtarët e tij i pyesin: \"A nuk ju erdhi paralajmërues?\"",
-    transliteration: "Tekee du temejjezu minel-gajdh. kul-lemee ul-kije fihee feuxhun se elehum hazenetuhee elem je'tikum nedhiir"
+    german: "Es fehlt wenig, dass sie vor Wut birst. Sooft eine Schar hineingeworfen wird, fragen sie ihre Wärter: \"Ist kein Warner zu euch gekommen?\"",
+    transliteration: "Takādu tamayyazu minal-ghayẓ, kullamā ulqiya fīhā fawjun saʾalahum khazanatuhā alam yaʾtikum nadhīr"
   },
   {
     dayIndex: 9,
     surahNumber: 67,
     ayahNumber: 9,
     arabic: "قَالُوا بَلَىٰ قَدْ جَاءَنَا نَذِيرٌ فَكَذَّبْنَا وَقُلْنَا مَا نَزَّلَ اللَّهُ مِن شَيْءٍ إِنْ أَنتُمْ إِلَّا فِي ضَلَالٍ كَبِيرٍ",
-    albanian: "Ata do të thonë: \"Po, na erdhi paralajmërues, por ne e përgënjeshtruam dhe thamë: 'Allahu nuk ka zbritur asgjë. Ju jeni vetëm në një humbje të madhe.'\"",
-    transliteration: "Kaluu belee kad xhee enee nedhiirun fekedh-dhebnee wekulnee mee nezzelAllahu min shej'in in entum il-la fii daleelin kebiir"
+    german: "Sie werden sagen: \"Ja doch, es kam ein Warner zu uns, aber wir haben ihn der Lüge bezichtigt und gesagt: 'Allah hat nichts herabgesandt. Ihr befindet euch nur in einem großen Irrtum.'\"",
+    transliteration: "Qālū balā qad jāʾanā nadhīrun fakadhdhabnā wa qulnā mā nazzala Allāhu min shayʾin in antum illā fī ḍalālin kabīr"
   },
   {
     dayIndex: 10,
     surahNumber: 67,
     ayahNumber: 10,
     arabic: "وَقَالُوا لَوْ كُنَّا نَسْمَعُ أَوْ نَعْقِلُ مَا كُنَّا فِي أَصْحَابِ السَّعِيرِ",
-    albanian: "Dhe do të thonë: \"Sikur të kishim dëgjuar apo kuptuar, nuk do të ishim ndër banorët e zjarrit flakërues.\"",
-    transliteration: "Wekaaluu leu kunnee nesme'u ew na'kilu mee kunnee fii as-heebis-se'iir"
+    german: "Und sie werden sagen: \"Hätten wir nur zugehört oder unseren Verstand gebraucht, wären wir nicht unter den Bewohnern der Flamme.\"",
+    transliteration: "Wa qālū law kunnā nasmaʿu aw naʿqilu mā kunnā fī aṣḥābis-saʿīr"
   },
   {
     dayIndex: 11,
     surahNumber: 67,
     ayahNumber: 11,
     arabic: "فَاعْتَرَفُوا بِذَنبِهِمْ فَسُحْقًا لِّأَصْحَابِ السَّعِيرِ",
-    albanian: "Kështu ata pranojnë mëkatin e tyre, prandaj largim për banorët e zjarrit flakërues!",
-    transliteration: "Fe'tera fuu bidhembihim fesuhkal-li as-hebis-se'iir"
+    german: "So bekennen sie ihre Sünden. Darum: Hinweg mit den Bewohnern der Flamme!",
+    transliteration: "Faʿtarafū bidhanbihim fasuḥqan li-aṣḥābis-saʿīr"
   },
   {
     dayIndex: 12,
     surahNumber: 67,
     ayahNumber: 12,
     arabic: "إِنَّ الَّذِينَ يَخْشَوْنَ رَبَّهُم بِالْغَيْبِ لَهُم مَّغْفِرَةٌ وَأَجْرٌ كَبِيرٌ",
-    albanian: "Vërtet, ata që i frikësohen Zotit të tyre pa e parë, për ta ka falje dhe shpërblim të madh.",
-    transliteration: "In-nel-ledhiine jah-sheune rabbehum-bil-gajbi lehum-meg'firatun we exhrun kebiir."
+    german: "Wahrlich, diejenigen, die ihren Herrn im Verborgenen fürchten, für sie ist Vergebung und großer Lohn bestimmt.",
+    transliteration: "Innal-ladhīna yakhshawna rabbahum bil-ghaybi lahum maghfiratun wa ajrun kabīr"
   },
   {
     dayIndex: 13,
     surahNumber: 67,
     ayahNumber: 13,
     arabic: "وَأَسِرُّوا قَوْلَكُمْ أَوِ اجْهَرُوا بِهِ ۖ إِنَّهُ عَلِيمٌ بِذَاتِ الصُّدُورِ",
-    albanian: "Fshiheni fjalën tuaj ose shpalleni haptazi, Ai di çdo gjë që ka në zemra.",
-    transliteration: "We esirruu kaulekum ewixh heruu bih, innehuu 'aliimun-bi-dheetis-suduur"
+    german: "Und ob ihr eure Worte verbergt oder sie kundtut: Er weiß über das Innerste der Herzen Bescheid.",
+    transliteration: "Wa asirrū qawlakum awijharū bih, innahu ʿalīmun bidhātis-ṣudūr"
   },
   {
     dayIndex: 14,
     surahNumber: 67,
     ayahNumber: 14,
     arabic: "أَلَا يَعْلَمُ مَنْ خَلَقَ وَهُوَ اللَّطِيفُ الْخَبِيرُ",
-    albanian: "A nuk di Ai që ka krijuar? Ai është i Buti, i Gjithëdituri.",
-    transliteration: "Elee ja'lemu men haleka we huwel-latiful habiir"
+    german: "Sollte Der, Der erschaffen hat, es nicht wissen? Und Er ist der Feinfühlige, der Allkundige.",
+    transliteration: "Alā yaʿlamu man khalaqa wa huwal-laṭīful-khabīr"
   },
   {
     dayIndex: 15,
     surahNumber: 67,
     ayahNumber: 15,
     arabic: "هُوَ الَّذِي جَعَلَ لَكُمُ الْأَرْضَ ذَلُولًا فَامْشُوا فِي مَنَاكِبِهَا وَكُلُوا مِن رِّزْقِهِ ۖ وَإِلَيْهِ النُّشُورُ",
-    albanian: "Ai është që jua bëri tokën të përshtatshme, ecni nëpër anët e saj dhe hani nga furnizimi i Tij. Tek Ai do të ringjalleni.",
-    transliteration: "Huwel-ledhii xhe'ale lekumul-erda dheluulen femshuu fii meneekibihee wekuluu mir-rizkihi we-ilejhin-nushuur"
+    german: "Er ist es, Der euch die Erde gefügig gemacht hat; so wandert auf ihren Wegen und esst von Seiner Versorgung. Und zu Ihm führt die Auferstehung.",
+    transliteration: "Huwal-ladhī jaʿala lakumul-arḍa dhalūlan famshū fī manākibihā wa kulū min rizqih, wa ilayhin-nushūr"
   },
   {
     dayIndex: 16,
     surahNumber: 67,
     ayahNumber: 16,
     arabic: "أَأَمِنتُم مَّن فِي السَّمَاءِ أَن يَخْسِفَ بِكُمُ الْأَرْضَ فَإِذَا هِيَ تَمُورُ",
-    albanian: "A jeni të sigurt që Ai që është në qiell nuk do t'ju fundosë në tokë, kur ajo të dridhet?",
-    transliteration: "E emintum-men fissamaa-i ej-jeksife bikumul-erda fe-idhee hije temuur"
+    german: "Seid ihr sicher, dass Der, Der im Himmel ist, die Erde nicht mit euch versinken lässt, wenn sie plötzlich schwankt?",
+    transliteration: "A-amintum man fis-samāʾi an yakhsifa bikumul-arḍa fa-idhā hiya tamūr"
   },
   {
     dayIndex: 17,
     surahNumber: 67,
     ayahNumber: 17,
     arabic: "أَمْ أَمِنتُم مَّن فِي السَّمَاءِ أَن يُرْسِلَ عَلَيْكُمْ حَاصِبًا ۖ فَسَتَعْلَمُونَ كَيْفَ نَذِيرِ",
-    albanian: "Apo jeni të sigurt që Ai që është në qiell nuk do t'ju dërgojë stuhi gurësh? Atëherë do ta dini si është paralajmërimi Im.",
-    transliteration: "Em emintum-men-fissemee i ej-jursile alejkum haasibee fesetea'lemuune kejfe nedhiir"
+    german: "Oder seid ihr sicher, dass Der, Der im Himmel ist, keinen Sandsturm über euch schickt? Dann werdet ihr wissen, wie Meine Warnung ist!",
+    transliteration: "Am amintum man fis-samāʾi an yursila ʿalaykum ḥāṣiban fasataʿlamūna kayfa nadhīr"
   },
   {
     dayIndex: 18,
     surahNumber: 67,
     ayahNumber: 18,
     arabic: "وَلَقَدْ كَذَّبَ الَّذِينَ مِن قَبْلِهِمْ فَكَيْفَ كَانَ نَكِيرِ",
-    albanian: "Vërtet, ata para tyre gjithashtu përgënjeshtruan, por si ishte dënimi Im!",
-    transliteration: "We lekad kedheb-bel-ledhine min kablihim fekejfe keene nekiir"
+    german: "Und diejenigen vor ihnen haben auch geleugnet. Und wie war dann Meine Vergeltung!",
+    transliteration: "Wa laqad kadhdhaba alladhīna min qablihim fakayfa kāna nakīr"
   },
   {
     dayIndex: 19,
     surahNumber: 67,
     ayahNumber: 19,
     arabic: "أَوَلَمْ يَرَوْا إِلَى الطَّيْرِ فَوْقَهُمْ صَافَّاتٍ وَيَقْبِضْنَ ۚ مَا يُمْسِكُهُنَّ إِلَّا الرَّحْمَٰنُ ۚ إِنَّهُ بِكُلِّ شَيْءٍ بَصِيرٌ",
-    albanian: "A nuk i shohin zogjtë sipër tyre, duke i shtrirë krahët dhe duke i mbledhur? Nuk i mban ata askush veç të Gjithëmëshirshmit. Vërtet, Ai i sheh të gjitha.",
-    transliteration: "Ewe lem jerau ilet-tajri feukahum seeffetin- we jekbidn, mee jumsikuhunne il-larrahmeenu innehu bikuli shej'in besiir"
+    german: "Haben sie nicht die Vögel über sich gesehen, wie sie ihre Flügel ausbreiten und sie einziehen? Nur der Allerbarmer hält sie. Wahrlich, Er sieht alle Dinge.",
+    transliteration: "Awalam yaraw ilat-ṭayri fawqahum ṣāffātin wa yaqbiḍna mā yumsikuhunna illar-raḥmān, innahu bikulli shayʾin baṣīr"
   },
   {
     dayIndex: 20,
     surahNumber: 67,
     ayahNumber: 20,
     arabic: "أَمَّنْ هَٰذَا الَّذِي هُوَ جُندٌ لَّكُمْ يَنصُرُكُم مِّن دُونِ الرَّحْمَٰنِ ۚ إِنِ الْكَافِرُونَ إِلَّا فِي غُرُورٍ",
-    albanian: "Kush është ai që si ushtri do t'ju ndihmojë kundër të Gjithëmëshirshmit? Mohuesit janë vetëm në mashtrim.",
-    transliteration: "Emmen heedhel-ledhii huwe xhundul-lekum jensurukum-min duunirrahmaan inil-keefiruune ilaa fii guruur"
+    german: "Oder wer ist es, der als Heer euch helfen soll außer dem Allerbarmer? Die Ungläubigen sind nur in Selbsttäuschung befangen.",
+    transliteration: "Amman hādhal-ladhī huwa jundun lakum yanṣurukum min dūnir-raḥmān, inil-kāfirūna illā fī ghurūr"
   },
   {
     dayIndex: 21,
     surahNumber: 67,
     ayahNumber: 21,
     arabic: "أَمَّنْ هَٰذَا الَّذِي يَرْزُقُكُمْ إِنْ أَمْسَكَ رِزْقَهُ ۚ بَل لَّجُّوا فِي عُتُوٍّ وَنُفُورٍ",
-    albanian: "Kush është ai që do t'ju furnizojë nëse Ai ndalon furnizimin e Tij? Por ata vazhdojnë në arrogancë dhe largim.",
-    transliteration: "Emmen heedhel-ledhii jerzukukum in emseka rizkah, bel-lexhuu fii 'utuwwin wanufuur"
+    german: "Oder wer ist es, der euch versorgen wird, wenn Er Seine Versorgung zurückhält? Aber nein, sie verharren in Trotz und Abneigung.",
+    transliteration: "Amman hādhal-ladhī yarzuqukum in amsaka rizqah, bal lajjū fī ʿutuwwin wa nufūr"
   },
   {
     dayIndex: 22,
     surahNumber: 67,
     ayahNumber: 22,
     arabic: "أَفَمَن يَمْشِي مُكِبًّا عَلَىٰ وَجْهِهِ أَهْدَىٰ أَمَّن يَمْشِي سَوِيًّا عَلَىٰ صِرَاطٍ مُّسْتَقِيمٍ",
-    albanian: "A është më i udhëzuar ai që ecën me fytyrën përmbys apo ai që ecën drejt në rrugën e drejtë?",
-    transliteration: "Efemen jemshii mukibben 'alee wexhhihi ehdee emmej jemshii sewijjen 'aale siraatim-mustekiim"
+    german: "Ist nun der, der mit gesenktem Gesicht dahingeht, besser geleitet oder der, der aufrecht auf einem geraden Weg wandelt?",
+    transliteration: "Afaman yamshī mukibban ʿalā wajhihī ahdā amman yamshī sawiyyan ʿalā ṣirāṭin mustaqīm"
   },
   {
     dayIndex: 23,
     surahNumber: 67,
     ayahNumber: 23,
     arabic: "قُلْ هُوَ الَّذِي أَنشَأَكُمْ وَجَعَلَ لَكُمُ السَّمْعَ وَالْأَبْصَارَ وَالْأَفْئِدَةَ ۖ قَلِيلًا مَّا تَشْكُرُونَ",
-    albanian: "Thuaj: \"Ai është që ju krijoi dhe ju dha dëgjimin, shikimin dhe zemrat. Sa pak falënderoni!\"",
-    transliteration: "Kul huwel-ledhii enshe-ekum wexhe'ale lekumus-sem'e wel-ebsaara wel-ef-idate kaliilem-mee teshkuruun"
+    german: "Sprich: \"Er ist es, Der euch erschaffen und euch Gehör, Augenlicht und Herzen gegeben hat. Wie wenig dankt ihr!\"",
+    transliteration: "Qul huwal-ladhī anshaʾakum wa jaʿala lakumus-samʿa wal-abṣāra wal-afʾidah, qalīlan mā tashkurūn"
   },
   {
     dayIndex: 24,
     surahNumber: 67,
     ayahNumber: 24,
     arabic: "قُلْ هُوَ الَّذِي ذَرَأَكُمْ فِي الْأَرْضِ وَإِلَيْهِ تُحْشَرُونَ",
-    albanian: "Thuaj: \"Ai është që ju shpërndau në tokë dhe tek Ai do të tuboheni.\"",
-    transliteration: "Kul huwel-ledhii dhera-ekum fil-erdi we-ilejhi tuhsheruun"
+    german: "Sprich: \"Er ist es, Der euch auf der Erde vermehrt hat, und zu Ihm werdet ihr versammelt werden.\"",
+    transliteration: "Qul huwal-ladhī dharaʾakum fil-arḍi wa ilayhi tuḥsharūn"
   },
   {
     dayIndex: 25,
     surahNumber: 67,
     ayahNumber: 25,
     arabic: "وَيَقُولُونَ مَتَىٰ هَٰذَا الْوَعْدُ إِن كُنتُمْ صَادِقِينَ",
-    albanian: "Dhe thonë: \"Kur do të vijë ky premtim, nëse jeni të sinqertë?\"",
-    transliteration: "Wejekuuluune metee heedhel wa'du in kuntum saadikiin"
+    german: "Und sie sagen: \"Wann wird diese Verheißung erfüllt, wenn ihr wahrhaftig seid?\"",
+    transliteration: "Wa yaqūlūna matā hādhal-waʿdu in kuntum ṣādiqīn"
   },
   {
     dayIndex: 26,
     surahNumber: 67,
     ayahNumber: 26,
     arabic: "قُلْ إِنَّمَا الْعِلْمُ عِندَ اللَّهِ وَإِنَّمَا أَنَا نَذِيرٌ مُّبِينٌ",
-    albanian: "Thuaj: \"Dituria është vetëm tek Allahu dhe unë jam vetëm paralajmërues i qartë.\"",
-    transliteration: "Kul innemel 'ilmu 'indallahi we-innemee ene nedhiirun mubiin"
+    german: "Sprich: \"Das Wissen ist allein bei Allah, und ich bin nur ein deutlicher Warner.\"",
+    transliteration: "Qul innamal-ʿilmu ʿinda Allāhi wa innamā anā nadhīrun mubīn"
   },
   {
     dayIndex: 27,
     surahNumber: 67,
     ayahNumber: 27,
     arabic: "فَلَمَّا رَأَوْهُ زُلْفَةً سِيئَتْ وُجُوهُ الَّذِينَ كَفَرُوا وَقِيلَ هَٰذَا الَّذِي كُنتُم بِهِ تَدَّعُونَ",
-    albanian: "Por kur ta shohin afër, fytyrat e mohuesve do të trishtohën dhe do t'u thuhet: \"Kjo është ajo që e kërkonit.\"",
-    transliteration: "Felemmee ra ewhu zulfeten sii-et wuxhuuhul-ledhiine keferuu wekiile heedhel-ledhii kuntum bihii tedde'uun"
+    german: "Doch wenn sie es nahe sehen, werden die Gesichter derer, die ungläubig waren, betrübt sein. Und es wird gesagt werden: \"Dies ist es, was ihr herbeizurufen pflegtet.\"",
+    transliteration: "Falammā raʾawhu zulfatan sīʾat wujūhul-ladhīna kafarū wa qīla hādhal-ladhī kuntum bihī taddaʿūn"
   },
   {
     dayIndex: 28,
     surahNumber: 67,
     ayahNumber: 28,
     arabic: "قُلْ أَرَأَيْتُمْ إِنْ أَهْلَكَنِيَ اللَّهُ وَمَن مَّعِيَ أَوْ رَحِمَنَا فَمَن يُجِيرُ الْكَافِرِينَ مِنْ عَذَابٍ أَلِيمٍ",
-    albanian: "Thuaj: \"A e keni parë, nëse Allahu më shkatërron mua dhe ata që janë me mua, ose na mëshiron, kush do t'i mbrojë mohuesit nga dënimi i dhimbshëm?\"",
-    transliteration: "Kul era ejtum in ahlaknijAllahu wemen me'je ew rahimenee femen juxhiirul- keefiriine min 'adheebin alim"
+    german: "Sprich: \"Sagt mir, ob Allah mich und diejenigen, die mit mir sind, vernichtet oder Sich unser erbarmt – wer wird die Ungläubigen vor einer schmerzhaften Strafe schützen?\"",
+    transliteration: "Qul araʾaytum in ahlakaniya Allāhu wa man maʿiya aw raḥimanā faman yujīrul-kāfirīna min ʿadhābin alīm"
   },
   {
     dayIndex: 29,
     surahNumber: 67,
     ayahNumber: 29,
     arabic: "قُلْ هُوَ الرَّحْمَٰنُ آمَنَّا بِهِ وَعَلَيْهِ تَوَكَّلْنَا ۖ فَسَتَعْلَمُونَ مَنْ هُوَ فِي ضَلَالٍ مُّبِينٍ",
-    albanian: "Thuaj: \"Ai është i Gjithëmëshirshmi, ne besojmë në Të dhe tek Ai mbështetemi. Së shpejti do ta dini kush është në humbje të qartë.\"",
-    transliteration: "Kul huwerrahmeenu eemennee bihi we'alejhi tewekkelnee fesetea'lemuune men huwe fii daleelin mubiin"
+    german: "Sprich: \"Er ist der Allerbarmer. An Ihn glauben wir, und auf Ihn vertrauen wir. Ihr werdet bald erfahren, wer sich in einem offenkundigen Irrtum befindet.\"",
+    transliteration: "Qul huwar-raḥmānu āmannā bihī wa ʿalayhi tawakkalnā fasataʿlamūna man huwa fī ḍalālin mubīn"
   },
   {
     dayIndex: 30,
     surahNumber: 67,
     ayahNumber: 30,
     arabic: "قُلْ أَرَأَيْتُمْ إِنْ أَصْبَحَ مَاؤُكُمْ غَوْرًا فَمَن يَأْتِيكُم بِمَاءٍ مَّعِينٍ",
-    albanian: "Thuaj: \"A e keni parë, nëse uji juaj zhduket në tokë, kush do t'ju sjellë ujë të rrjedhshëm?\"",
-    transliteration: "Kul era ejtum in asbaha mee ukum ghawran femen je-tikum bimee-in me'iin"
+    german: "Sprich: \"Sagt mir, wenn euer Wasser versickert, wer bringt euch dann fließendes Wasser?\"",
+    transliteration: "Qul araʾaytum in aṣbaḥa māʾukum ghawran faman yaʾtīkum bimāʾin maʿīn"
   }
 ];
 
-// Helper to get verse by day
-export const getVerseByDay = (dayIndex: number): Verse | undefined => {
-  return MULK_VERSES.find(v => v.dayIndex === dayIndex);
-};
-
-// Get all verses
-export const getAllVerses = (): Verse[] => MULK_VERSES;
-
-// Surah metadata
+// Surah info
 export const SURAH_INFO = {
   number: 67,
   name: 'Al-Mulk',
-  nameArabic: 'الملك',
-  nameAlbanian: 'Sundimi',
-  totalVerses: 30,
-  revelation: 'Mekase',
-  description: 'Surja El-Mulk (Sundimi) është surja e 67-të e Kuranit. Ka 30 ajete dhe u shpall në Mekë.'
+  arabicName: 'الملك',
+  meaning: 'Die Herrschaft',
+  verses: 30,
+  revelation: 'Mekka'
 };
+
+// Helper function to get verse by day
+export function getVerseByDay(dayIndex: number): Verse | undefined {
+  return MULK_VERSES.find(v => v.dayIndex === dayIndex);
+}
+
+// Legacy export for compatibility
+export const mulkVerses = MULK_VERSES;

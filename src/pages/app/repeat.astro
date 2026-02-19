@@ -2,10 +2,10 @@
 import Layout from '../../layouts/Layout.astro';
 import BottomNav from '../../components/BottomNav.astro';
 import { MULK_VERSES } from '../../data/mulk-verses';
-import wordByWordData from '../../data/word-by-word.json';
+// word-by-word removed
 ---
 
-<Layout title="Përsëritje">
+<Layout title="Wiederholung">
   <div class="min-h-screen flex flex-col bg-[var(--color-background)]">
     
     <!-- Header with gradient + headphones icon for audio -->
@@ -14,9 +14,9 @@ import wordByWordData from '../../data/word-by-word.json';
         <div class="text-center">
           <div class="flex items-center justify-center gap-2">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072M18.364 5.636a9 9 0 010 12.728M6.5 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h2.5l4-4v14l-4-4z"></path></svg>
-            <h1 class="text-lg font-semibold tracking-tight">Përsëritje</h1>
+            <h1 class="text-lg font-semibold tracking-tight">Wiederholung</h1>
           </div>
-          <p class="text-xs text-white/70">Dëgjo dhe mëso</p>
+          <p class="text-xs text-white/70">Höre und lerne</p>
         </div>
       </div>
     </header>
@@ -27,7 +27,7 @@ import wordByWordData from '../../data/word-by-word.json';
         
         <!-- Quick Presets Card -->
         <div class="card">
-          <p class="text-sm text-[var(--color-text-secondary)] mb-4">Zgjidh çfarë dëshiron të përsëritësh</p>
+          <p class="text-sm text-[var(--color-text-secondary)] mb-4">Wähle, was du wiederholen möchtest</p>
           
           <div class="space-y-2">
             <!-- Full Sureja -->
@@ -37,8 +37,8 @@ import wordByWordData from '../../data/word-by-word.json';
                   <svg class="w-5 h-5 text-[var(--color-primary)]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
                 </div>
                 <div class="text-left">
-                  <p class="font-semibold text-[var(--color-text)]">Sureja e plotë</p>
-                  <p class="text-xs text-[var(--color-text-secondary)]">Ajetet 1-30</p>
+                  <p class="font-semibold text-[var(--color-text)]">Komplette Sure</p>
+                  <p class="text-xs text-[var(--color-text-secondary)]">Verse 1-30</p>
                 </div>
               </div>
               <div class="radio-indicator w-5 h-5 rounded-full border-2 border-[var(--color-primary)] flex items-center justify-center">
@@ -53,8 +53,8 @@ import wordByWordData from '../../data/word-by-word.json';
                   <svg class="w-5 h-5 text-[#005086]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 19l-7-7 7-7m8 14l-7-7 7-7"/></svg>
                 </div>
                 <div class="text-left">
-                  <p class="font-semibold text-[var(--color-text)]">Gjysma e parë</p>
-                  <p class="text-xs text-[var(--color-text-secondary)]">Ajetet 1-15</p>
+                  <p class="font-semibold text-[var(--color-text)]">Erste Hälfte</p>
+                  <p class="text-xs text-[var(--color-text-secondary)]">Verse 1-15</p>
                 </div>
               </div>
               <div class="radio-indicator w-5 h-5 rounded-full border-2 border-[var(--color-border)]"></div>
@@ -67,8 +67,8 @@ import wordByWordData from '../../data/word-by-word.json';
                   <svg class="w-5 h-5 text-[#005086]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5l7 7-7 7M5 5l7 7-7 7"/></svg>
                 </div>
                 <div class="text-left">
-                  <p class="font-semibold text-[var(--color-text)]">Gjysma e dytë</p>
-                  <p class="text-xs text-[var(--color-text-secondary)]">Ajetet 16-30</p>
+                  <p class="font-semibold text-[var(--color-text)]">Zweite Hälfte</p>
+                  <p class="text-xs text-[var(--color-text-secondary)]">Verse 16-30</p>
                 </div>
               </div>
               <div class="radio-indicator w-5 h-5 rounded-full border-2 border-[var(--color-border)]"></div>
@@ -81,8 +81,8 @@ import wordByWordData from '../../data/word-by-word.json';
                   <svg class="w-5 h-5 text-[#318fb5]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>
                 </div>
                 <div class="text-left">
-                  <p class="font-semibold text-[var(--color-text)]">10 të parat</p>
-                  <p class="text-xs text-[var(--color-text-secondary)]">Ajetet 1-10</p>
+                  <p class="font-semibold text-[var(--color-text)]">Erste 10</p>
+                  <p class="text-xs text-[var(--color-text-secondary)]">Verse 1-10</p>
                 </div>
               </div>
               <div class="radio-indicator w-5 h-5 rounded-full border-2 border-[var(--color-border)]"></div>
@@ -95,8 +95,8 @@ import wordByWordData from '../../data/word-by-word.json';
                   <svg class="w-5 h-5 text-[#318fb5]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
                 </div>
                 <div class="text-left">
-                  <p class="font-semibold text-[var(--color-text)]">10 të fundit</p>
-                  <p class="text-xs text-[var(--color-text-secondary)]">Ajetet 21-30</p>
+                  <p class="font-semibold text-[var(--color-text)]">Letzte 10</p>
+                  <p class="text-xs text-[var(--color-text-secondary)]">Verse 21-30</p>
                 </div>
               </div>
               <div class="radio-indicator w-5 h-5 rounded-full border-2 border-[var(--color-border)]"></div>
@@ -162,7 +162,7 @@ import wordByWordData from '../../data/word-by-word.json';
               <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
             </button>
             <div class="text-center">
-              <h1 class="text-lg font-semibold">Përsëritje</h1>
+              <h1 class="text-lg font-semibold">Wiederholung</h1>
               <p class="text-xs text-white/70">Ajeti <span id="player-ayah-num">1</span> / <span id="total-ayahs">30</span></p>
             </div>
             <div class="w-11"></div>
@@ -199,7 +199,7 @@ import wordByWordData from '../../data/word-by-word.json';
               <!-- Translation Toggle -->
               <button id="toggle-translation" class="w-full px-4 py-3 flex items-center justify-center gap-2 text-[var(--color-primary)] hover:bg-[var(--color-background)]/50 transition-colors border-t border-[var(--color-border)]/50 shrink-0">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"></path></svg>
-                <span class="text-sm font-medium" id="translation-toggle-text">Shfaq përkthimin</span>
+                <span class="text-sm font-medium" id="translation-toggle-text">Übersetzung anzeigen</span>
               </button>
             </div>
           </div>
@@ -250,7 +250,7 @@ import wordByWordData from '../../data/word-by-word.json';
             </a>
             <a href="/app/repeat" class="nav-item active">
               <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
-              <span class="text-xs font-medium">Përsëritje</span>
+              <span class="text-xs font-medium">Wiederholung</span>
             </a>
             <a href="/app/quiz" class="nav-item">
               <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path></svg>
@@ -336,7 +336,7 @@ import wordByWordData from '../../data/word-by-word.json';
 
 <script>
   import { MULK_VERSES } from '../../data/mulk-verses';
-  import wordByWordData from '../../data/word-by-word.json';
+  // word-by-word removed
   import { getSession } from '../../lib/supabase';
 
   // Auth check (allow guest mode)
@@ -352,9 +352,7 @@ import wordByWordData from '../../data/word-by-word.json';
     } catch (e) {}
   })();
   
-  // Word-by-word data type
-  type WordByWordEntry = { word: number; albanian: string; arabic: string };
-  const wordByWord = wordByWordData as Record<string, WordByWordEntry[]>;
+  // Word-by-word removed - using simple word split
   
   // State
   let selectedStart = 1;
@@ -633,23 +631,15 @@ import wordByWordData from '../../data/word-by-word.json';
     // Update UI - render Arabic words individually for highlighting
     document.getElementById('player-ayah-num')!.textContent = String(currentAyah);
     if (arabicEl && verse) {
-      // Use word-by-word data for precise word boundaries (matches timestamps.json)
-      const wbwWords = wordByWord[String(currentAyah)] || [];
-      if (wbwWords.length > 0) {
-        arabicEl.innerHTML = wbwWords.map((wordData, i) => 
-          `<span class="arabic-word inline-block" data-word-index="${i}" data-albanian="${wordData.albanian}">${wordData.arabic}</span>`
-        ).join(' ');
-      } else {
-        // Fallback to simple split if no word-by-word data
-        const words = verse.arabic.split(/\s+/);
-        arabicEl.innerHTML = words.map((word, i) => 
-          `<span class="arabic-word inline-block" data-word-index="${i}">${word}</span>`
-        ).join(' ');
-      }
+      // Simple word split for Arabic text
+      const words = verse.arabic.split(/\s+/);
+      arabicEl.innerHTML = words.map((word, i) => 
+        `<span class="arabic-word inline-block" data-word-index="${i}">${word}</span>`
+      ).join(' ');
       arabicEl.classList.remove('hidden');
     }
     if (translationEl) translationEl.classList.add('hidden');
-    if (toggleText) toggleText.textContent = 'Shfaq përkthimin';
+    if (toggleText) toggleText.textContent = 'Übersetzung anzeigen';
     
     // Update transliteration
     const translitEl = document.querySelector('#player-transliteration p');
@@ -773,7 +763,7 @@ import wordByWordData from '../../data/word-by-word.json';
       // Show translation (LTR), hide Arabic (RTL)
       if (arabicEl) arabicEl.classList.add('hidden');
       if (translationEl) {
-        translationEl.textContent = verse.albanian;
+        translationEl.textContent = verse.german;
         translationEl.classList.remove('hidden');
       }
       if (toggleText) toggleText.textContent = 'Shfaq arabishten';
@@ -784,7 +774,7 @@ import wordByWordData from '../../data/word-by-word.json';
         arabicEl.textContent = verse.arabic;
         arabicEl.classList.remove('hidden');
       }
-      if (toggleText) toggleText.textContent = 'Shfaq përkthimin';
+      if (toggleText) toggleText.textContent = 'Übersetzung anzeigen';
     }
   });
   

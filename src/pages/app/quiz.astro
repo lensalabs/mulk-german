@@ -4,7 +4,7 @@ import BottomNav from '../../components/BottomNav.astro';
 import { MULK_VERSES } from '../../data/mulk-verses';
 ---
 
-<Layout title="Testi">
+<Layout title="Test">
   <div class="min-h-screen flex flex-col bg-[var(--color-background)]">
     
     <!-- Header with gradient + brain icon for quiz -->
@@ -13,9 +13,9 @@ import { MULK_VERSES } from '../../data/mulk-verses';
         <div class="text-center">
           <div class="flex items-center justify-center gap-2">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg>
-            <h1 class="text-lg font-semibold tracking-tight">Testi</h1>
+            <h1 class="text-lg font-semibold tracking-tight">Test</h1>
           </div>
-          <p class="text-xs text-white/70">Kontrollo memorimin</p>
+          <p class="text-xs text-white/70">Überprüfe dein Auswendiglernen</p>
         </div>
       </div>
     </header>
@@ -29,7 +29,7 @@ import { MULK_VERSES } from '../../data/mulk-verses';
           
           <!-- Ayah Selection Card -->
           <div class="card">
-            <p class="text-sm text-[var(--color-text-secondary)] mb-4">Zgjidh çfarë dëshiron të testosh</p>
+            <p class="text-sm text-[var(--color-text-secondary)] mb-4">Wähle, was du testen möchtest</p>
             
             <div class="space-y-2">
               <!-- Full Sureja -->
@@ -39,8 +39,8 @@ import { MULK_VERSES } from '../../data/mulk-verses';
                     <svg class="w-5 h-5 text-[var(--color-primary)]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
                   </div>
                   <div class="text-left">
-                    <p class="font-semibold text-[var(--color-text)]">Të gjitha ajetet</p>
-                    <p class="text-xs text-[var(--color-text-secondary)]">Ajetet 1-30</p>
+                    <p class="font-semibold text-[var(--color-text)]">Alle Verse</p>
+                    <p class="text-xs text-[var(--color-text-secondary)]">Verse 1-30</p>
                   </div>
                 </div>
                 <div class="radio-indicator w-5 h-5 rounded-full border-2 border-[var(--color-primary)] flex items-center justify-center">
@@ -55,8 +55,8 @@ import { MULK_VERSES } from '../../data/mulk-verses';
                     <svg class="w-5 h-5 text-[#005086]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 19l-7-7 7-7m8 14l-7-7 7-7"/></svg>
                   </div>
                   <div class="text-left">
-                    <p class="font-semibold text-[var(--color-text)]">Gjysma e parë</p>
-                    <p class="text-xs text-[var(--color-text-secondary)]">Ajetet 1-15</p>
+                    <p class="font-semibold text-[var(--color-text)]">Erste Hälfte</p>
+                    <p class="text-xs text-[var(--color-text-secondary)]">Verse 1-15</p>
                   </div>
                 </div>
                 <div class="radio-indicator w-5 h-5 rounded-full border-2 border-[var(--color-border)]"></div>
@@ -69,8 +69,8 @@ import { MULK_VERSES } from '../../data/mulk-verses';
                     <svg class="w-5 h-5 text-[#005086]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5l7 7-7 7M5 5l7 7-7 7"/></svg>
                   </div>
                   <div class="text-left">
-                    <p class="font-semibold text-[var(--color-text)]">Gjysma e dytë</p>
-                    <p class="text-xs text-[var(--color-text-secondary)]">Ajetet 16-30</p>
+                    <p class="font-semibold text-[var(--color-text)]">Zweite Hälfte</p>
+                    <p class="text-xs text-[var(--color-text-secondary)]">Verse 16-30</p>
                   </div>
                 </div>
                 <div class="radio-indicator w-5 h-5 rounded-full border-2 border-[var(--color-border)]"></div>
@@ -83,8 +83,8 @@ import { MULK_VERSES } from '../../data/mulk-verses';
                     <svg class="w-5 h-5 text-[#318fb5]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>
                   </div>
                   <div class="text-left">
-                    <p class="font-semibold text-[var(--color-text)]">10 të parat</p>
-                    <p class="text-xs text-[var(--color-text-secondary)]">Ajetet 1-10</p>
+                    <p class="font-semibold text-[var(--color-text)]">Erste 10</p>
+                    <p class="text-xs text-[var(--color-text-secondary)]">Verse 1-10</p>
                   </div>
                 </div>
                 <div class="radio-indicator w-5 h-5 rounded-full border-2 border-[var(--color-border)]"></div>
@@ -97,8 +97,8 @@ import { MULK_VERSES } from '../../data/mulk-verses';
                     <svg class="w-5 h-5 text-[#318fb5]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
                   </div>
                   <div class="text-left">
-                    <p class="font-semibold text-[var(--color-text)]">10 të fundit</p>
-                    <p class="text-xs text-[var(--color-text-secondary)]">Ajetet 21-30</p>
+                    <p class="font-semibold text-[var(--color-text)]">Letzte 10</p>
+                    <p class="text-xs text-[var(--color-text-secondary)]">Verse 21-30</p>
                   </div>
                 </div>
                 <div class="radio-indicator w-5 h-5 rounded-full border-2 border-[var(--color-border)]"></div>
@@ -112,7 +112,7 @@ import { MULK_VERSES } from '../../data/mulk-verses';
                   </div>
                   <div class="text-left">
                     <p class="font-semibold text-orange-600">Ajete për përsëritje</p>
-                    <p id="weak-verses-count" class="text-xs text-orange-500">0 ajete me gabime</p>
+                    <p id="weak-verses-count" class="text-xs text-orange-500">0 Verse mit Fehlern</p>
                   </div>
                 </div>
                 <div class="radio-indicator w-5 h-5 rounded-full border-2 border-orange-300"></div>
@@ -154,7 +154,7 @@ import { MULK_VERSES } from '../../data/mulk-verses';
                   </select>
                 </div>
               </div>
-              <p id="range-count" class="text-center text-xs text-[var(--color-text-secondary)] mt-3">30 ajete</p>
+              <p id="range-count" class="text-center text-xs text-[var(--color-text-secondary)] mt-3">30 Verse</p>
             </div>
           </div>
           
@@ -170,7 +170,7 @@ import { MULK_VERSES } from '../../data/mulk-verses';
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
                 Dil
               </button>
-              <span class="text-sm font-medium text-[var(--color-text)]">Pyetja <span id="q-current" class="text-[var(--color-primary)]">1</span>/<span id="q-total">10</span></span>
+              <span class="text-sm font-medium text-[var(--color-text)]">Frage <span id="q-current" class="text-[var(--color-primary)]">1</span>/<span id="q-total">10</span></span>
               <div class="flex items-center gap-4">
                 <!-- Falsch (X) -->
                 <div class="flex items-center gap-1.5">
@@ -250,7 +250,7 @@ import { MULK_VERSES } from '../../data/mulk-verses';
             <div id="result-weak-verses" class="hidden mb-6 p-4 bg-orange-50 rounded-xl border border-orange-200">
               <div class="flex items-center gap-2 mb-2">
                 <svg class="w-5 h-5 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
-                <p class="font-semibold text-orange-600">Përsërit këto ajete:</p>
+                <p class="font-semibold text-orange-600">Wiederhole diese Verse:</p>
               </div>
               <p id="result-weak-list" class="text-sm text-orange-700"></p>
             </div>
@@ -265,11 +265,11 @@ import { MULK_VERSES } from '../../data/mulk-verses';
               <button id="practice-weak-btn" class="hidden w-full py-4 rounded-xl bg-orange-500 text-white font-medium active:scale-[0.98] transition-all">
                 <div class="flex items-center justify-center gap-2">
                   <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
-                  <span>Ushtro ajetet e dobëta</span>
+                  <span>Ushtro Verset e dobëta</span>
                 </div>
               </button>
               <button id="new-quiz-btn" class="w-full py-4 rounded-xl border border-[var(--color-border)] text-[var(--color-text)] font-medium hover:bg-[var(--color-background)] transition-colors">
-                Zgjidh ajete të tjera
+                Zgjidh Verse të tjera
               </button>
             </div>
           </div>
@@ -283,7 +283,7 @@ import { MULK_VERSES } from '../../data/mulk-verses';
       <div class="max-w-lg mx-auto">
         <button id="start-quiz-btn" class="w-full bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-primary-dark)] text-white font-semibold py-5 rounded-2xl active:scale-[0.98] transition-all shadow-lg shadow-[#318fb5]/35">
           <div class="flex items-center justify-center gap-3">
-            <span id="start-btn-text">Testo 30 ajete</span>
+            <span id="start-btn-text">Teste 30 Verse</span>
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
           </div>
         </button>
@@ -383,7 +383,6 @@ import { MULK_VERSES } from '../../data/mulk-verses';
 
 <script>
   import { MULK_VERSES } from '../../data/mulk-verses';
-  import wordByWordData from '../../data/word-by-word.json';
   import { getSession } from '../../lib/supabase';
 
   // Auth check (allow guest mode)
@@ -401,7 +400,7 @@ import { MULK_VERSES } from '../../data/mulk-verses';
   
   interface WordData {
     word: number;
-    albanian: string;
+    german: string;
     arabic: string;
   }
   
@@ -471,19 +470,14 @@ import { MULK_VERSES } from '../../data/mulk-verses';
     
     if (weakVerses.length > 0 && btn && countEl) {
       btn.classList.remove('hidden');
-      countEl.textContent = `${weakVerses.length} ajete me gabime`;
+      countEl.textContent = `${weakVerses.length} Verse mit Fehlern`;
     } else if (btn) {
       btn.classList.add('hidden');
     }
   }
   
-  // Get words for a verse from word-by-word data
+  // Get words for a verse (simple split)
   function getVerseWords(ayahNum: number): string[] {
-    const verseData = (wordByWordData as Record<string, WordData[]>)[String(ayahNum)];
-    if (verseData && verseData.length > 0) {
-      return verseData.map(w => w.arabic);
-    }
-    // Fallback to splitting arabic text (less reliable)
     const verse = MULK_VERSES.find(v => v.dayIndex === ayahNum);
     return verse ? verse.arabic.split(/\s+/).filter(w => w.length > 0) : [];
   }
@@ -529,12 +523,12 @@ import { MULK_VERSES } from '../../data/mulk-verses';
   
   function updateRangeCount() {
     const count = Math.abs(rangeEnd - rangeStart) + 1;
-    rangeCountEl.textContent = count === 1 ? '1 ajet' : `${count} ajete`;
+    rangeCountEl.textContent = count === 1 ? '1 Vers' : `${count} Verse`;
   }
   
   function updateStartButton() {
     const count = Math.abs(rangeEnd - rangeStart) + 1;
-    startBtnText.textContent = `Testo ${count} ajete`;
+    startBtnText.textContent = `Teste ${count} Verse`;
   }
   
   function showView(view: 'select' | 'quiz' | 'results') {
@@ -599,7 +593,7 @@ import { MULK_VERSES } from '../../data/mulk-verses';
     
     if (questions.length === 0) {
       // No questions to show (e.g., no weak verses)
-      alert('Nuk ka ajete për të testuar!');
+      alert('Nuk ka Verse për të testuar!');
       return;
     }
     
@@ -721,7 +715,7 @@ import { MULK_VERSES } from '../../data/mulk-verses';
       scoreEl.textContent = String(score);
       scoreEl.classList.add('pulse-grow');
       setTimeout(() => scoreEl.classList.remove('pulse-grow'), 300);
-      showFeedback(true, 'Saktë!', q.correct);
+      showFeedback(true, 'Richtig!', q.correct);
       // Remove from weak verses if answered correctly
       removeWeakVerse(q.ayah);
     } else {
@@ -734,7 +728,7 @@ import { MULK_VERSES } from '../../data/mulk-verses';
       setTimeout(() => wrongEl.classList.remove('pulse-grow'), 300);
       btn.classList.add('shake');
       setTimeout(() => btn.classList.remove('shake'), 400);
-      showFeedback(false, 'Gabim!', `Fjala e saktë: ${q.correct}`);
+      showFeedback(false, 'Falsch!', `Das richtige Wort: ${q.correct}`);
       // Add to weak verses tracking
       addWeakVerse(q.ayah);
       if (!currentQuizWrongVerses.includes(q.ayah)) {
