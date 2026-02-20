@@ -1,8 +1,10 @@
 // Supabase client for auth and progress sync
 import { createClient } from '@supabase/supabase-js';
 
-const supabaseUrl = import.meta.env.PUBLIC_SUPABASE_URL;
-const supabaseAnonKey = import.meta.env.PUBLIC_SUPABASE_ANON_KEY;
+// Hardcoded for mulk-german project (Amplify env vars override didn't work)
+const supabaseUrl = 'https://peyhuuuvvpqvjchebhua.supabase.co';
+const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBleWh1dXV2dnBxdmpjaGViaHVhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE1MzU1OTAsImV4cCI6MjA4NzExMTU5MH0._4PB528QeSULrIneXk1lBgWXACBuhtNGwlIvVZgrPmc';
+const supabaseServiceKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBleWh1dXV2dnBxdmpjaGViaHVhIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc3MTUzNTU5MCwiZXhwIjoyMDg3MTExNTkwfQ.XM85xkJWlARXT2_PQvKa5KfoTXxK2TKbNrv_6Q8f4oo';
 
 export const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
@@ -14,7 +16,7 @@ export const signUp = async (email: string, password: string, name: string) => {
     const response = await fetch(`${supabaseUrl}/auth/v1/admin/users`, {
       method: 'POST',
       headers: {
-        'Authorization': `Bearer ${import.meta.env.PUBLIC_SUPABASE_SERVICE_KEY}`,
+        'Authorization': `Bearer ${supabaseServiceKey}`,
         'apikey': supabaseAnonKey,
         'Content-Type': 'application/json'
       },
