@@ -130,8 +130,13 @@ import Layout from '../../layouts/Layout.astro';
         return;
       }
       
-      // Redirect to app after successful signup
-      window.location.href = '/app';
+      // Show success message and redirect to login
+      successDiv.textContent = 'Erfolgreich registriert! Bitte anmelden.';
+      successDiv.classList.remove('hidden');
+      
+      setTimeout(() => {
+        window.location.href = '/auth/email';
+      }, 1500);
     } catch (e) {
       // Network error
       errorDiv.textContent = 'Keine Internetverbindung. Bitte versuche es erneut.';
