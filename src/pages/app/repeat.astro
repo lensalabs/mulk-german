@@ -185,22 +185,20 @@ import { MULK_VERSES } from '../../data/mulk-verses';
         <main class="flex-1 flex flex-col px-4 pt-4 pb-44 overflow-hidden">
           <div class="max-w-lg mx-auto w-full flex-1 flex flex-col mb-5">
             <div class="flex-1 flex flex-col bg-white rounded-2xl shadow-lg shadow-[#005086]/10 border border-[var(--color-border)]/50 overflow-hidden">
-              <!-- Arabic/Translation Text Container -->
+              <!-- Arabic Text Container (always visible) -->
               <div class="flex-1 flex items-center justify-center p-5">
                 <p id="player-arabic" class="arabic text-center text-[var(--color-text)] leading-[2.4]" dir="rtl" lang="ar" style="word-spacing: 0.35em; font-size: 2.1rem;"></p>
-                <p id="player-translation" class="hidden text-center text-[var(--color-text)] leading-relaxed text-lg" dir="ltr"></p>
               </div>
               
-              <!-- Transliteration -->
+              <!-- Transliteration / Translation toggle section (minimal, like Day Page) -->
               <div id="player-transliteration" class="px-4 py-2.5 border-t border-[var(--color-border)]/50 bg-[var(--color-background)]/50">
-                <p class="text-center text-sm text-[var(--color-text-secondary)] italic leading-relaxed"></p>
+                <div class="flex items-center gap-2">
+                  <p id="translit-text" class="flex-1 text-center text-sm text-[var(--color-text-secondary)] italic leading-relaxed"></p>
+                  <button id="toggle-translation" class="w-8 h-8 shrink-0 rounded-lg flex items-center justify-center text-[var(--color-primary)] hover:bg-[var(--color-primary)]/10 transition-colors" title="Übersetzung anzeigen">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"></path></svg>
+                  </button>
+                </div>
               </div>
-              
-              <!-- Translation Toggle -->
-              <button id="toggle-translation" class="w-full px-4 py-3 flex items-center justify-center gap-2 text-[var(--color-primary)] hover:bg-[var(--color-background)]/50 transition-colors border-t border-[var(--color-border)]/50 shrink-0">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"></path></svg>
-                <span class="text-sm font-medium" id="translation-toggle-text">Übersetzung anzeigen</span>
-              </button>
             </div>
           </div>
         </main>
@@ -631,8 +629,7 @@ import { MULK_VERSES } from '../../data/mulk-verses';
     // Reset translation toggle state on new ayah
     showingTranslation = false;
     const arabicEl = document.getElementById('player-arabic');
-    const translationEl = document.getElementById('player-translation');
-    const toggleText = document.getElementById('translation-toggle-text');
+    const translitTextEl = document.getElementById('translit-text');
     
     // Update UI - render Arabic words individually for highlighting
     document.getElementById('player-ayah-num')!.textContent = String(currentAyah);
@@ -642,14 +639,14 @@ import { MULK_VERSES } from '../../data/mulk-verses';
       arabicEl.innerHTML = words.map((word, i) => 
         `<span class="arabic-word inline-block" data-word-index="${i}">${word}</span>`
       ).join(' ');
-      arabicEl.classList.remove('hidden');
     }
-    if (translationEl) translationEl.classList.add('hidden');
-    if (toggleText) toggleText.textContent = 'Übersetzung anzeigen';
     
-    // Update transliteration
-    const translitEl = document.querySelector('#player-transliteration p');
-    if (translitEl) translitEl.textContent = verse?.transliteration || '';
+    // Update transliteration (default view)
+    if (translitTextEl && verse) {
+      translitTextEl.textContent = verse.transliteration;
+      translitTextEl.dataset.transliteration = verse.transliteration;
+      translitTextEl.dataset.german = verse.german;
+    }
     
     // Update progress - Step Indicator Card (top) and Action Bar (bottom)
     const progressInQueue = queueIndex + 1;
@@ -759,32 +756,22 @@ import { MULK_VERSES } from '../../data/mulk-verses';
     if (audio) audio.playbackRate = speed;
   });
   
-  // Translation toggle - uses separate elements for proper RTL/LTR
+  // Translation toggle - toggles between transliteration and German translation (minimal, same line)
   let showingTranslation = false;
   document.getElementById('toggle-translation')?.addEventListener('click', () => {
     showingTranslation = !showingTranslation;
-    const currentAyah = ayahQueue[queueIndex];
-    const verse = MULK_VERSES.find(v => v.dayIndex === currentAyah);
-    const arabicEl = document.getElementById('player-arabic');
-    const translationEl = document.getElementById('player-translation');
-    const toggleText = document.getElementById('translation-toggle-text');
+    const translitTextEl = document.getElementById('translit-text');
     
-    if (showingTranslation && verse) {
-      // Show translation (LTR), hide Arabic (RTL)
-      if (arabicEl) arabicEl.classList.add('hidden');
-      if (translationEl) {
-        translationEl.textContent = verse.german;
-        translationEl.classList.remove('hidden');
+    if (translitTextEl) {
+      if (showingTranslation) {
+        // Show German translation
+        translitTextEl.textContent = translitTextEl.dataset.german || '';
+        translitTextEl.classList.remove('italic');
+      } else {
+        // Show transliteration
+        translitTextEl.textContent = translitTextEl.dataset.transliteration || '';
+        translitTextEl.classList.add('italic');
       }
-      if (toggleText) toggleText.textContent = 'Arabisch anzeigen';
-    } else if (verse) {
-      // Show Arabic (RTL), hide translation (LTR)
-      if (translationEl) translationEl.classList.add('hidden');
-      if (arabicEl) {
-        arabicEl.textContent = verse.arabic;
-        arabicEl.classList.remove('hidden');
-      }
-      if (toggleText) toggleText.textContent = 'Übersetzung anzeigen';
     }
   });
   
