@@ -163,7 +163,7 @@ import { MULK_VERSES } from '../../data/mulk-verses';
             </button>
             <div class="text-center">
               <h1 class="text-lg font-semibold">Wiederholung</h1>
-              <p class="text-xs text-white/70">Ajeti <span id="player-ayah-num">1</span> / <span id="total-ayahs">30</span></p>
+              <p class="text-xs text-white/70">Vers <span id="player-ayah-num">1</span> / <span id="total-ayahs">30</span></p>
             </div>
             <div class="w-11"></div>
           </div>
@@ -173,7 +173,7 @@ import { MULK_VERSES } from '../../data/mulk-verses';
         <div class="bg-white/95 backdrop-blur-sm rounded-2xl mx-4 -mt-12 px-4 py-4 shadow-lg border border-[var(--color-border)]/50">
           <div class="max-w-lg mx-auto">
             <div class="flex items-center justify-between">
-              <p class="text-base font-semibold text-[var(--color-text)]">Përsëritja <span id="current-ayah-display">1</span>/<span id="total-ayahs-display">30</span></p>
+              <p class="text-base font-semibold text-[var(--color-text)]">Wiederholung <span id="current-repeat-display">1</span>/<span id="total-repeats-display">10</span></p>
               <div class="w-32 h-2 bg-[var(--color-border)] rounded-full overflow-hidden">
                 <div id="session-progress-bar" class="h-full bg-[var(--color-step-listen)] rounded-full transition-all duration-300" style="width: 0%"></div>
               </div>
@@ -246,19 +246,19 @@ import { MULK_VERSES } from '../../data/mulk-verses';
           <div class="max-w-lg mx-auto flex justify-around">
             <a href="/app" class="nav-item">
               <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
-              <span class="text-xs">Kryefaqja</span>
+              <span class="text-xs">Start</span>
             </a>
             <a href="/app/repeat" class="nav-item active">
               <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
-              <span class="text-xs font-medium">Wiederholung</span>
+              <span class="text-xs font-medium">Wiederholen</span>
             </a>
             <a href="/app/quiz" class="nav-item">
               <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path></svg>
-              <span class="text-xs">Testi</span>
+              <span class="text-xs">Quiz</span>
             </a>
             <a href="/app/settings" class="nav-item">
               <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-              <span class="text-xs">Cilësimet</span>
+              <span class="text-xs">Einstellungen</span>
             </a>
           </div>
         </nav>
@@ -357,7 +357,7 @@ import { MULK_VERSES } from '../../data/mulk-verses';
   // State
   let selectedStart = 1;
   let selectedEnd = 30;
-  let repeatCount = 3;
+  let repeatCount = 10; // 10x die ganze Sure hören
   // Load speed from Settings (localStorage) or default to 1
   const savedSpeed = parseFloat(localStorage.getItem('mulk30_audio_speed') || '1');
   let speed = [0.75, 1, 1.25, 1.5, 2].includes(savedSpeed) ? savedSpeed : 1;
@@ -654,16 +654,16 @@ import { MULK_VERSES } from '../../data/mulk-verses';
     const totalAyahCount = Math.abs(selectedEnd - selectedStart) + 1;
     // Which ayah in the current pass (1-based)
     const currentAyahInPass = (queueIndex % totalAyahCount) + 1;
-    // Which repetition pass (1-based)
+    // Which repetition pass (1-based) - this is the MAIN counter (1/10, 2/10, etc.)
     const currentPass = Math.floor(queueIndex / totalAyahCount) + 1;
     
-    // Update Step Indicator Card (top) - shows position in current pass (1/15, 2/15, etc.)
-    const currentAyahDisplay = document.getElementById('current-ayah-display');
-    const totalAyahsDisplay = document.getElementById('total-ayahs-display');
+    // Update Step Indicator Card (top) - shows REPETITION count (1/10, 2/10, etc.)
+    const currentRepeatDisplay = document.getElementById('current-repeat-display');
+    const totalRepeatsDisplay = document.getElementById('total-repeats-display');
     const sessionProgressBar = document.getElementById('session-progress-bar') as HTMLElement;
     
-    if (currentAyahDisplay) currentAyahDisplay.textContent = String(currentAyahInPass);
-    if (totalAyahsDisplay) totalAyahsDisplay.textContent = String(totalAyahCount);
+    if (currentRepeatDisplay) currentRepeatDisplay.textContent = String(currentPass);
+    if (totalRepeatsDisplay) totalRepeatsDisplay.textContent = String(repeatCount);
     if (sessionProgressBar) sessionProgressBar.style.width = `${progressPercent}%`;
     
     // Update Action Bar (bottom)
@@ -766,7 +766,7 @@ import { MULK_VERSES } from '../../data/mulk-verses';
         translationEl.textContent = verse.german;
         translationEl.classList.remove('hidden');
       }
-      if (toggleText) toggleText.textContent = 'Shfaq arabishten';
+      if (toggleText) toggleText.textContent = 'Arabisch anzeigen';
     } else if (verse) {
       // Show Arabic (RTL), hide translation (LTR)
       if (translationEl) translationEl.classList.add('hidden');
