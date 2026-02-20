@@ -4,14 +4,14 @@ import BottomNav from '../../components/BottomNav.astro';
 import { SURAH_INFO, MULK_VERSES } from '../../data/mulk-verses';
 ---
 
-<Layout title="Paneli">
+<Layout title="Dashboard">
   <div class="min-h-screen flex flex-col bg-[var(--color-background)]">
     
     <!-- Header with gradient + smooth transition -->
     <header class="bg-gradient-to-b from-[#005086] via-[#318fb5] to-[#b0cac7] text-white px-4 pt-3 pb-16 safe-top">
       <div class="max-w-lg mx-auto flex items-center justify-between">
         <img src="/logo-horizontal.svg" alt="Mulk 30" class="h-8 brightness-0 invert" />
-        <a href="/app/settings" class="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center active:scale-95 transition-transform" aria-label="Cilësimet">
+        <a href="/app/settings" class="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center active:scale-95 transition-transform" aria-label="Einstellungen">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
         </a>
       </div>
@@ -46,14 +46,14 @@ import { SURAH_INFO, MULK_VERSES } from '../../data/mulk-verses';
             <!-- Center content -->
             <div class="absolute inset-0 flex flex-col items-center justify-center">
               <span id="current-day-num" class="text-4xl font-bold text-[var(--color-primary)]">1</span>
-              <span class="text-xs text-[var(--color-text-secondary)] uppercase tracking-wider">Dita</span>
+              <span class="text-xs text-[var(--color-text-secondary)] uppercase tracking-wider">Tag</span>
             </div>
           </div>
           
           <!-- Progress Text -->
           <div class="mb-2">
-            <p class="text-lg font-semibold text-[var(--color-text)]" id="progress-label">Fillimi i udhëtimit</p>
-            <p class="text-sm text-[var(--color-text-secondary)]" id="progress-subtitle">Mëso ajetin e parë të Sureja El-Mulk</p>
+            <p class="text-lg font-semibold text-[var(--color-text)]" id="progress-label">Beginn der Reise</p>
+            <p class="text-sm text-[var(--color-text-secondary)]" id="progress-subtitle">Lerne den ersten Vers der Sure Al-Mulk</p>
           </div>
           
           <!-- Streak Badge (if active) -->
@@ -61,21 +61,21 @@ import { SURAH_INFO, MULK_VERSES } from '../../data/mulk-verses';
             <svg class="w-5 h-5 text-[#318fb5] heartbeat" viewBox="0 0 24 24" fill="currentColor">
               <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
             </svg>
-            <span id="streak-text">0 ditë radhazi</span>
+            <span id="streak-text">0 Tage in Folge</span>
           </div>
         </div>
 
         <!-- PRIMARY CTA: Continue Learning Button - THUMB ZONE -->
         <a id="continue-btn" href="/app/day/1" class="block w-full bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-primary-dark)] hover:from-[var(--color-primary-light)] hover:to-[var(--color-primary)] text-white text-center font-semibold py-5 px-6 rounded-2xl active:scale-[0.98] transition-all shadow-lg shadow-[#318fb5]/35 hover:shadow-xl hover:shadow-[#318fb5]/45 hover:-translate-y-0.5">
           <div class="flex items-center justify-center gap-3">
-            <span id="cta-text">Fillo mësimin</span>
+            <span id="cta-text">Loslegen</span>
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
             </svg>
           </div>
         </a>
 
-        <!-- RECOMMENDED: Daily Sureja Listen - 10x -->
+        <!-- RECOMMENDED: Daily Surah Listen - 10x -->
         <a href="/app/repeat?preset=daily" class="block w-full bg-gradient-to-r from-[#005086] to-[#318fb5] text-white font-semibold py-4 px-5 rounded-2xl active:scale-[0.98] transition-all shadow-md">
           <div class="flex items-center justify-between">
             <div class="flex items-center gap-3">
@@ -85,8 +85,8 @@ import { SURAH_INFO, MULK_VERSES } from '../../data/mulk-verses';
                 </svg>
               </div>
               <div class="text-left">
-                <p class="text-sm font-semibold">Dëgjo Suren e plotë</p>
-                <p class="text-xs text-white/70">Rekomanduar: 10x çdo ditë</p>
+                <p class="text-sm font-semibold">Ganze Sure anhören</p>
+                <p class="text-xs text-white/70">Empfohlen: 10x täglich</p>
               </div>
             </div>
             <svg class="w-5 h-5 text-white/70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -98,8 +98,8 @@ import { SURAH_INFO, MULK_VERSES } from '../../data/mulk-verses';
         <!-- Today's Step Status (Compact) -->
         <div id="today-steps-card" class="card">
           <div class="flex items-center justify-between mb-3">
-            <span class="text-sm font-medium text-[var(--color-text)]">Progresi i ditës</span>
-            <span class="text-xs text-[var(--color-text-secondary)]" id="today-progress-text">0/3 hapa</span>
+            <span class="text-sm font-medium text-[var(--color-text)]">Tagesfortschritt</span>
+            <span class="text-xs text-[var(--color-text-secondary)]" id="today-progress-text">0/3 Schritte</span>
           </div>
           <div class="flex items-center gap-3">
             <!-- Listen — Sage tint -->
@@ -132,12 +132,10 @@ import { SURAH_INFO, MULK_VERSES } from '../../data/mulk-verses';
           </div>
         </div>
 
-        <!-- 30 Day Grid removed - progress circle is sufficient -->
-
         <!-- Motivation Quote (changes based on progress) -->
         <div id="motivation-card" class="text-center py-4">
           <p class="text-sm text-[var(--color-text-secondary)] italic" id="motivation-text">
-            "Kush lexon Sureja El-Mulk çdo natë, do të mbrohet nga dënimi i varrit."
+            "Wer Sure Al-Mulk jede Nacht liest, wird vor der Strafe des Grabes geschützt."
           </p>
           <p class="text-xs text-[var(--color-text-secondary)] mt-1">— Hadith</p>
         </div>
@@ -151,8 +149,8 @@ import { SURAH_INFO, MULK_VERSES } from '../../data/mulk-verses';
               </svg>
             </div>
             <div class="flex-1">
-              <p class="font-semibold text-[var(--color-text)]">Fito një dhuratë!</p>
-              <p class="text-xs text-[var(--color-text-secondary)]">Përfundo sfidën 30-ditore dhe merr shpërblimin tënd</p>
+              <p class="font-semibold text-[var(--color-text)]">Gewinne ein Geschenk!</p>
+              <p class="text-xs text-[var(--color-text-secondary)]">Schließe die 30-Tage Challenge ab und erhalte deine Belohnung</p>
             </div>
             <svg class="w-5 h-5 text-[var(--color-text-secondary)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
@@ -195,8 +193,6 @@ import { SURAH_INFO, MULK_VERSES } from '../../data/mulk-verses';
     42% { transform: scale(1.15); }
     70% { transform: scale(1); }
   }
-
-  /* Card hover styles now in global.css */
 
   /* Step cards subtle hover */
   #step-listen:hover, #step-read:hover, #step-recite:hover {
@@ -258,23 +254,23 @@ import { SURAH_INFO, MULK_VERSES } from '../../data/mulk-verses';
     const progressSubtitle = document.getElementById('progress-subtitle')!;
     
     if (completedCount === 0) {
-      progressLabel.textContent = 'Fillimi i udhëtimit';
-      progressSubtitle.textContent = 'Mëso ajetin e parë të Sureja El-Mulk';
+      progressLabel.textContent = 'Beginn der Reise';
+      progressSubtitle.textContent = 'Lerne den ersten Vers der Sure Al-Mulk';
     } else if (completedCount < 7) {
-      progressLabel.textContent = `${completedCount} ajete të memorizuara`;
-      progressSubtitle.textContent = 'Java e parë — vazhdo kështu!';
+      progressLabel.textContent = `${completedCount} Verse gelernt`;
+      progressSubtitle.textContent = 'Erste Woche — weiter so!';
     } else if (completedCount < 15) {
-      progressLabel.textContent = `${completedCount} ajete të memorizuara`;
-      progressSubtitle.textContent = 'Po ndërton një zakon të mirë!';
+      progressLabel.textContent = `${completedCount} Verse gelernt`;
+      progressSubtitle.textContent = 'Du baust eine gute Gewohnheit auf!';
     } else if (completedCount < 22) {
-      progressLabel.textContent = `${completedCount} ajete të memorizuara`;
-      progressSubtitle.textContent = 'Mbi gjysmën! Mos u ndal!';
+      progressLabel.textContent = `${completedCount} Verse gelernt`;
+      progressSubtitle.textContent = 'Über die Hälfte! Bleib dran!';
     } else if (completedCount < 30) {
-      progressLabel.textContent = `${completedCount} ajete të memorizuara`;
-      progressSubtitle.textContent = 'Fundi po afron! Vetëm pak ditë!';
+      progressLabel.textContent = `${completedCount} Verse gelernt`;
+      progressSubtitle.textContent = 'Das Ende naht! Nur noch wenige Tage!';
     } else {
       progressLabel.textContent = 'Masha\'Allah!';
-      progressSubtitle.textContent = 'E përfundove Sureja El-Mulk!';
+      progressSubtitle.textContent = 'Du hast Sure Al-Mulk abgeschlossen!';
     }
 
     // Streak badge
@@ -282,7 +278,7 @@ import { SURAH_INFO, MULK_VERSES } from '../../data/mulk-verses';
     const streakText = document.getElementById('streak-text')!;
     if (streak > 0) {
       streakBadge.classList.remove('hidden');
-      streakText.textContent = `${streak} ditë radhazi`;
+      streakText.textContent = `${streak} Tage in Folge`;
     } else {
       streakBadge.classList.add('hidden');
     }
@@ -293,16 +289,16 @@ import { SURAH_INFO, MULK_VERSES } from '../../data/mulk-verses';
     continueBtn.href = `/app/day/${day}`;
     
     if (completedCount === 0) {
-      ctaText.textContent = 'Fillo mësimin';
+      ctaText.textContent = 'Loslegen';
     } else if (dayCompleted) {
       if (day < 30) {
-        ctaText.textContent = `Vazhdo me Ditën ${day + 1}`;
+        ctaText.textContent = `Weiter mit Tag ${day + 1}`;
         continueBtn.href = `/app/day/${day + 1}`;
       } else {
-        ctaText.textContent = 'Rishiko sfidat';
+        ctaText.textContent = 'Challenge überprüfen';
       }
     } else {
-      ctaText.textContent = `Vazhdo Ditën ${day}`;
+      ctaText.textContent = `Tag ${day} fortsetzen`;
     }
 
     // Update today's steps
@@ -315,7 +311,7 @@ import { SURAH_INFO, MULK_VERSES } from '../../data/mulk-verses';
       (dayProgress.listenCount >= REQUIRED_COUNT ? 1 : 0) +
       (dayProgress.readCount >= REQUIRED_COUNT ? 1 : 0) +
       (dayProgress.reciteCount >= REQUIRED_COUNT ? 1 : 0);
-    document.getElementById('today-progress-text')!.textContent = `${stepsCompleted}/3 hapa`;
+    document.getElementById('today-progress-text')!.textContent = `${stepsCompleted}/3 Schritte`;
 
     // Style completed steps
     if (dayProgress.listenCount >= REQUIRED_COUNT) {

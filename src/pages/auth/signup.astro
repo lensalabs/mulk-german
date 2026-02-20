@@ -2,29 +2,29 @@
 import Layout from '../../layouts/Layout.astro';
 ---
 
-<Layout title="Regjistrohu">
+<Layout title="Registrieren">
   <div class="min-h-screen flex flex-col items-center justify-center px-4 py-12">
     <div class="w-full max-w-sm">
       <!-- Back Link -->
-      <a href="/" class="inline-flex items-center gap-2 text-[var(--color-text-secondary)] hover:text-[var(--color-text)] mb-8" aria-label="Kthehu">
+      <a href="/" class="inline-flex items-center gap-2 text-[var(--color-text-secondary)] hover:text-[var(--color-text)] mb-8" aria-label="Zurück">
         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
         </svg>
-        Kthehu
+        Zurück
       </a>
       
       <!-- Logo -->
       <div class="text-center mb-8">
         <img src="/logo-stacked.svg" alt="Mulk 30" class="w-32 mx-auto mb-4" />
-        <h1 class="heading-page">Krijo llogarinë</h1>
-        <p class="text-[var(--color-text-secondary)]">Fillo sfidën 30-ditore</p>
+        <h1 class="heading-page">Konto erstellen</h1>
+        <p class="text-[var(--color-text-secondary)]">Starte die 30-Tage Challenge</p>
       </div>
       
       <!-- Signup Form -->
       <form id="signup-form" class="space-y-4">
         <div>
           <label for="name" class="block text-sm font-medium text-[var(--color-text)] mb-1">
-            Emri
+            Name
           </label>
           <input 
             type="text" 
@@ -32,13 +32,13 @@ import Layout from '../../layouts/Layout.astro';
             name="name" 
             required
             class="input"
-            placeholder="Emri yt"
+            placeholder="Dein Name"
           />
         </div>
         
         <div>
           <label for="email" class="block text-sm font-medium text-[var(--color-text)] mb-1">
-            Email
+            E-Mail
           </label>
           <input 
             type="email" 
@@ -46,13 +46,13 @@ import Layout from '../../layouts/Layout.astro';
             name="email" 
             required
             class="input"
-            placeholder="emri@email.com"
+            placeholder="name@email.com"
           />
         </div>
         
         <div>
           <label for="password" class="block text-sm font-medium text-[var(--color-text)] mb-1">
-            Fjalëkalimi
+            Passwort
           </label>
           <input 
             type="password" 
@@ -61,7 +61,7 @@ import Layout from '../../layouts/Layout.astro';
             required
             minlength="6"
             class="input"
-            placeholder="Minimum 6 karaktere"
+            placeholder="Mindestens 6 Zeichen"
           />
         </div>
         
@@ -74,7 +74,7 @@ import Layout from '../../layouts/Layout.astro';
         </div>
         
         <button type="submit" id="submit-btn" class="btn btn-primary w-full py-3">
-          <span id="btn-text">Regjistrohu</span>
+          <span id="btn-text">Registrieren</span>
           <svg id="btn-spinner" class="hidden spinner w-5 h-5" fill="none" viewBox="0 0 24 24">
             <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
             <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
@@ -84,9 +84,9 @@ import Layout from '../../layouts/Layout.astro';
       
       <!-- Login Link -->
       <p class="text-center mt-6 text-[var(--color-text-secondary)]">
-        Ke llogari? 
-        <a href="/auth/login" class="text-[var(--color-primary)] font-medium hover:underline">
-          Hyr
+        Schon ein Konto? 
+        <a href="/auth/email" class="text-[var(--color-primary)] font-medium hover:underline">
+          Anmelden
         </a>
       </p>
     </div>
@@ -105,7 +105,7 @@ import Layout from '../../layouts/Layout.astro';
   
   function setLoading(loading: boolean) {
     submitBtn.disabled = loading;
-    btnText.textContent = loading ? 'Po regjistrohet...' : 'Regjistrohu';
+    btnText.textContent = loading ? 'Wird registriert...' : 'Registrieren';
     btnSpinner.classList.toggle('hidden', !loading);
   }
 
@@ -125,7 +125,7 @@ import Layout from '../../layouts/Layout.astro';
       const { data, error } = await signUp(email, password, name);
       
       if (error) {
-        errorDiv.textContent = error.message || 'Ndodhi një gabim. Provo përsëri.';
+        errorDiv.textContent = error.message || 'Ein Fehler ist aufgetreten. Bitte versuche es erneut.';
         errorDiv.classList.remove('hidden');
         return;
       }
@@ -133,8 +133,8 @@ import Layout from '../../layouts/Layout.astro';
       // Redirect to app after successful signup
       window.location.href = '/app';
     } catch (e) {
-      // Network error (#10)
-      errorDiv.textContent = 'Nuk ka lidhje me internetin. Provo përsëri.';
+      // Network error
+      errorDiv.textContent = 'Keine Internetverbindung. Bitte versuche es erneut.';
       errorDiv.classList.remove('hidden');
     } finally {
       setLoading(false);

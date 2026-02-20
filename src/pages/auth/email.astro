@@ -2,29 +2,29 @@
 import Layout from '../../layouts/Layout.astro';
 ---
 
-<Layout title="Hyr me Email">
+<Layout title="Mit E-Mail anmelden">
   <div class="min-h-screen flex flex-col items-center justify-center px-4 py-12">
     <div class="w-full max-w-sm">
       <!-- Back Link -->
-      <a href="/auth/login" class="inline-flex items-center gap-2 text-[var(--color-text-secondary)] hover:text-[var(--color-text)] mb-8" aria-label="Kthehu">
+      <a href="/auth/login" class="inline-flex items-center gap-2 text-[var(--color-text-secondary)] hover:text-[var(--color-text)] mb-8" aria-label="Zurück">
         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
         </svg>
-        Kthehu
+        Zurück
       </a>
       
       <!-- Logo -->
       <div class="text-center mb-8">
         <img src="/logo-stacked.svg" alt="Mulk 30" class="w-32 mx-auto mb-4" />
-        <h1 class="heading-page">Hyr me Email</h1>
-        <p class="text-[var(--color-text-secondary)]">Vazhdo sfidën tënde</p>
+        <h1 class="heading-page">Mit E-Mail anmelden</h1>
+        <p class="text-[var(--color-text-secondary)]">Setze deine Challenge fort</p>
       </div>
       
       <!-- Login Form -->
       <form id="login-form" class="space-y-4">
         <div>
           <label for="email" class="block text-sm font-medium text-[var(--color-text)] mb-1">
-            Email
+            E-Mail
           </label>
           <input 
             type="email" 
@@ -32,13 +32,13 @@ import Layout from '../../layouts/Layout.astro';
             name="email" 
             required
             class="input"
-            placeholder="emri@email.com"
+            placeholder="name@email.com"
           />
         </div>
         
         <div>
           <label for="password" class="block text-sm font-medium text-[var(--color-text)] mb-1">
-            Fjalëkalimi
+            Passwort
           </label>
           <input 
             type="password" 
@@ -47,7 +47,7 @@ import Layout from '../../layouts/Layout.astro';
             required
             minlength="6"
             class="input"
-            placeholder="Fjalëkalimi yt"
+            placeholder="Dein Passwort"
           />
         </div>
         
@@ -56,7 +56,7 @@ import Layout from '../../layouts/Layout.astro';
         </div>
         
         <button type="submit" id="submit-btn" class="btn btn-primary w-full py-3">
-          <span id="btn-text">Hyr</span>
+          <span id="btn-text">Anmelden</span>
           <svg id="btn-spinner" class="hidden spinner w-5 h-5" fill="none" viewBox="0 0 24 24">
             <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
             <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
@@ -66,9 +66,9 @@ import Layout from '../../layouts/Layout.astro';
       
       <!-- Signup Link -->
       <p class="text-center mt-6 text-[var(--color-text-secondary)]">
-        Nuk ke llogari? 
+        Noch kein Konto? 
         <a href="/auth/signup" class="text-[var(--color-primary)] font-medium hover:underline">
-          Regjistrohu
+          Registrieren
         </a>
       </p>
     </div>
@@ -86,7 +86,7 @@ import Layout from '../../layouts/Layout.astro';
   
   function setLoading(loading: boolean) {
     submitBtn.disabled = loading;
-    btnText.textContent = loading ? 'Po hyn...' : 'Hyr';
+    btnText.textContent = loading ? 'Wird angemeldet...' : 'Anmelden';
     btnSpinner.classList.toggle('hidden', !loading);
   }
 
@@ -104,7 +104,7 @@ import Layout from '../../layouts/Layout.astro';
       const { data, error } = await signIn(email, password);
       
       if (error) {
-        errorDiv.textContent = error.message || 'Email ose fjalëkalimi gabim.';
+        errorDiv.textContent = error.message || 'E-Mail oder Passwort falsch.';
         errorDiv.classList.remove('hidden');
         return;
       }
@@ -112,7 +112,7 @@ import Layout from '../../layouts/Layout.astro';
       // Redirect to app after successful login
       window.location.href = '/app';
     } catch (e) {
-      errorDiv.textContent = 'Nuk ka lidhje me internetin. Provo përsëri.';
+      errorDiv.textContent = 'Keine Internetverbindung. Bitte versuche es erneut.';
       errorDiv.classList.remove('hidden');
     } finally {
       setLoading(false);

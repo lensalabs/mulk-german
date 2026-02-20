@@ -105,14 +105,14 @@ export const trackGuestDay = async (dayIndex: number) => {
   }
 };
 
-// Translate common Supabase errors to Albanian
+// Translate common Supabase errors to German
 function translateError(message: string): string {
   const translations: Record<string, string> = {
-    'Invalid login credentials': 'Email ose fjalëkalimi i gabuar',
-    'Email not confirmed': 'Emaili nuk është konfirmuar',
-    'User already registered': 'Ky email është i regjistruar',
-    'Password should be at least 6 characters': 'Fjalëkalimi duhet të ketë të paktën 6 karaktere',
-    'Unable to validate email address: invalid format': 'Formati i emailit nuk është i vlefshëm',
+    'Invalid login credentials': 'E-Mail oder Passwort falsch',
+    'Email not confirmed': 'E-Mail wurde noch nicht bestätigt',
+    'User already registered': 'Diese E-Mail ist bereits registriert',
+    'Password should be at least 6 characters': 'Passwort muss mindestens 6 Zeichen haben',
+    'Unable to validate email address: invalid format': 'Ungültiges E-Mail-Format',
   };
   return translations[message] || message;
 }
