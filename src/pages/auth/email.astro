@@ -109,9 +109,15 @@ import Layout from '../../layouts/Layout.astro';
         return;
       }
       
+      console.log('[Login] Success, session:', data?.session ? 'exists' : 'none');
+      
+      // Small delay to ensure session is persisted
+      await new Promise(resolve => setTimeout(resolve, 100));
+      
       // Redirect to app after successful login
       window.location.href = '/app';
     } catch (e) {
+      console.error('[Login] Error:', e);
       errorDiv.textContent = 'Keine Internetverbindung. Bitte versuche es erneut.';
       errorDiv.classList.remove('hidden');
     } finally {

@@ -205,15 +205,19 @@ import { SURAH_INFO, MULK_VERSES } from '../../data/mulk-verses';
 
 <script>
   import { getState, getCurrentDay, getStreak, getProgress, isDayCompleted, getDayProgress, REQUIRED_COUNT, initializeState } from '../../lib/challenge';
-  import { getSession } from '../../lib/supabase';
+  import { getSession, supabase } from '../../lib/supabase';
 
   // Auth guard + initialize state from cloud
   (async () => {
     try {
+      // First check if we have a session in Supabase
       const { session } = await getSession();
       const isGuestMode = localStorage.getItem('mulk30_guest_mode') === 'true';
       
+      console.log('[Auth] Session:', session ? 'exists' : 'none', 'Guest:', isGuestMode);
+      
       if (!session && !isGuestMode) {
+        console.log('[Auth] No session and no guest mode, redirecting to /');
         window.location.href = '/';
         return;
       }
@@ -225,9 +229,14 @@ import { SURAH_INFO, MULK_VERSES } from '../../data/mulk-verses';
       }
       updateUI();
     } catch (e) {
-      console.error('Init error:', e);
-      // Allow offline usage
-      updateUI();
+      console.error('[Auth] Init error:', e);
+      // Allow offline usage if guest mode
+      const isGuestMode = localStorage.getItem('mulk30_guest_mode') === 'true';
+      if (isGuestMode) {
+        updateUI();
+      } else {
+        window.location.href = '/';
+      }
     }
   })();
 
