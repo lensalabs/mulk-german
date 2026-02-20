@@ -168,7 +168,7 @@ import { MULK_VERSES } from '../../data/mulk-verses';
             <div class="flex items-center justify-between mb-3">
               <button id="quit-quiz" class="text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-text)] flex items-center gap-1">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
-                Dil
+                Zurück
               </button>
               <span class="text-sm font-medium text-[var(--color-text)]">Frage <span id="q-current" class="text-[var(--color-primary)]">1</span>/<span id="q-total">10</span></span>
               <div class="flex items-center gap-4">
@@ -192,10 +192,10 @@ import { MULK_VERSES } from '../../data/mulk-verses';
           <!-- Question Card - füllt den restlichen Platz -->
           <div class="card flex-1 flex flex-col">
             <div class="bg-[var(--color-primary)]/10 -mx-4 -mt-4 px-4 py-2 mb-4 rounded-t-2xl shrink-0">
-              <span class="text-sm font-medium text-[var(--color-primary)]">Ajeti <span id="q-ayah">1</span></span>
+              <span class="text-sm font-medium text-[var(--color-primary)]">Vers <span id="q-ayah">1</span></span>
             </div>
             
-            <p class="text-xs text-[var(--color-text-secondary)] mb-3 shrink-0">Cila fjalë mungon?</p>
+            <p class="text-xs text-[var(--color-text-secondary)] mb-3 shrink-0">Welches Wort fehlt?</p>
             <div id="q-text" class="arabic text-2xl leading-[2.4] text-right p-4 bg-[var(--color-background)] rounded-xl flex-1 mb-4 overflow-y-auto" dir="rtl" lang="ar"></div>
             
             <p class="text-xs text-[var(--color-text-secondary)] mb-2 shrink-0">Wähle das richtige Wort:</p>
@@ -226,7 +226,7 @@ import { MULK_VERSES } from '../../data/mulk-verses';
               </div>
             </div>
             
-            <h2 class="text-xl font-bold text-[var(--color-text)] mb-2">Rezultati yt</h2>
+            <h2 class="text-xl font-bold text-[var(--color-text)] mb-2">Dein Ergebnis</h2>
             <div class="flex items-center justify-center gap-1 mb-1">
               <span id="result-score" class="text-4xl font-bold text-[var(--color-primary)]">0</span>
               <span class="text-2xl text-[var(--color-text-secondary)]">/</span>
@@ -242,7 +242,7 @@ import { MULK_VERSES } from '../../data/mulk-verses';
               </div>
               <div class="text-center">
                 <p class="text-xl font-bold text-[var(--color-text)]" id="result-time">0:00</p>
-                <p class="text-xs text-[var(--color-text-secondary)]">Koha</p>
+                <p class="text-xs text-[var(--color-text-secondary)]">Zeit</p>
               </div>
             </div>
             
@@ -786,7 +786,7 @@ import { MULK_VERSES } from '../../data/mulk-verses';
     if (pct === 100) {
       document.getElementById('icon-trophy')!.classList.remove('hidden');
       iconBgEl.className = 'w-24 h-24 mx-auto mb-4 rounded-2xl flex items-center justify-center bg-yellow-100';
-      msgEl.textContent = 'Perfekt! E ke mësuar plotësisht!';
+      msgEl.textContent = 'Perfekt! Du hast alles gelernt!';
       createConfetti();
     } else if (pct >= 80) {
       document.getElementById('icon-star')!.classList.remove('hidden');
@@ -813,7 +813,7 @@ import { MULK_VERSES } from '../../data/mulk-verses';
     if (currentQuizWrongVerses.length > 0) {
       weakVersesSection.classList.remove('hidden');
       const sortedWrong = [...currentQuizWrongVerses].sort((a, b) => a - b);
-      weakListEl.textContent = `Ajeti ${sortedWrong.join(', ')}`;
+      weakListEl.textContent = `Vers ${sortedWrong.join(', ')}`;
       practiceWeakBtn.classList.remove('hidden');
     } else {
       weakVersesSection.classList.add('hidden');
