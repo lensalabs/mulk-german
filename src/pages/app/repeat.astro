@@ -508,11 +508,17 @@ import { MULK_VERSES } from '../../data/mulk-verses';
     queueIndex = 0;
     elapsedBeforeCurrent = 0;
     
+    // IMPORTANT: Create and prime audio IMMEDIATELY on user click (before any await)
+    // This satisfies mobile browser autoplay policies
+    const firstAyah = ayahs[0];
+    audio = new Audio(`/audio/ayah-${firstAyah}.mp3`);
+    audio.playbackRate = speed;
+    
     // Loading state
     startBtnText.textContent = 'Wird geladen...';
     startBtn.disabled = true;
     
-    // Load durations
+    // Load durations (async, but audio is already primed)
     await loadAllDurations(ayahs);
     
     totalDuration = 0;
@@ -669,9 +675,13 @@ import { MULK_VERSES } from '../../data/mulk-verses';
     // Update Action Bar (bottom)
     (document.getElementById('listen-bar') as HTMLElement).style.width = `${progressPercent}%`;
     
-    if (audio) audio.pause();
-    audio = new Audio(`/audio/ayah-${currentAyah}.mp3`);
-    audio.playbackRate = speed;
+    // Reuse existing audio if it's already set to the correct ayah, otherwise create new
+    const expectedSrc = `/audio/ayah-${currentAyah}.mp3`;
+    if (!audio || !audio.src.endsWith(expectedSrc)) {
+      if (audio) audio.pause();
+      audio = new Audio(expectedSrc);
+      audio.playbackRate = speed;
+    }
     
     audio.addEventListener('timeupdate', () => {
       if (!audio) return;
