@@ -30,7 +30,7 @@ import { MULK_VERSES } from '../../data/mulk-verses';
           <p class="text-sm text-[var(--color-text-secondary)] mb-4">Wähle, was du wiederholen möchtest</p>
           
           <div class="space-y-2">
-            <!-- Full Sureja -->
+            <!-- Komplette Sure -->
             <button class="preset-btn selected w-full py-3.5 px-4 bg-[var(--color-background)] border border-[var(--color-border)] rounded-xl flex items-center justify-between active:scale-[0.98] transition-all" data-start="1" data-end="30">
               <div class="flex items-center gap-3">
                 <div class="w-10 h-10 rounded-xl bg-[var(--color-primary)]/10 flex items-center justify-center">
@@ -111,7 +111,7 @@ import { MULK_VERSES } from '../../data/mulk-verses';
               <div class="w-10 h-10 rounded-xl bg-[var(--color-border)]/50 flex items-center justify-center">
                 <svg class="w-5 h-5 text-[var(--color-text-secondary)]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"/></svg>
               </div>
-              <span class="text-sm font-medium text-[var(--color-text)]">Zgjedh vetë</span>
+              <span class="text-sm font-medium text-[var(--color-text)]">Selbst wählen</span>
             </div>
             <svg id="custom-chevron" class="w-5 h-5 text-[var(--color-text-secondary)] transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
@@ -121,16 +121,16 @@ import { MULK_VERSES } from '../../data/mulk-verses';
           <div id="custom-content" class="hidden mt-4">
             <div class="flex items-center justify-center gap-4">
               <div class="text-center">
-                <label class="text-xs text-[var(--color-text-secondary)] mb-2 block">Nga</label>
+                <label class="text-xs text-[var(--color-text-secondary)] mb-2 block">Von</label>
                 <select id="range-start" class="w-16 h-12 bg-[var(--color-background)] border border-[var(--color-border)] rounded-xl text-center text-lg font-bold text-[var(--color-text)] cursor-pointer focus:border-[var(--color-primary)] focus:outline-none"></select>
               </div>
               <svg class="w-5 h-5 text-[var(--color-text-secondary)] mt-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
               <div class="text-center">
-                <label class="text-xs text-[var(--color-text-secondary)] mb-2 block">Deri</label>
+                <label class="text-xs text-[var(--color-text-secondary)] mb-2 block">Bis</label>
                 <select id="range-end" class="w-16 h-12 bg-[var(--color-background)] border border-[var(--color-border)] rounded-xl text-center text-lg font-bold text-[var(--color-text)] cursor-pointer focus:border-[var(--color-primary)] focus:outline-none"></select>
               </div>
             </div>
-            <p id="range-count" class="text-center text-xs text-[var(--color-text-secondary)] mt-3">30 ajete</p>
+            <p id="range-count" class="text-center text-xs text-[var(--color-text-secondary)] mt-3">30 Verse</p>
           </div>
         </div>
         
@@ -142,7 +142,7 @@ import { MULK_VERSES } from '../../data/mulk-verses';
       <div class="max-w-lg mx-auto">
         <button id="start-btn" class="w-full bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-primary-dark)] hover:from-[var(--color-primary-light)] hover:to-[var(--color-primary)] text-white text-center font-semibold py-5 px-6 rounded-2xl active:scale-[0.98] transition-all shadow-lg shadow-[#318fb5]/35 disabled:opacity-50">
           <div class="flex items-center justify-center gap-3">
-            <span id="start-btn-text">Dëgjo 30 ajete</span>
+            <span id="start-btn-text">30 Verse anhören</span>
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
             </svg>
@@ -224,7 +224,7 @@ import { MULK_VERSES } from '../../data/mulk-verses';
                 <!-- Info & Progress -->
                 <div class="flex-1 min-w-0">
                   <div class="flex items-center justify-between mb-1.5">
-                    <span class="text-sm font-medium text-[var(--color-text)]">Dëgjo <span id="listen-count-display">30</span> ajete</span>
+                    <span class="text-sm font-medium text-[var(--color-text)]">Anhören: <span id="listen-count-display">30</span> Verse</span>
                     <span id="time-display" class="text-sm text-[var(--color-text-secondary)]">0:00</span>
                   </div>
                   <div class="h-2 bg-[var(--color-border)] rounded-full overflow-hidden">
@@ -450,12 +450,12 @@ import { MULK_VERSES } from '../../data/mulk-verses';
   
   function updateRangeCount() {
     const count = Math.abs(selectedEnd - selectedStart) + 1;
-    rangeCountEl.textContent = count === 1 ? '1 ajet' : `${count} ajete`;
+    rangeCountEl.textContent = count === 1 ? '1 Vers' : `${count} Verse`;
   }
   
   function updateStartButton() {
     const count = Math.abs(selectedEnd - selectedStart) + 1;
-    startBtnText.textContent = count === 1 ? `Dëgjo ajetin ${selectedStart}` : `Dëgjo ${count} ajete`;
+    startBtnText.textContent = count === 1 ? `Vers anhören ${selectedStart}` : `${count} Verse Verse`;
   }
   
   // Custom Range Toggle
@@ -509,7 +509,7 @@ import { MULK_VERSES } from '../../data/mulk-verses';
     elapsedBeforeCurrent = 0;
     
     // Loading state
-    startBtnText.textContent = 'Duke ngarkuar...';
+    startBtnText.textContent = 'Wird geladen...';
     startBtn.disabled = true;
     
     // Load durations

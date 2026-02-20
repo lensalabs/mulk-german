@@ -32,7 +32,7 @@ import { MULK_VERSES } from '../../data/mulk-verses';
             <p class="text-sm text-[var(--color-text-secondary)] mb-4">Wähle, was du testen möchtest</p>
             
             <div class="space-y-2">
-              <!-- Full Sureja -->
+              <!-- Komplette Sure -->
               <button class="quiz-preset selected w-full py-3.5 px-4 bg-[var(--color-background)] border border-[var(--color-border)] rounded-xl flex items-center justify-between active:scale-[0.98] transition-all" data-start="1" data-end="30">
                 <div class="flex items-center gap-3">
                   <div class="w-10 h-10 rounded-xl bg-[var(--color-primary)]/10 flex items-center justify-center">
@@ -111,7 +111,7 @@ import { MULK_VERSES } from '../../data/mulk-verses';
                     <svg class="w-5 h-5 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
                   </div>
                   <div class="text-left">
-                    <p class="font-semibold text-orange-600">Ajete për përsëritje</p>
+                    <p class="font-semibold text-orange-600">Verse zum Wiederholen</p>
                     <p id="weak-verses-count" class="text-xs text-orange-500">0 Verse mit Fehlern</p>
                   </div>
                 </div>
@@ -127,7 +127,7 @@ import { MULK_VERSES } from '../../data/mulk-verses';
                 <div class="w-10 h-10 rounded-xl bg-[var(--color-border)]/50 flex items-center justify-center">
                   <svg class="w-5 h-5 text-[var(--color-text-secondary)]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"/></svg>
                 </div>
-                <span class="text-sm font-medium text-[var(--color-text)]">Zgjedh vetë</span>
+                <span class="text-sm font-medium text-[var(--color-text)]">Selbst wählen</span>
               </div>
               <svg id="custom-chevron" class="w-5 h-5 text-[var(--color-text-secondary)] transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
@@ -137,7 +137,7 @@ import { MULK_VERSES } from '../../data/mulk-verses';
             <div id="custom-content" class="hidden mt-4">
               <div class="flex items-center justify-center gap-4">
                 <div class="text-center">
-                  <label class="text-xs text-[var(--color-text-secondary)] mb-2 block">Nga</label>
+                  <label class="text-xs text-[var(--color-text-secondary)] mb-2 block">Von</label>
                   <select id="range-start" class="w-16 h-12 bg-[var(--color-background)] border border-[var(--color-border)] rounded-xl text-center text-lg font-bold text-[var(--color-text)] cursor-pointer focus:border-[var(--color-primary)] focus:outline-none">
                     {MULK_VERSES.map((verse) => (
                       <option value={verse.dayIndex}>{verse.dayIndex}</option>
@@ -146,7 +146,7 @@ import { MULK_VERSES } from '../../data/mulk-verses';
                 </div>
                 <svg class="w-5 h-5 text-[var(--color-text-secondary)] mt-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
                 <div class="text-center">
-                  <label class="text-xs text-[var(--color-text-secondary)] mb-2 block">Deri</label>
+                  <label class="text-xs text-[var(--color-text-secondary)] mb-2 block">Bis</label>
                   <select id="range-end" class="w-16 h-12 bg-[var(--color-background)] border border-[var(--color-border)] rounded-xl text-center text-lg font-bold text-[var(--color-text)] cursor-pointer focus:border-[var(--color-primary)] focus:outline-none">
                     {MULK_VERSES.map((verse) => (
                       <option value={verse.dayIndex} selected={verse.dayIndex === 30}>{verse.dayIndex}</option>
@@ -198,7 +198,7 @@ import { MULK_VERSES } from '../../data/mulk-verses';
             <p class="text-xs text-[var(--color-text-secondary)] mb-3 shrink-0">Cila fjalë mungon?</p>
             <div id="q-text" class="arabic text-2xl leading-[2.4] text-right p-4 bg-[var(--color-background)] rounded-xl flex-1 mb-4 overflow-y-auto" dir="rtl" lang="ar"></div>
             
-            <p class="text-xs text-[var(--color-text-secondary)] mb-2 shrink-0">Zgjidh fjalën e saktë:</p>
+            <p class="text-xs text-[var(--color-text-secondary)] mb-2 shrink-0">Wähle das richtige Wort:</p>
             <div id="q-options" class="grid grid-cols-2 gap-2 shrink-0"></div>
             
             <div id="q-feedback" class="hidden mt-4 p-4 rounded-xl shrink-0">
@@ -233,12 +233,12 @@ import { MULK_VERSES } from '../../data/mulk-verses';
               <span id="result-total" class="text-2xl text-[var(--color-text-secondary)]">10</span>
             </div>
             <p id="result-percent" class="text-lg text-[var(--color-primary)] font-semibold mb-4">0%</p>
-            <p id="result-message" class="text-[var(--color-text-secondary)] mb-6">Mirë!</p>
+            <p id="result-message" class="text-[var(--color-text-secondary)] mb-6">Gut!</p>
             
             <div class="flex justify-center gap-6 mb-6 py-4 border-y border-[var(--color-border)]">
               <div class="text-center">
                 <p class="text-xl font-bold text-orange-500" id="result-streak">0</p>
-                <p class="text-xs text-[var(--color-text-secondary)]">Seria më e gjatë</p>
+                <p class="text-xs text-[var(--color-text-secondary)]">Längste Serie</p>
               </div>
               <div class="text-center">
                 <p class="text-xl font-bold text-[var(--color-text)]" id="result-time">0:00</p>
@@ -259,17 +259,17 @@ import { MULK_VERSES } from '../../data/mulk-verses';
               <button id="retry-btn" class="w-full bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-primary-dark)] text-white font-semibold py-4 rounded-xl active:scale-[0.98] transition-all shadow-lg shadow-[#318fb5]/35">
                 <div class="flex items-center justify-center gap-2">
                   <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
-                  <span>Provo përsëri</span>
+                  <span>Nochmal versuchen</span>
                 </div>
               </button>
               <button id="practice-weak-btn" class="hidden w-full py-4 rounded-xl bg-orange-500 text-white font-medium active:scale-[0.98] transition-all">
                 <div class="flex items-center justify-center gap-2">
                   <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
-                  <span>Ushtro Verset e dobëta</span>
+                  <span>Schwache Verse üben</span>
                 </div>
               </button>
               <button id="new-quiz-btn" class="w-full py-4 rounded-xl border border-[var(--color-border)] text-[var(--color-text)] font-medium hover:bg-[var(--color-background)] transition-colors">
-                Zgjidh Verse të tjera
+                Andere Verse wählen
               </button>
             </div>
           </div>
@@ -593,7 +593,7 @@ import { MULK_VERSES } from '../../data/mulk-verses';
     
     if (questions.length === 0) {
       // No questions to show (e.g., no weak verses)
-      alert('Nuk ka Verse për të testuar!');
+      alert('Keine Verse zum Testen!');
       return;
     }
     
@@ -791,16 +791,16 @@ import { MULK_VERSES } from '../../data/mulk-verses';
     } else if (pct >= 80) {
       document.getElementById('icon-star')!.classList.remove('hidden');
       iconBgEl.className = 'w-24 h-24 mx-auto mb-4 rounded-2xl flex items-center justify-center bg-[var(--color-primary)]/15';
-      msgEl.textContent = 'Shkëlqyeshëm! Je shumë afër!';
+      msgEl.textContent = 'Ausgezeichnet! Du bist fast da!';
       createConfetti();
     } else if (pct >= 60) {
       document.getElementById('icon-check')!.classList.remove('hidden');
       iconBgEl.className = 'w-24 h-24 mx-auto mb-4 rounded-2xl flex items-center justify-center bg-[var(--color-primary)]/15';
-      msgEl.textContent = 'Mirë! Vazhdo të ushtroesh!';
+      msgEl.textContent = 'Gut! Weiter üben!';
     } else {
       document.getElementById('icon-book')!.classList.remove('hidden');
       iconBgEl.className = 'w-24 h-24 mx-auto mb-4 rounded-2xl flex items-center justify-center bg-gray-100';
-      msgEl.textContent = 'Dëgjo surenë dhe provo përsëri!';
+      msgEl.textContent = 'Höre die Sure an und versuche es nochmal!';
     }
     saveStats(score, total);
     loadStats();
