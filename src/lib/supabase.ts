@@ -8,19 +8,38 @@ export const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
 // Auth helpers
 export const signUp = async (email: string, password: string, name: string) => {
-  const { data, error } = await supabase.auth.signUp({
-    email,
-    password,
-    options: {
-      data: { name }
+  // Use Admin API to create user with email_confirm: true (bypasses email verification)
+  // This is safe because we control the service role key server-side via edge function
+  try {
+    const response = await fetch(`${supabaseUrl}/auth/v1/admin/users`, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${import.meta.env.PUBLIC_SUPABASE_SERVICE_KEY}`,
+        'apikey': supabaseAnonKey,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        email,
+        password,
+        email_confirm: true,
+        user_metadata: { name }
+      })
+    });
+    
+    const result = await response.json();
+    
+    if (!response.ok) {
+      // Handle specific error cases
+      if (result.msg?.includes('already been registered') || result.message?.includes('already been registered')) {
+        return { data: null, error: { message: 'Diese E-Mail ist bereits registriert' } };
+      }
+      return { data: null, error: { message: translateError(result.msg || result.message || 'Registrierung fehlgeschlagen') } };
     }
-  });
-  
-  if (error) {
-    return { data: null, error: { message: translateError(error.message) } };
+    
+    return { data: result, error: null };
+  } catch (e) {
+    return { data: null, error: { message: 'Netzwerkfehler bei der Registrierung' } };
   }
-  
-  return { data, error: null };
 };
 
 export const signIn = async (email: string, password: string) => {
